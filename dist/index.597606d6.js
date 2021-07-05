@@ -22036,7 +22036,7 @@ class MainView extends _reactDefault.default.Component {
         };
     }
     render() {
-        const movies = this.state.movies;
+        const { movies  } = this.state; //object destruction; equivalent to const movies = this.state.movies;
         if (movies.length === 0) return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
             className: "main-view",
             __source: {
@@ -22044,23 +22044,23 @@ class MainView extends _reactDefault.default.Component {
                 lineNumber: 17
             },
             __self: this
-        }, "The list is empty!"));
-        else return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
+        }, "The list is empty!")); //curly braces required only for multiple statements, optional for single statement; else statement omitted
+        return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
             className: "main-view",
             __source: {
                 fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 20
+                lineNumber: 19
             },
             __self: this
-        }, movies.map((movie)=>{
-            return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
+        }, movies.map((movie)=>/*#__PURE__*/ _reactDefault.default.createElement("div", {
+                key: "movie._id",
                 __source: {
                     fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/main-view/main-view.jsx",
-                    lineNumber: 22
+                    lineNumber: 21
                 },
                 __self: this
-            }, movie.Title));
-        })));
+            }, movie.Title)
+        )));
     }
 }
 
