@@ -22053,7 +22053,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __self: this
         }, movies.map((movie)=>/*#__PURE__*/ _reactDefault.default.createElement("div", {
-                key: "movie._id",
+                key: movie._id,
                 __source: {
                     fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/main-view/main-view.jsx",
                     lineNumber: 21
