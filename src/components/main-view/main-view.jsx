@@ -18,7 +18,7 @@ export class MainView extends React.Component{
     return (
       <div className = "main-view">
         {/* map() loops through an array and calls a defined callback function on each element of an array, and returns an array that contains the results; in arrow function, return single statement does not require semicolon*/}
-        {movies.map(movie => <div key = "movie._id">{movie.Title}</div>)} 
+        {movies.map(movie => <div key = {movie._id}>{movie.Title}</div>)} 
       </div>
     );
   }
