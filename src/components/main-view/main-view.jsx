@@ -22,7 +22,7 @@ export class MainView extends React.Component{
     return (
       <div className = "main-view">
         {/* map() loops through an array and calls a defined callback function on each element of an array, and returns an array that contains the results; in arrow function, return single statement does not require semicolon*/}
-        {movies.map(movie => <MovieCard key = {movie._id} movieData = {movie} onClick = {() => {this.state.selectedMovie = movie;}}/>)}
+        {movies.map(movie => <MovieCard key = {movie._id} movieData = {movie} onMovieClick = {(newSelectedMovie) => {this.state.selectedMovie = newSelectedMovie}}/>)}
       </div>
     );
     
