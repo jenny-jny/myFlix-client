@@ -26,9 +26,9 @@ export class MainView extends React.Component{
       <div className = "main-view">
         {selectedMovie
           ? <MovieView movie = {selectedMovie} onBackClick = {newSelectedMovie => this.setSelectedMovie(newSelectedMovie)}/>
+          //map() loops through an array and calls a defined callback function on each element of an array, and returns an array that contains the results; in arrow function, return single statement does not require semicolon
           : movies.map(movie => <MovieCard key = {movie._id} movieData = {movie} onMovieClick = {movie => this.setSelectedMovie(movie)}/>)
         }
-        {/* map() loops through an array and calls a defined callback function on each element of an array, and returns an array that contains the results; in arrow function, return single statement does not require semicolon*/}
       </div>
     );
     
