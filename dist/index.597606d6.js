@@ -22009,39 +22009,53 @@ parcelHelpers.export(exports, "MainView", ()=>MainView
 );
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+var _movieCard = require("../movie-card/movie-card");
+var _movieView = require("../movie-view/movie-view");
 class MainView extends _reactDefault.default.Component {
     constructor(){
         super(); //calls parent class React.Component
         this.state = {
             movies: [
                 {
-                    _id: 1,
+                    imagePath: 'https://upload.wikimedia.org/wikipedia/en/9/9f/Moulin_rouge_poster.jpg',
+                    _id: '60cc06b7ead29eb527ada014',
                     Title: 'Moulin Rouge!',
-                    Description: '',
-                    imagePath: ''
+                    Description: 'Moulin Rouge! is a 2001 jukebox musical romantic drama film. It follows a young English poet, Christian, who falls in love with the star of the Moulin Rouge, cabaret actress and courtesan Satine. The film uses the musical setting of the Montmartre Quarter of Paris and is the final part of Luhrmann\'s \'Red Curtain Trilogy\'',
+                    Genre: 'Romance',
+                    Director: 'Baz Luhrmann'
                 },
                 {
-                    _id: 2,
-                    Title: 'Moulin Rouge!',
-                    Description: '',
-                    imagePath: ''
+                    imagePath: 'https://upload.wikimedia.org/wikipedia/en/c/c2/TheGreatGatsby2013Poster.jpg',
+                    _id: '60cc083eead29eb527ada016',
+                    Title: 'The Great Gatsby',
+                    Description: 'The Great Gatsby is a 2013 romantic drama film based on F. Scott Fitzgerald\'s 1925 novel. Jay-Z served as executive producer. The film follows the life and times of millionaire Jay Gatsby (DiCaprio) and his neighbor Nick Carraway (Maguire), who recounts his encounter with Gatsby at the height of the Roaring Twenties on Long Island.',
+                    Genre: 'Romance',
+                    Director: 'Baz Luhrmann'
                 },
                 {
-                    _id: 3,
-                    Title: 'Moulin Rouge!',
-                    Description: '',
-                    imagePath: ''
+                    imagePath: 'https://upload.wikimedia.org/wikipedia/en/1/19/Titanic_%28Official_Film_Poster%29.png',
+                    _id: '60cc0920ead29eb527ada017',
+                    Title: 'Titanic',
+                    Description: 'Titanic is a 1997 American epic romance and disaster film. Incorporating both historical and fictionalized aspects, it is based on accounts of the sinking of the RMS Titanic, and stars members of different social classes who fall in love aboard the ship during its ill-fated maiden voyage.',
+                    Genre: 'Romance',
+                    Director: 'James Cameron'
                 }
-            ]
+            ],
+            selectedMovie: null
         };
     }
+    setSelectedMovie(newSelectedMovie) {
+        this.setState({
+            selectedMovie: newSelectedMovie
+        });
+    }
     render() {
-        const { movies  } = this.state; //object destruction; equivalent to const movies = this.state.movies;
+        const { movies , selectedMovie  } = this.state; //object destruction; equivalent to const movies = this.state.movies;
         if (movies.length === 0) return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
             className: "main-view",
             __source: {
                 fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 17
+                lineNumber: 24
             },
             __self: this
         }, "The list is empty!")); //curly braces required only for multiple statements, optional for single statement; else statement omitted
@@ -22049,18 +22063,160 @@ class MainView extends _reactDefault.default.Component {
             className: "main-view",
             __source: {
                 fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/main-view/main-view.jsx",
+                lineNumber: 26
+            },
+            __self: this
+        }, selectedMovie ? /*#__PURE__*/ _reactDefault.default.createElement(_movieView.MovieView, {
+            movie: selectedMovie,
+            onBackClick: (newSelectedMovie)=>this.setSelectedMovie(newSelectedMovie)
+            ,
+            __source: {
+                fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/main-view/main-view.jsx",
+                lineNumber: 28
+            },
+            __self: this
+        }) : movies.map((movie)=>/*#__PURE__*/ _reactDefault.default.createElement(_movieCard.MovieCard, {
+                key: movie._id,
+                movieData: movie,
+                onMovieClick: (movie1)=>this.setSelectedMovie(movie1)
+                ,
+                __source: {
+                    fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/main-view/main-view.jsx",
+                    lineNumber: 30
+                },
+                __self: this
+            })
+        )));
+    }
+}
+
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"2Ogsb","../../../../../../.nvm/versions/node/v14.17.0/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"6XILU","../movie-card/movie-card":"5olpj","../movie-view/movie-view":"7zYST"}],"5olpj":[function(require,module,exports) {
+var helpers = require("../../../../../../.nvm/versions/node/v14.17.0/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "MovieCard", ()=>MovieCard
+);
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+class MovieCard extends _reactDefault.default.Component {
+    render() {
+        const { movieData , onMovieClick  } = this.props;
+        return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "movie-card",
+            onClick: ()=>onMovieClick(movieData)
+            ,
+            __source: {
+                fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/movie-card/movie-card.jsx",
+                lineNumber: 6
+            },
+            __self: this
+        }, movieData.Title));
+    }
+}
+
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"2Ogsb","../../../../../../.nvm/versions/node/v14.17.0/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"6XILU"}],"7zYST":[function(require,module,exports) {
+var helpers = require("../../../../../../.nvm/versions/node/v14.17.0/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "MovieView", ()=>MovieView
+);
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+class MovieView extends _reactDefault.default.Component {
+    render() {
+        const { movie , onBackClick  } = this.props;
+        return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "movie-view",
+            __source: {
+                fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/movie-view/movie-view.jsx",
+                lineNumber: 7
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "movie-poster",
+            __source: {
+                fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/movie-view/movie-view.jsx",
+                lineNumber: 8
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("img", {
+            src: movie.imagePath,
+            __source: {
+                fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/movie-view/movie-view.jsx",
+                lineNumber: 9
+            },
+            __self: this
+        })), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "movie-title",
+            __source: {
+                fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/movie-view/movie-view.jsx",
+                lineNumber: 11
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "label",
+            __source: {
+                fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/movie-view/movie-view.jsx",
+                lineNumber: 12
+            },
+            __self: this
+        }, "Title: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "value",
+            __source: {
+                fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/movie-view/movie-view.jsx",
+                lineNumber: 13
+            },
+            __self: this
+        }, movie.Title)), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "movie-description",
+            __source: {
+                fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/movie-view/movie-view.jsx",
+                lineNumber: 15
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "label",
+            __source: {
+                fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/movie-view/movie-view.jsx",
+                lineNumber: 16
+            },
+            __self: this
+        }, "Description: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "value",
+            __source: {
+                fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/movie-view/movie-view.jsx",
+                lineNumber: 17
+            },
+            __self: this
+        }, movie.Description)), /*#__PURE__*/ _reactDefault.default.createElement("button", {
+            onClick: ()=>onBackClick(null)
+            ,
+            __source: {
+                fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/movie-view/movie-view.jsx",
                 lineNumber: 19
             },
             __self: this
-        }, movies.map((movie)=>/*#__PURE__*/ _reactDefault.default.createElement("div", {
-                key: movie._id,
-                __source: {
-                    fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/main-view/main-view.jsx",
-                    lineNumber: 21
-                },
-                __self: this
-            }, movie.Title)
-        )));
+        }, "Back")));
     }
 }
 
