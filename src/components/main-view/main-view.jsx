@@ -18,7 +18,7 @@ export class MainView extends React.Component{
 
   render(){
     const {movies, selectedMovie} = this.state; //object destruction; equivalent to const movies = this.state.movies;
-    if(movies.length === 0) return <div className = "main-view">The list is empty!</div> //curly braces required only for multiple statements, optional for single statement; else statement omitted
+    if(movies.length === 0) return <div className = "main-view"/> //curly braces required only for multiple statements, optional for single statement; else statement omitted
     return (
       <div className = "main-view">
         {selectedMovie
