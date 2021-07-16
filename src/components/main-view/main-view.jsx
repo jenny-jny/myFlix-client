@@ -28,6 +28,13 @@ export class MainView extends React.Component{
         }
       </div>
     );
-    
+  }
+
+  componentDidMount(){
+    axios.get('https://jny-myflix.herokuapp.com/movies').then(response => {
+      this.setState({movies: response.data});
+    }).catch(error => {
+      console.log(error);
+    });
   }
 }
