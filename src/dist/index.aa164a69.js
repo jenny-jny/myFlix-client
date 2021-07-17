@@ -23512,7 +23512,7 @@ class MovieView extends _reactDefault.default.Component {
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement("img", {
-            src: movie.imagePath,
+            src: movie.ImagePath,
             __source: {
                 fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/movie-view/movie-view.jsx",
                 lineNumber: 9
@@ -23581,7 +23581,7 @@ class MovieView extends _reactDefault.default.Component {
                 lineNumber: 21
             },
             __self: this
-        }, movie.Genre)), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+        }, movie.Genre.Name)), /*#__PURE__*/ _reactDefault.default.createElement("div", {
             className: "movie-director",
             __source: {
                 fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/movie-view/movie-view.jsx",
@@ -23602,7 +23602,7 @@ class MovieView extends _reactDefault.default.Component {
                 lineNumber: 25
             },
             __self: this
-        }, movie.Director)), /*#__PURE__*/ _reactDefault.default.createElement("button", {
+        }, movie.Director.Name)), /*#__PURE__*/ _reactDefault.default.createElement("button", {
             onClick: ()=>onBackClick(null)
             ,
             __source: {
@@ -23611,11 +23611,6 @@ class MovieView extends _reactDefault.default.Component {
             },
             __self: this
         }, "Back")));
-    }
-    componentDidUnmount() {
-        document.addEventListener('keypress', (event)=>{
-            console.log(event.key);
-        });
     }
 }
 
