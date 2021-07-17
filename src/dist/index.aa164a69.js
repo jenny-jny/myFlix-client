@@ -23612,7 +23612,7 @@ class MovieView extends _reactDefault.default.Component {
             __self: this
         }, "Back")));
     }
-    componentDidMount() {
+    componentDidUnmount() {
         document.addEventListener('keypress', (event)=>{
             console.log(event.key);
         });
