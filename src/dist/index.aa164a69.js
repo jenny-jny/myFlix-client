@@ -23612,15 +23612,6 @@ class MovieView extends _reactDefault.default.Component {
             __self: this
         }, "Back")));
     }
-    keypressCallback(event) {
-        console.log(event.key);
-    }
-    componentDidMount() {
-        document.addEventListener('keypress', this.keypressCallback);
-    }
-    componentWillUnmount() {
-        document.removeEventListener('keypress', this.keypressCallback);
-    }
 }
 
   helpers.postlude(module);

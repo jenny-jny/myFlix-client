@@ -28,13 +28,4 @@ export class MovieView extends React.Component{
       </div>
     );
   }
-  keypressCallback(event){
-    console.log(event.key);
-  }
-  componentDidMount(){
-    document.addEventListener('keypress', this.keypressCallback);
-  }
-  componentWillUnmount(){
-    document.removeEventListener('keypress', this.keypressCallback);
-  }
 }
