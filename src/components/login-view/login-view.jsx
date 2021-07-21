@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import PropTypes from 'prop-types';
 
 export function LoginView(props){
   //useState() returns a stateful value and a function to update it
@@ -23,3 +24,6 @@ export function LoginView(props){
     </form>
   );
 }
+LoginView.propTypes = {
+  onLoggedIn: PropTypes.func.isRequired
+};
