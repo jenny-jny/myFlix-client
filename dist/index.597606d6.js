@@ -23580,7 +23580,7 @@ class MovieCard extends _reactDefault.default.Component {
         }, movieData.Title));
     }
 }
-MovieCard.propTypes = {
+MovieCard.PropTypes = {
     movie: _propTypesDefault.default.shape({
         Title: _propTypesDefault.default.string
     }).isRequired,
