@@ -23352,30 +23352,30 @@ function LoginView(props) {
             lineNumber: 18
         },
         __self: this
-    }, "Username:", /*#__PURE__*/ _reactDefault.default.createElement("input", {
+    }, "Username: "), /*#__PURE__*/ _reactDefault.default.createElement("input", {
         type: "text",
         value: username,
         onChange: (e)=>setUsername(e.target.value)
         ,
         __source: {
             fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/login-view/login-view.jsx",
+            lineNumber: 19
+        },
+        __self: this
+    }), /*#__PURE__*/ _reactDefault.default.createElement("label", {
+        __source: {
+            fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/login-view/login-view.jsx",
             lineNumber: 20
         },
         __self: this
-    })), /*#__PURE__*/ _reactDefault.default.createElement("label", {
-        __source: {
-            fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/login-view/login-view.jsx",
-            lineNumber: 22
-        },
-        __self: this
-    }, "Password:"), /*#__PURE__*/ _reactDefault.default.createElement("input", {
-        type: "text",
+    }, "Password: "), /*#__PURE__*/ _reactDefault.default.createElement("input", {
+        type: "password",
         value: password,
         onChange: (e)=>setPassword(e.target.value)
         ,
         __source: {
             fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/login-view/login-view.jsx",
-            lineNumber: 25
+            lineNumber: 21
         },
         __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement("button", {
@@ -23383,7 +23383,7 @@ function LoginView(props) {
         onClick: handleSubmit,
         __source: {
             fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/login-view/login-view.jsx",
-            lineNumber: 26
+            lineNumber: 22
         },
         __self: this
     }, "Submit")));

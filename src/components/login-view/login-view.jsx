@@ -15,14 +15,10 @@ export function LoginView(props){
 
   return (
     <form>
-      <label>
-        Username: 
-        <input type = "text" value = {username} onChange = {e => setUsername(e.target.value)}/>
-      </label>
-      <label>
-        Password: 
-      </label>
-      <input type = "text" value = {password} onChange = {e => setPassword(e.target.value)}/>
+      <label>Username: </label>
+      <input type = "text" value = {username} onChange = {e => setUsername(e.target.value)}/>
+      <label>Password: </label>
+      <input type = "password" value = {password} onChange = {e => setPassword(e.target.value)}/>
       <button type = "submit" onClick = {handleSubmit}>Submit</button>
     </form>
   );
