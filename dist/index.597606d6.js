@@ -23333,7 +23333,7 @@ function LoginView(props) {
     //useState() returns a stateful value and a function to update it
     const [username, setUsername] = _react.useState('');
     const [password, setPassword] = _react.useState('');
-    const handleSubmit = ()=>{
+    const handleSubmit = (e)=>{
         e.preventDefault();
         console.log(username, password);
         //send a request to the server for authentication
@@ -23580,8 +23580,8 @@ class MovieCard extends _reactDefault.default.Component {
         }, movieData.Title));
     }
 }
-MovieCard.PropTypes = {
-    movie: _propTypesDefault.default.shape({
+MovieCard.propTypes = {
+    movieData: _propTypesDefault.default.shape({
         Title: _propTypesDefault.default.string
     }).isRequired,
     onMovieClick: _propTypesDefault.default.func.isRequired

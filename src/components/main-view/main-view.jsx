@@ -12,7 +12,7 @@ export class MainView extends React.Component{
       movies: [],
       selectedMovie: null,
       user: null
-    }
+    };
   }
 
   //When a movie is clicked, this function is invoked and updates the state of the selectedMovie property to that movie

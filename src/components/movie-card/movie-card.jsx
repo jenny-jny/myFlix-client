@@ -8,8 +8,8 @@ export class MovieCard extends React.Component{
   }
 }
 
-MovieCard.PropTypes = {
-  movie: PropTypes.shape(
+MovieCard.propTypes = {
+  movieData: PropTypes.shape(
     {Title: PropTypes.string}
   ).isRequired,
   onMovieClick: PropTypes.func.isRequired
