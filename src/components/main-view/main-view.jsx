@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 import {LoginView} from '../login-view/login-view';
 import {MovieCard} from '../movie-card/movie-card';
@@ -37,8 +38,10 @@ export class MainView extends React.Component{
         <div className = "main-view">
           {selectedMovie
             ? (
-              <Row>
-                <MovieView movie = {selectedMovie} onBackClick = {newSelectedMovie => this.setSelectedMovie(newSelectedMovie)}/>
+              <Row className = "justify-content-md-center">
+                <Col md = {8}>
+                  <MovieView movie = {selectedMovie} onBackClick = {newSelectedMovie => this.setSelectedMovie(newSelectedMovie)}/>
+                </Col>
               </Row>
             )
             //map() loops through an array and calls a defined callback function on each element of an array, and returns an array that contains the results; in arrow function, return single statement does not require semicolon
