@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
 
 import {LoginView} from '../login-view/login-view';
 import {MovieCard} from '../movie-card/movie-card';
@@ -31,13 +33,19 @@ export class MainView extends React.Component{
     if(!user) return <LoginView onLoggedIn = {user => this.onLoggedIn(user)}/>;
     if(movies.length === 0) return <div className = "main-view"/> //curly braces required only for multiple statements, optional for single statement; else statement omitted
     return (
-      <div className = "main-view">
-        {selectedMovie
-          ? <MovieView movie = {selectedMovie} onBackClick = {newSelectedMovie => this.setSelectedMovie(newSelectedMovie)}/>
-          //map() loops through an array and calls a defined callback function on each element of an array, and returns an array that contains the results; in arrow function, return single statement does not require semicolon
-          : movies.map(movie => <MovieCard key = {movie._id} movieData = {movie} onMovieClick = {movie => this.setSelectedMovie(movie)}/>)
-        }
-      </div>
+      <Container>
+        <div className = "main-view">
+          {selectedMovie
+            ? (
+              <Row>
+                <MovieView movie = {selectedMovie} onBackClick = {newSelectedMovie => this.setSelectedMovie(newSelectedMovie)}/>
+              </Row>
+            )
+            //map() loops through an array and calls a defined callback function on each element of an array, and returns an array that contains the results; in arrow function, return single statement does not require semicolon
+            : movies.map(movie => <MovieCard key = {movie._id} movieData = {movie} onMovieClick = {movie => this.setSelectedMovie(movie)}/>)
+          }
+        </div>
+      </Container>
     );
   }
 
