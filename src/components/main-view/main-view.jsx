@@ -45,6 +45,14 @@ export class MainView extends React.Component{
     this.getMovies(authData.token);
   }
 
+  // onLoggedOut(){
+  //   localStorage.removeItem('token');
+  //   localStorage.removeItem('user');
+  //   this.setState({
+  //     user: null
+  //   });
+  // }
+
   render(){
     const {movies, selectedMovie, user} = this.state; //object destruction; equivalent to const movies = this.state.movies;
     //If there is no user, the LoginView is rendered. If there is a user logged in, the user details are passed as a prop to the LoginView
@@ -74,10 +82,12 @@ export class MainView extends React.Component{
   }
 
   componentDidMount(){
-    axios.get('https://jny-myflix.herokuapp.com/movies').then(response => {
-      this.setState({movies: response.data});
-    }).catch(error => {
-      console.log(error);
-    });
+    let accessToken = localStorage.getItem('token');
+    if(accessToken !== null){
+      this.setState({
+        user: localStorage.getItem('user')
+      });
+      this.getMovies(accessToken);
+    }
   }
 }

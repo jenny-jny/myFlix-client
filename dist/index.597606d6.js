@@ -22174,13 +22174,13 @@ class MainView extends _reactDefault.default.Component {
         ))));
     }
     componentDidMount() {
-        _axiosDefault.default.get('https://jny-myflix.herokuapp.com/movies').then((response)=>{
+        let accessToken = localStorage.getItem('token');
+        if (accessToken !== null) {
             this.setState({
-                movies: response.data
+                user: localStorage.getItem('user')
             });
-        }).catch((error)=>{
-            console.log(error);
-        });
+            this.getMovies(accessToken);
+        }
     }
 }
 
