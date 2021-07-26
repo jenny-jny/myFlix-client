@@ -22145,8 +22145,9 @@ class MainView extends _reactDefault.default.Component {
             }, /*#__PURE__*/ _reactDefault.default.createElement(_movieCard.MovieCard, {
                 key: movie._id,
                 movieData: movie,
-                onMovieClick: (movie1)=>this.setSelectedMovie(movie1)
-                ,
+                onMovieClick: (movie1)=>{
+                    this.setSelectedMovie(movie1);
+                },
                 __source: {
                     fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/main-view/main-view.jsx",
                     lineNumber: 49
