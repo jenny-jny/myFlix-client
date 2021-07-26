@@ -5,6 +5,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import axios from 'axios';
 
 export function LoginView(props){
   //useState() returns a stateful value and a function to update it
@@ -15,8 +16,16 @@ export function LoginView(props){
     e.preventDefault();
     console.log(username, password);
     //send a request to the server for authentication
-    //THEN call props.onLoggedIn(username)
-    props.onLoggedIn(username);
+    axios.post('https://jny-myflix.herokuapp.com/login', {
+      Username: username,
+      Password: password
+    }).then(response => {
+      const data = response.data;
+      //THEN call props.onLoggedIn(username)
+      props.onLoggedIn(data);
+    }).catch(() => {
+      console.log('no such user');
+    });
   };
 
   return (
