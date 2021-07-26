@@ -23,6 +23,19 @@ export class MainView extends React.Component{
     this.setState({selectedMovie: newSelectedMovie});
   }
 
+  getMovies(token){
+    axios.get('https://jny-myflix.herokuapp.com/movies', {
+      headers: {Authorization: `Bearer ${token}`}
+    }).then(response => {
+      //assign the result to the state 
+      this.setState({
+        movies: response.data
+      });
+    }).catch(function(error){
+      console.log(error);
+    });
+  }
+
   //When a user successfully logs in, this function updates the user property in state to that particular user
   onLoggedIn(authData){
     console.log(authData);
