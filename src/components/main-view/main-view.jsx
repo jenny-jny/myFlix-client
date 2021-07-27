@@ -3,6 +3,7 @@ import axios from 'axios';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
 
 import {LoginView} from '../login-view/login-view';
 import {MovieCard} from '../movie-card/movie-card';
@@ -60,6 +61,11 @@ export class MainView extends React.Component{
     if(movies.length === 0) return <div className = "main-view"/> //curly braces required only for multiple statements, optional for single statement; else statement omitted
     return (
       <Container>
+        <Row>
+          <Col md = {8}>
+            <Button onClick = {() => this.onLoggedOut()}>Logout</Button>
+          </Col>
+        </Row>
         <Row className = "main-view justify-content-md-center"> 
           {selectedMovie
             ? (
