@@ -42,7 +42,7 @@ export function RegistrationView(props){
           <Form noValidate validated = {validated} onSubmit = {handleSubmit}>
             <Form.Group controlId = "formUsername">
               <Form.Label>Username: </Form.Label>
-              <Form.Control type = "text" onChange = {e => setUsername(e.target.value)} required/>
+              <Form.Control type = "text" isInvalid = {/[^0-9a-zA-Z]/.test(username) || username.length < 5} onChange = {e => setUsername(e.target.value)} required/>
               <Form.Control.Feedback type = "invalid">Please enter a username</Form.Control.Feedback>
             </Form.Group>
             <Form.Group controlId = "formPassword">
@@ -52,7 +52,7 @@ export function RegistrationView(props){
             </Form.Group>
             <Form.Group controlId = "formEmail">
               <Form.Label>Email: </Form.Label>
-              <Form.Control type = "email" onChange = {e => setEmail(e.target.value)} required/>
+              <Form.Control type = "email" isInvalid = {email.indexOf('.') === -1} onChange = {e => setEmail(e.target.value)} required/>
               <Form.Control.Feedback type = "invalid">Please enter a email</Form.Control.Feedback>
             </Form.Group>
             <Form.Group controlId = "formBirthday">
