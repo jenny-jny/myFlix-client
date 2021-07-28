@@ -78,7 +78,7 @@ export class MainView extends React.Component{
             //map() loops through an array and calls a defined callback function on each element of an array, and returns an array that contains the results; in arrow function, return single statement does not require semicolon
             : (
               movies.map(movie => 
-                <Col md = {3} key = {movie._id}>
+                <Col lg = {3} md = {4} sm = {12} key = {movie._id}>
                   <MovieCard movieData = {movie} onMovieClick = {movie => this.setSelectedMovie(movie)}/>
                 </Col>
               )
