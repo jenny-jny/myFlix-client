@@ -22110,16 +22110,16 @@ class MainView extends _reactDefault.default.Component {
     render() {
         const { movies , selectedMovie , user  } = this.state; //object destruction; equivalent to const movies = this.state.movies;
         //If there is no user, the LoginView is rendered. If there is a user logged in, the user details are passed as a prop to the LoginView
-        // if(!user) return <LoginView onLoggedIn = {user => this.onLoggedIn(user)}/>;
-        if (!user) return(/*#__PURE__*/ _reactDefault.default.createElement(_registrationView.RegistrationView, {
+        if (!user) return(/*#__PURE__*/ _reactDefault.default.createElement(_loginView.LoginView, {
             onLoggedIn: (user1)=>this.onLoggedIn(user1)
             ,
             __source: {
                 fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 59
+                lineNumber: 58
             },
             __self: this
         }));
+        // if(!user) return <RegistrationView onLoggedIn = {user => this.onLoggedIn(user)}/>;
         if (movies.length === 0) return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
             className: "main-view",
             __source: {
@@ -36363,10 +36363,6 @@ function LoginView(props) {
     const [username, setUsername] = _react.useState('');
     const [password, setPassword] = _react.useState('');
     const [validated, setValidated] = _react.useState(false);
-    const validateEmail = ()=>{
-        const value = emailInput.value;
-        if (value.indexOf('.') === -1) return false;
-    };
     const handleSubmit = (e)=>{
         e.preventDefault();
         const form = e.currentTarget;
@@ -36388,21 +36384,21 @@ function LoginView(props) {
     return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Container, {
         __source: {
             fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/login-view/login-view.jsx",
-            lineNumber: 42
+            lineNumber: 35
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Row, {
         className: "justify-content-md-center",
         __source: {
             fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/login-view/login-view.jsx",
-            lineNumber: 43
+            lineNumber: 36
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
         md: 8,
         __source: {
             fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/login-view/login-view.jsx",
-            lineNumber: 44
+            lineNumber: 37
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form, {
@@ -36411,50 +36407,51 @@ function LoginView(props) {
         onSubmit: handleSubmit,
         __source: {
             fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/login-view/login-view.jsx",
-            lineNumber: 45
+            lineNumber: 38
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Group, {
         controlId: "formUsername",
         __source: {
             fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/login-view/login-view.jsx",
-            lineNumber: 46
+            lineNumber: 39
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Label, {
         __source: {
             fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/login-view/login-view.jsx",
-            lineNumber: 47
+            lineNumber: 40
         },
         __self: this
     }, "Username: "), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Control, {
         type: "text",
+        isInvalid: /[^0-9a-zA-Z]/.test(username) || username.length < 5,
         onChange: (e)=>setUsername(e.target.value)
         ,
         required: true,
         __source: {
             fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/login-view/login-view.jsx",
-            lineNumber: 48
+            lineNumber: 41
         },
         __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Control.Feedback, {
         type: "invalid",
         __source: {
             fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/login-view/login-view.jsx",
-            lineNumber: 49
+            lineNumber: 42
         },
         __self: this
     }, "Please enter a username")), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Group, {
         controlId: "formPassword",
         __source: {
             fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/login-view/login-view.jsx",
-            lineNumber: 51
+            lineNumber: 44
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Label, {
         __source: {
             fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/login-view/login-view.jsx",
-            lineNumber: 52
+            lineNumber: 45
         },
         __self: this
     }, "Password: "), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Control, {
@@ -36464,14 +36461,14 @@ function LoginView(props) {
         required: true,
         __source: {
             fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/login-view/login-view.jsx",
-            lineNumber: 53
+            lineNumber: 46
         },
         __self: this
     }), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Control.Feedback, {
         type: "invalid",
         __source: {
             fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/login-view/login-view.jsx",
-            lineNumber: 54
+            lineNumber: 47
         },
         __self: this
     }, "Please enter a password")), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
@@ -36479,14 +36476,13 @@ function LoginView(props) {
         type: "submit",
         __source: {
             fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/login-view/login-view.jsx",
-            lineNumber: 56
+            lineNumber: 49
         },
         __self: this
     }, "Submit"))))));
 }
 _s(LoginView, "SA/z51gtsh1VmRJTBtoE1mObG10=");
 _c = LoginView;
-_reactDomDefault.default.findDOMNode();
 LoginView.propTypes = {
     onLoggedIn: _propTypesDefault.default.func.isRequired
 };
