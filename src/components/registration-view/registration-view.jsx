@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -15,9 +16,10 @@ export function RegistrationView(props){
   const [validated, setValidated] = useState(false);
 
   const handleSubmit = e => {
+    e.preventDefault();
     const form = e.currentTarget;
     if(form.checkValidity() === false){
-      e.preventDefault();
+      //??????????????????????????????????????????????????????????
     }
     console.log(username, password, email, birthday);
     //send a request to the server for authentication
