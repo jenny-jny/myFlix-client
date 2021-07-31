@@ -28,10 +28,12 @@ export function RegistrationView(props){
       Birthday: birthday
     }).then(response => {
       const data = response.data;
+      console.log(data);
+      windows.open('/', '_self'); // the second argument '_self' is necessary so that the page will open in the current tab
       //THEN call props.onLoggedIn(username)
       props.onLoggedIn(data);
     }).catch(() => {
-      console.log('no such user');
+      console.log('error registering the user');
     });
   };
 
