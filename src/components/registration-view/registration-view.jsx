@@ -4,7 +4,7 @@ import axios from 'axios';
 import {Container, Row, Col, Form, Button} from 'react-bootstrap';
 
 
-export function RegistrationView(props){
+export function RegistrationView(){
   //useState() returns a stateful value and a function to update it
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -31,7 +31,7 @@ export function RegistrationView(props){
       console.log(data);
       windows.open('/', '_self'); // the second argument '_self' is necessary so that the page will open in the current tab
       //THEN call props.onLoggedIn(username)
-      props.onLoggedIn(data);
+      // props.onLoggedIn(data);
     }).catch(() => {
       console.log('error registering the user');
     });
