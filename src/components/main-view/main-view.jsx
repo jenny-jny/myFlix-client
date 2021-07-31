@@ -64,7 +64,7 @@ export class MainView extends React.Component{
       </Row>
     );
     // if(!user) return <RegistrationView onLoggedIn = {user => this.onLoggedIn(user)}/>;
-    if(movies.length === 0) return <div className = "main-view"/> //curly braces required only for multiple statements, optional for single statement; else statement omitted
+    if(movies.length === 0) return <div className = "main-view"/> //curly braces required only for multiple statements, optional for single statement; else statement keyword omitted
     return (
       <Router>
         <Container>
@@ -82,12 +82,24 @@ export class MainView extends React.Component{
                 </Col>
               ))
             }}/>
-            <Route exact path = "movies/:movieId" render = {({match}) => {
+            <Route exact path = "movies/:movieId" render = {({match}) => { //match is the url 
               return <Col md = {8}>
                 <MovieView movie = {movies.find(m => m._id === match.params.movieId)}/>
               </Col>
             }}/>
-            {selectedMovie
+            <Route exact path = "/genres/:name" render = {({match}) => { //match is the url
+              if(movies.length === 0) return <div className = "main-view"/>;
+              return <Col md = {8}>
+                <GenreView genre = {movies.find(movie => movie.Genre.Name === match.params.name).Genre}/>
+              </Col>
+            }}/>
+            <Route exact path = "/directors/:name" render = {({match}) => { //match is the url
+              if(movies.length === 0) return <div className = "main-view"/>;
+              return <Col md = {8}>
+                <DirectorView director = {movies.find(movie => movie.Director.Name === match.params.name).Director}/>
+              </Col>
+            }}/>
+            {/* {selectedMovie
               ? (
                 <Col md = {8}>
                   <MovieView movie = {selectedMovie} onBackClick = {newSelectedMovie => this.setSelectedMovie(newSelectedMovie)}/>
@@ -100,7 +112,7 @@ export class MainView extends React.Component{
                   </Col>
                 )
               )
-            }
+            } */}
           </Row>
         </Container>
       </Router>
