@@ -82,9 +82,9 @@ export class MainView extends React.Component{
                 </Col>
               ))
             }}/>
-            <Route exact path = "movies/:movieId" render = {({match}) => { //match is the url 
+            <Route exact path = "movies/:movieId" render = {({match, history}) => { //match is the url 
               return <Col md = {8}>
-                <MovieView movie = {movies.find(m => m._id === match.params.movieId)}/>
+                <MovieView movie = {movies.find(m => m._id === match.params.movieId)} onBackClick = {() => {history.goBack()}}/>
               </Col>
             }}/>
             <Route exact path = "/genres/:name" render = {({match}) => { //match is the url
