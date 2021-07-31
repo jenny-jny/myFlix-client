@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 import {Container, Row, Col, Button} from 'react-bootstrap';
 
 import {LoginView} from '../login-view/login-view';
@@ -55,34 +56,54 @@ export class MainView extends React.Component{
   render(){
     const {movies, selectedMovie, user} = this.state; //object destruction; equivalent to const movies = this.state.movies;
     //If there is no user, the LoginView is rendered. If there is a user logged in, the user details are passed as a prop to the LoginView
-    // if(!user) return <LoginView onLoggedIn = {user => this.onLoggedIn(user)}/>;
-    if(!user) return <RegistrationView onLoggedIn = {user => this.onLoggedIn(user)}/>;
+    if(!user) return (
+      <Row>
+        <Col>
+          <LoginView onLoggedIn = {user => this.onLoggedIn(user)}/>;
+        </Col>
+      </Row>
+    );
+    // if(!user) return <RegistrationView onLoggedIn = {user => this.onLoggedIn(user)}/>;
     if(movies.length === 0) return <div className = "main-view"/> //curly braces required only for multiple statements, optional for single statement; else statement omitted
     return (
-      <Container>
-        <Row>
-          <Col md = {8}>
-            <Button onClick = {() => this.onLoggedOut()}>Logout</Button>
-          </Col>
-        </Row>
-        <Row className = "main-view justify-content-md-center"> 
-          {selectedMovie
-            ? (
-              <Col md = {8}>
-                <MovieView movie = {selectedMovie} onBackClick = {newSelectedMovie => this.setSelectedMovie(newSelectedMovie)}/>
-              </Col>
-            )
-            //map() loops through an array and calls a defined callback function on each element of an array, and returns an array that contains the results; in arrow function, return single statement does not require semicolon
-            : (
-              movies.map(movie => 
+      <Router>
+        <Container>
+          <Row>
+            <Col md = {8}>
+              <Button onClick = {() => this.onLoggedOut()}>Logout</Button>
+            </Col>
+          </Row>
+          <Row className = "main-view justify-content-md-center"> 
+            <Route exact path = "/" render = {() => {
+              //map() loops through an array and calls a defined callback function on each element of an array, and returns an array that contains the results; in arrow function, return single statement does not require semicolon
+              return movies.map(movie => (
                 <Col lg = {3} md = {4} sm = {12} key = {movie._id}>
-                  <MovieCard movieData = {movie} onMovieClick = {movie => this.setSelectedMovie(movie)}/>
+                  <MovieCard movieData = {movie}/>
+                </Col>
+              ))
+            }}/>
+            <Route exact path = "movies/:movieId" render = {({match}) => {
+              return <Col md = {8}>
+                <MovieView movie = {movies.find(m => m._id === match.params.movieId)}/>
+              </Col>
+            }}/>
+            {selectedMovie
+              ? (
+                <Col md = {8}>
+                  <MovieView movie = {selectedMovie} onBackClick = {newSelectedMovie => this.setSelectedMovie(newSelectedMovie)}/>
                 </Col>
               )
-            )
-          }
-        </Row>
-      </Container>
+              : (
+                movies.map(movie => 
+                  <Col lg = {3} md = {4} sm = {12} key = {movie._id}>
+                    <MovieCard movieData = {movie} onMovieClick = {movie => this.setSelectedMovie(movie)}/>
+                  </Col>
+                )
+              )
+            }
+          </Row>
+        </Container>
+      </Router>
     );
   }
 
