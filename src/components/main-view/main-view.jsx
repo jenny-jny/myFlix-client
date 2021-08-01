@@ -15,7 +15,7 @@ export class MainView extends React.Component{
     super(); //calls parent class React.Component
     this.state = { //refers to the MainView class instance created in memory
       movies: [],
-      user: null
+      user: null,
     };
   }
 
@@ -74,7 +74,7 @@ export class MainView extends React.Component{
               </Col>
               if(movies.length === 0) return <div className = "main-view"/> //curly braces required only for multiple statements, optional for single statement
               return <React.Fragment>
-                <Row className = "justify-content-md-left">
+                <Row className = "justify-content-md-right">
                   <Col md = {8}>
                     <Button onClick = {() => this.onLoggedOut()}>Logout</Button>
                   </Col>
@@ -99,14 +99,14 @@ export class MainView extends React.Component{
               </Col>
               if(movies.length === 0) return <div className = "main-view"/>;
               return <React.Fragment>
+                <Col md = {8}>
+                  <MovieView movie = {movies.find(m => m._id === match.params.movieId)} onBackClick = {() => {history.goBack()}}/>
+                </Col>
                 <Row className = "justify-content-md-left">
                   <Col md = {8}>
                     <Button onClick = {() => this.onLoggedOut()}>Logout</Button>
                   </Col>
                 </Row>
-                <Col md = {8}>
-                  <MovieView movie = {movies.find(m => m._id === match.params.movieId)} onBackClick = {() => {history.goBack()}}/>
-                </Col>
               </React.Fragment>
             }}/>
             <Route exact path = "/movies/:Title/genre/:Name" render = {({match, history}) => { //match is the url
@@ -115,14 +115,14 @@ export class MainView extends React.Component{
               </Col>
               if(movies.length === 0) return <div className = "main-view"/>;
               return <React.Fragment>
-                <Row className = "justify-content-md-left">
+                <Col md = {8}>
+                  <GenreView moviesData = {movies} genre = {movies.find(movie => movie.Genre.Name === match.params.Name).Genre} onBackClick = {() => {history.goBack()}}/>
+                </Col>
+                <Row className = "justify-content-md-right">
                   <Col md = {8}>
                     <Button onClick = {() => this.onLoggedOut()}>Logout</Button>
                   </Col>
                 </Row>
-                <Col md = {8}>
-                  <GenreView genre = {movies.find(movie => movie.Genre.Name === match.params.Name).Genre} onBackClick = {() => {history.goBack()}}/>
-                </Col>
               </React.Fragment>
             }}/>
             <Route exact path = "/movies/:Title/director/:Name" render = {({match, history}) => { //match is the url
@@ -131,14 +131,14 @@ export class MainView extends React.Component{
               </Col>
               if(movies.length === 0) return <div className = "main-view"/>;
               return <React.Fragment>
-                <Row className = "justify-content-md-left">
+                <Col md = {8}>
+                  <DirectorView director = {movies.find(movie => movie.Director.Name === match.params.Name).Director} onBackClick = {() => {history.goBack()}}/>
+                </Col>
+                <Row className = "justify-content-md-right">
                   <Col md = {8}>
                     <Button onClick = {() => this.onLoggedOut()}>Logout</Button>
                   </Col>
                 </Row>
-                <Col md = {8}>
-                  <DirectorView director = {movies.find(movie => movie.Director.Name === match.params.Name).Director} onBackClick = {() => {history.goBack()}}/>
-                </Col>
               </React.Fragment>
             }}/>
           </Row>
