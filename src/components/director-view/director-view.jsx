@@ -6,13 +6,18 @@ import {Container, Row, Col, Button} from 'react-bootstrap';
 export function DirectorView(props){
   return (
     <Container>
+      <Row>
+        <Col md = {8}>
+          <Button onClick = {() => props.onBackClick()}>Back</Button>
+        </Col>
+      </Row>
       <Row className = "justify-content-md-center">
         <Col md = {8}>{props.director.Name}</Col>
       </Row>
-      <Row>
+      <Row className = "justify-content-md-center">
         <Col md = {8}>{props.director.Bio}</Col>
       </Row>
-      <Row>
+      <Row className = "justify-content-md-center">
         <Col md = {8}>
           <div className = "director-birth">
             <span className = "label">Born in </span>
@@ -20,7 +25,7 @@ export function DirectorView(props){
           </div>
         </Col>
       </Row>
-      <Row>
+      <Row className = "justify-content-md-center">
         <Col md = {8}>
           <div className = "director-death">
             <span className = "label">Died in </span>

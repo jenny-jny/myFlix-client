@@ -22237,7 +22237,9 @@ class MainView extends _reactDefault.default.Component {
                 return(/*#__PURE__*/ _reactDefault.default.createElement(_reactDefault.default.Fragment, null, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
                     md: 8
                 }, /*#__PURE__*/ _reactDefault.default.createElement(_genreView.GenreView, {
-                    moviesData: movies,
+                    moviesData: movies.find((movie)=>{
+                        movie.Genre.Name, genre.Name;
+                    }),
                     genre: movies.find((movie)=>movie.Genre.Name === match.params.Name
                     ).Genre,
                     onBackClick: ()=>{
@@ -39353,19 +39355,12 @@ var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 var _reactBootstrap = require("react-bootstrap");
 var _reactRouterDom = require("react-router-dom");
 class MovieCard extends _reactDefault.default.Component {
-    constructor(){
-        super(); //calls parent class React.Component
-        this.state = {
-            simple: false
-        };
-    }
     render() {
-        const { simple  } = this.state;
         const { movieData  } = this.props;
         return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card, {
             __source: {
                 fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/movie-card/movie-card.jsx",
-                lineNumber: 17
+                lineNumber: 10
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Img, {
@@ -39373,39 +39368,39 @@ class MovieCard extends _reactDefault.default.Component {
             src: movieData.ImagePath,
             __source: {
                 fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/movie-card/movie-card.jsx",
-                lineNumber: 18
+                lineNumber: 11
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Body, {
             __source: {
                 fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/movie-card/movie-card.jsx",
-                lineNumber: 19
+                lineNumber: 12
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Title, {
             __source: {
                 fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/movie-card/movie-card.jsx",
-                lineNumber: 20
+                lineNumber: 13
             },
             __self: this
-        }, movieData.Title), simple ? null : /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Text, {
+        }, movieData.Title), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Text, {
             __source: {
                 fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/movie-card/movie-card.jsx",
-                lineNumber: 22
+                lineNumber: 14
             },
             __self: this
         }, movieData.Description), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
             to: `movies/${movieData._id}`,
             __source: {
                 fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/movie-card/movie-card.jsx",
-                lineNumber: 24
+                lineNumber: 15
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
             variant: "link",
             __source: {
                 fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/movie-card/movie-card.jsx",
-                lineNumber: 25
+                lineNumber: 16
             },
             __self: this
         }, "Open")))));
@@ -39706,34 +39701,26 @@ function GenreView(props) {
             lineNumber: 22
         },
         __self: this
-    }, "Some movies that belong to this genre"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Row, {
-        className: "justify-content-md-center",
+    }, "Some movies that belong to this genre"), props.moviesData.find((movie)=>movie.Genre.Name === props.genre.Name
+    ), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
+        lg: 3,
+        md: 4,
+        sm: 12,
+        key: movie._id,
+        className: "value",
         __source: {
             fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/genre-view/genre-view.jsx",
-            lineNumber: 23
+            lineNumber: 24
         },
         __self: this
-    }, props.moviesData.filter((movie)=>movie.Genre.Name === props.genre.Name
-    ).map((movie)=>/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
-            lg: 3,
-            md: 4,
-            sm: 12,
-            key: movie._id,
-            __source: {
-                fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/genre-view/genre-view.jsx",
-                lineNumber: 25
-            },
-            __self: this
-        }, /*#__PURE__*/ _reactDefault.default.createElement(_movieCard.MovieCard, {
-            movieData: movie,
-            simple: true,
-            __source: {
-                fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/genre-view/genre-view.jsx",
-                lineNumber: 26
-            },
-            __self: this
-        }))
-    )))))));
+    }, /*#__PURE__*/ _reactDefault.default.createElement(_movieCard.MovieCard, {
+        movieData: movie,
+        __source: {
+            fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/genre-view/genre-view.jsx",
+            lineNumber: 25
+        },
+        __self: this
+    })))))));
 }
 _c = GenreView;
 GenreView.propTypes = {
@@ -39751,7 +39738,7 @@ $RefreshReg$(_c, "GenreView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","prop-types":"4dfy5","react-bootstrap":"4n7hB","../movie-card/movie-card":"5olpj","@parcel/transformer-js/src/esmodule-helpers.js":"2Ogsb","../../../../../../.nvm/versions/node/v14.17.0/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"6XILU"}],"3FEv9":[function(require,module,exports) {
+},{"react":"3b2NM","prop-types":"4dfy5","react-bootstrap":"4n7hB","@parcel/transformer-js/src/esmodule-helpers.js":"2Ogsb","../../../../../../.nvm/versions/node/v14.17.0/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"6XILU","../movie-card/movie-card":"5olpj"}],"3FEv9":[function(require,module,exports) {
 var helpers = require("../../../../../../.nvm/versions/node/v14.17.0/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
