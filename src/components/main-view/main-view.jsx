@@ -58,11 +58,6 @@ export class MainView extends React.Component{
     return (
       <Router>
         <Container>
-          {/* <Row>
-            <Col md = {8}>
-              <Button onClick = {() => this.onLoggedOut()}>Logout</Button>
-            </Col>
-          </Row> */}
           <Row className = "main-view justify-content-md-center"> 
             <Route exact path = "/" render = {() => {
               //If there is no user, the LoginView is rendered. If there is a user logged in, the user details are passed as a prop to the LoginView
@@ -90,7 +85,7 @@ export class MainView extends React.Component{
                 <RegistrationView/>
               </Col>
             }}/>
-            <Route exact path = "movies/:movieId" render = {({match, history}) => { //match is the url 
+            <Route exact path = "/movies/:movieId" render = {({match, history}) => { //match is the url 
               if(!user) return <Col>
                 <LoginView onLoggedIn = {user => this.onLoggedIn(user)}/>
               </Col>
@@ -102,7 +97,7 @@ export class MainView extends React.Component{
                   </Col>
                 </Row>
                 <Col md = {8}>
-                  <MovieView movie = {movies.find(m => m.Title === match.params.movieId)} onBackClick = {() => {history.goBack()}}/>
+                  <MovieView movie = {movies.find(m => m._id === match.params.movieId)} onBackClick = {() => {history.goBack()}}/>
                 </Col>
               </React.Fragment>
             }}/>
