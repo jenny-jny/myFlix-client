@@ -109,7 +109,7 @@ export class MainView extends React.Component{
                 </Col>
               </React.Fragment>
             }}/>
-            <Route exact path = "/genres/:name" render = {({match, history}) => { //match is the url
+            <Route exact path = "/movies/genres/:name" render = {({match, history}) => { //match is the url
               if(!user) return <Col>
                 <LoginView onLoggedIn = {user => this.onLoggedIn(user)}/>
               </Col>
@@ -125,7 +125,7 @@ export class MainView extends React.Component{
                 </Col>
               </React.Fragment>
             }}/>
-            <Route exact path = "/directors/:name" render = {({match, history}) => { //match is the url
+            <Route exact path = "/movies/directors/:name" render = {({match, history}) => { //match is the url
               if(!user) return <Col>
                 <LoginView onLoggedIn = {user => this.onLoggedIn(user)}/>
               </Col>

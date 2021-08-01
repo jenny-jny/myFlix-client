@@ -22222,7 +22222,7 @@ class MainView extends _reactDefault.default.Component {
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
             exact: true,
-            path: "/genres/:name",
+            path: "/movies/genres/:name",
             render: ({ match , history  })=>{
                 if (!user) return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, null, /*#__PURE__*/ _reactDefault.default.createElement(_loginView.LoginView, {
                     onLoggedIn: (user1)=>this.onLoggedIn(user1)
@@ -22251,7 +22251,7 @@ class MainView extends _reactDefault.default.Component {
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
             exact: true,
-            path: "/directors/:name",
+            path: "/movies/directors/:name",
             render: ({ match , history  })=>{
                 if (!user) return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, null, /*#__PURE__*/ _reactDefault.default.createElement(_loginView.LoginView, {
                     onLoggedIn: (user1)=>this.onLoggedIn(user1)
@@ -39596,9 +39596,51 @@ parcelHelpers.export(exports, "GenreView", ()=>GenreView
 );
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+var _reactBootstrap = require("react-bootstrap");
 function GenreView(props) {
+    return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Container, {
+        __source: {
+            fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/genre-view/genre-view.jsx",
+            lineNumber: 7
+        },
+        __self: this
+    }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Row, {
+        className: "justify-content-md-center",
+        __source: {
+            fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/genre-view/genre-view.jsx",
+            lineNumber: 8
+        },
+        __self: this
+    }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
+        md: 8,
+        __source: {
+            fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/genre-view/genre-view.jsx",
+            lineNumber: 9
+        },
+        __self: this
+    }, props.genre.Name)), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Row, {
+        __source: {
+            fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/genre-view/genre-view.jsx",
+            lineNumber: 11
+        },
+        __self: this
+    }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
+        md: 8,
+        __source: {
+            fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/genre-view/genre-view.jsx",
+            lineNumber: 12
+        },
+        __self: this
+    }, props.genre.Description))));
 }
 _c = GenreView;
+GenreView.propTypes = {
+    genre: PropTypes.shape({
+        Name: PropTypes.string.isRequired,
+        Description: PropTypes.string.isRequired
+    }).isRequired,
+    onBackClick: PropTypes.func.isRequired
+};
 var _c;
 $RefreshReg$(_c, "GenreView");
 
@@ -39607,7 +39649,7 @@ $RefreshReg$(_c, "GenreView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"2Ogsb","../../../../../../.nvm/versions/node/v14.17.0/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"6XILU"}],"3FEv9":[function(require,module,exports) {
+},{"react":"3b2NM","@parcel/transformer-js/src/esmodule-helpers.js":"2Ogsb","../../../../../../.nvm/versions/node/v14.17.0/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"6XILU","react-bootstrap":"4n7hB"}],"3FEv9":[function(require,module,exports) {
 
 },{}],"7BWQZ":[function() {},{}]},["1j6wU","Yyf5R","4Na01"], "4Na01", "parcelRequire279c")
 
