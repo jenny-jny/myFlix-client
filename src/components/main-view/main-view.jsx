@@ -7,6 +7,8 @@ import {LoginView} from '../login-view/login-view';
 import {RegistrationView} from '../registration-view/registration-view'
 import {MovieCard} from '../movie-card/movie-card';
 import {MovieView} from '../movie-view/movie-view';
+import {GenreView} from '../genre-view/genre-view';
+import {DirectorView} from '../director-view/director-view';
 
 export class MainView extends React.Component{
   constructor(){ //creates component/class; good place to initialize values
@@ -59,8 +61,14 @@ export class MainView extends React.Component{
       <Router>
         <Container>
           <Row className = "main-view justify-content-md-center"> 
-            <Route exact path = "/" render = {() => {
+            <Route exact path = "/login" render = {() => {
               //If there is no user, the LoginView is rendered. If there is a user logged in, the user details are passed as a prop to the LoginView
+              if(!user) return <Col>
+                <LoginView onLoggedIn = {user => this.onLoggedIn(user)}/>
+              </Col>
+              return <Redirect to = '/'/>
+            }}/>
+            <Route exact path = "/" render = {() => {
               if(!user) return <Col>
                 <LoginView onLoggedIn = {user => this.onLoggedIn(user)}/>
               </Col>
