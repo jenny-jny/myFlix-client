@@ -54,17 +54,8 @@ export class MainView extends React.Component{
   }
 
   render(){
-    const {movies, selectedMovie, user} = this.state; //object destruction; equivalent to const movies = this.state.movies;
-    //If there is no user, the LoginView is rendered. If there is a user logged in, the user details are passed as a prop to the LoginView
-    if(!user) return (
-      <Row>
-        <Col>
-          <LoginView onLoggedIn = {user => this.onLoggedIn(user)}/>
-        </Col>
-      </Row>
-    );
+    const {movies, user} = this.state; //object destruction; equivalent to const movies = this.state.movies;
     // if(!user) return <RegistrationView onLoggedIn = {user => this.onLoggedIn(user)}/>;
-    if(movies.length === 0) return <div className = "main-view"/> //curly braces required only for multiple statements, optional for single statement; else statement keyword omitted
     return (
       <Router>
         <Container>
@@ -75,6 +66,11 @@ export class MainView extends React.Component{
           </Row>
           <Row className = "main-view justify-content-md-center"> 
             <Route exact path = "/" render = {() => {
+              //If there is no user, the LoginView is rendered. If there is a user logged in, the user details are passed as a prop to the LoginView
+              if(!user) return <Col>
+                <LoginView onLoggedIn = {user => this.onLoggedIn(user)}/>
+              </Col>
+              if(movies.length === 0) return <div className = "main-view"/> //curly braces required only for multiple statements, optional for single statement
               //map() loops through an array and calls a defined callback function on each element of an array, and returns an array that contains the results; in arrow function, return single statement does not require semicolon
               return movies.map(movie => (
                 <Col lg = {3} md = {4} sm = {12} key = {movie._id}>
@@ -82,37 +78,38 @@ export class MainView extends React.Component{
                 </Col>
               ))
             }}/>
+            <Route exact path = "/register" render = {() => { 
+              return <Col>
+                <RegistrationView/>
+              </Col>
+            }}/>
             <Route exact path = "movies/:movieId" render = {({match, history}) => { //match is the url 
+              if(!user) return <Col>
+                <LoginView onLoggedIn = {user => this.onLoggedIn(user)}/>
+              </Col>
+              if(movies.length === 0) return <div className = "main-view"/>;
               return <Col md = {8}>
                 <MovieView movie = {movies.find(m => m._id === match.params.movieId)} onBackClick = {() => {history.goBack()}}/>
               </Col>
             }}/>
             <Route exact path = "/genres/:name" render = {({match, history}) => { //match is the url
+              if(!user) return <Col>
+                <LoginView onLoggedIn = {user => this.onLoggedIn(user)}/>
+              </Col>
               if(movies.length === 0) return <div className = "main-view"/>;
               return <Col md = {8}>
                 <GenreView genre = {movies.find(movie => movie.Genre.Name === match.params.name).Genre} onBackClick = {() => {history.goBack()}}/>
               </Col>
             }}/>
             <Route exact path = "/directors/:name" render = {({match, history}) => { //match is the url
+              if(!user) return <Col>
+                <LoginView onLoggedIn = {user => this.onLoggedIn(user)}/>
+              </Col>
               if(movies.length === 0) return <div className = "main-view"/>;
               return <Col md = {8}>
                 <DirectorView director = {movies.find(movie => movie.Director.Name === match.params.name).Director} onBackClick = {() => {history.goBack()}}/>
               </Col>
             }}/>
-            {/* {selectedMovie
-              ? (
-                <Col md = {8}>
-                  <MovieView movie = {selectedMovie} onBackClick = {newSelectedMovie => this.setSelectedMovie(newSelectedMovie)}/>
-                </Col>
-              )
-              : (
-                movies.map(movie => 
-                  <Col lg = {3} md = {4} sm = {12} key = {movie._id}>
-                    <MovieCard movieData = {movie} onMovieClick = {movie => this.setSelectedMovie(movie)}/>
-                  </Col>
-                )
-              )
-            } */}
           </Row>
         </Container>
       </Router>
