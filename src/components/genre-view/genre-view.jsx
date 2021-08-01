@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {Container, Row, Col, Button} from 'react-bootstrap';
 
 
@@ -8,7 +9,7 @@ export function GenreView(props){
       <Row className = "justify-content-md-center">
         <Col md = {8}>{props.genre.Name}</Col>
       </Row>
-      <Row>
+      <Row className = "justify-content-md-center">
         <Col md = {8}>{props.genre.Description}</Col>
       </Row>
     </Container>
