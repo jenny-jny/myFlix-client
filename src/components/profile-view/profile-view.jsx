@@ -21,7 +21,7 @@ export function ProfileView(props){
     console.log(username, password, email, birthday);
     //send a request to the server for authentication
     setValidated(true);
-    axios.post('http://jny-myflix.herokuapp.com/register', {
+    axios.put('http://jny-myflix.herokuapp.com/users/', {
       Username: username,
       Password: password,
       Email: email,
@@ -29,7 +29,6 @@ export function ProfileView(props){
     }).then(response => {
       const data = response.data;
       console.log(data);
-      window.open('/login', '_self'); // the second argument '_self' is necessary so that the page will open in the current tab
       //THEN call props.onLoggedIn(username)
       props.onRegistered(data);
     }).catch(() => {
@@ -39,6 +38,11 @@ export function ProfileView(props){
 
   return (
     <Container>
+      <Row>
+        <Col md = {8}>
+          <Button onClick = {() => props.onBackClick()}>Back</Button>
+        </Col>
+      </Row>
       <Row className = "justify-content-md-center">
         <Col md = {8}>
           <Form noValidate validated = {validated} onSubmit = {handleSubmit}>
@@ -70,6 +74,24 @@ export function ProfileView(props){
   );
 }
 
-RegistrationView.propTypes = {
-  onRegistered: PropTypes.func.isRequired
+ProfileView.propTypes = {
+  movieData: PropTypes.shape({
+    ImagePath: PropTypes.string.isRequired, 
+    Title: PropTypes.string.isRequired, 
+    Description: PropTypes.string.isRequired,
+    Genre: PropTypes.shape({
+      Name: PropTypes.string.isRequired
+    }).isRequired,
+    Director: PropTypes.shape({
+      Name: PropTypes.string.isRequired
+    }).isRequired
+  }).isRequired,
+  user: PropTypes.shape({
+    Username: PropTypes.string.isRequired,
+    Password: PropTypes.string.isRequired,
+    Email: PropTypes.string.isRequired,
+    Birthday: PropTypes.instanceOf(Date).isRequired,
+    FavoriteMovies: PropTypes.array.isRequired
+  }).isRequired,
+  onBackClick: PropTypes.func.isRequired
 };
