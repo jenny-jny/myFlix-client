@@ -91,9 +91,16 @@ export class MainView extends React.Component{
               if(movies.length === 0) return <div className = "main-view"/> //curly braces required only for multiple statements, optional for single statement
                 return <React.Fragment>
                   <Row className = "justify-content-md-right">
-                    <Col md = {8}>
-                      <Button onClick = {() => this.onLoggedOut()}>Logout</Button>
-                    </Col>
+                    <span>
+                      <Link to = {`/users/${user.Username}`}>
+                        <Button variant = "link">Profile</Button>
+                      </Link>
+                    </span>
+                    <span>
+                      <Col md = {8}>
+                        <Button onClick = {() => this.onLoggedOut()}>Logout</Button>
+                      </Col>
+                    </span>
                   </Row>
                   {/* map() loops through an array and calls a defined callback function on each element of an array, and returns an array that contains the results; in arrow function, return single statement does not require semicolon */}
                   {movies.map(movie => ( 
@@ -171,7 +178,7 @@ export class MainView extends React.Component{
               </Col>
               return <React.Fragment>
               <Col md = {8}>
-                <ProfileView moviesData = {movies} director = {movies.find(movie => movie.Director.Name === match.params.Name).Director} onBackClick = {() => {history.goBack()}}/>
+                <ProfileView moviesData = {movies} user = {user} onBackClick = {() => {history.goBack()}}/>
               </Col>
               <Row className = "justify-content-md-right">
                 <span>
