@@ -21,11 +21,11 @@ export function GenreView(props){
           <Row className = "genre-movies">
             <Col md = {8} className = "label">Some movies that belong to this genre</Col>
             <Row className = "justify-content-md-center">
-            {props.moviesData.filter(movie => movie.Genre.Name === props.genre.Name).map(movie => ( 
-                  <Col lg = {3} md = {4} sm = {12} key = {movie._id}>
-                    <MovieCard movieData = {movie} simple = {true}/>
-                  </Col>
-                ))}
+              {props.moviesData.filter(movie => movie.Genre.Name === props.genre.Name).map(movie => ( 
+                <Col lg = {4} md = {6} sm = {12} key = {movie._id}>
+                  <MovieCard movieData = {movie} simple = {true}/>
+                </Col>
+              ))}
             </Row>
           </Row>
         </Col>
