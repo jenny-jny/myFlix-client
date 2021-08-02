@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Card, Button} from 'react-bootstrap';
-import {Redirect, Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 export class MovieCard extends React.Component{
   render(){
@@ -12,9 +12,9 @@ export class MovieCard extends React.Component{
         <Card.Body>
           <Card.Title>{movieData.Title}</Card.Title>
           {!simple && <Card.Text>{movieData.Description}</Card.Text>}
-          <Redirect to = {`/movies/${movieData._id}`}>
+          <Link to = {`/movies/${movieData._id}`}>
             <Button variant = "link">Open</Button>
-          </Redirect>
+          </Link>
         </Card.Body>
       </Card>
     );

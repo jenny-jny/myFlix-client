@@ -39388,7 +39388,7 @@ class MovieCard extends _reactDefault.default.Component {
                 lineNumber: 14
             },
             __self: this
-        }, movieData.Description), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Redirect, {
+        }, movieData.Description), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
             to: `/movies/${movieData._id}`,
             __source: {
                 fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/movie-card/movie-card.jsx",
