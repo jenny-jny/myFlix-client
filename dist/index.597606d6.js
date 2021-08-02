@@ -22058,12 +22058,13 @@ var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var _reactRouterDom = require("react-router-dom");
 var _reactBootstrap = require("react-bootstrap");
-var _loginView = require("../login-view/login-view");
 var _registrationView = require("../registration-view/registration-view");
+var _loginView = require("../login-view/login-view");
 var _movieCard = require("../movie-card/movie-card");
 var _movieView = require("../movie-view/movie-view");
 var _genreView = require("../genre-view/genre-view");
 var _directorView = require("../director-view/director-view");
+var _profileView = require("../profile-view/profile-view");
 class MainView extends _reactDefault.default.Component {
     constructor(){
         super(); //calls parent class React.Component
@@ -22122,23 +22123,40 @@ class MainView extends _reactDefault.default.Component {
         return(/*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.BrowserRouter, {
             __source: {
                 fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 69
+                lineNumber: 70
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Container, {
             __source: {
                 fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 70
+                lineNumber: 71
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Row, {
             className: "main-view justify-content-md-center",
             __source: {
                 fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 71
+                lineNumber: 72
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
+            exact: true,
+            path: "/register",
+            render: ()=>{
+                //If there is no user, the LoginView is rendered. If there is a user logged in, the user details are passed as a prop to the LoginView
+                if (!user) return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, null, /*#__PURE__*/ _reactDefault.default.createElement(_registrationView.RegistrationView, {
+                    onRegistered: (user1)=>this.onRegistered(user1)
+                })));
+                return(/*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Redirect, {
+                    to: "/movies"
+                }));
+            },
+            __source: {
+                fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/main-view/main-view.jsx",
+                lineNumber: 73
+            },
+            __self: this
+        }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
             exact: true,
             path: "/login",
             render: ()=>{
@@ -22152,7 +22170,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 72
+                lineNumber: 80
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22183,24 +22201,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 79
-            },
-            __self: this
-        }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
-            exact: true,
-            path: "/register",
-            render: ()=>{
-                //If there is no user, the LoginView is rendered. If there is a user logged in, the user details are passed as a prop to the LoginView
-                if (!user) return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, null, /*#__PURE__*/ _reactDefault.default.createElement(_registrationView.RegistrationView, {
-                    onRegistered: (user1)=>this.onRegistered(user1)
-                })));
-                return(/*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Redirect, {
-                    to: "/movies"
-                }));
-            },
-            __source: {
-                fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 98
+                lineNumber: 87
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22231,7 +22232,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 105
+                lineNumber: 106
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22256,7 +22257,7 @@ class MainView extends _reactDefault.default.Component {
                 })), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Row, {
                     className: "justify-content-md-right"
                 }, /*#__PURE__*/ _reactDefault.default.createElement("span", null, /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
-                    to: "/"
+                    to: "/movies"
                 }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
                     variant: "link"
                 }, "All Movies"))), /*#__PURE__*/ _reactDefault.default.createElement("span", null, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
@@ -22267,7 +22268,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 121
+                lineNumber: 122
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22292,7 +22293,7 @@ class MainView extends _reactDefault.default.Component {
                 })), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Row, {
                     className: "justify-content-md-right"
                 }, /*#__PURE__*/ _reactDefault.default.createElement("span", null, /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
-                    to: "/"
+                    to: "/movies"
                 }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
                     variant: "link"
                 }, "All Movies"))), /*#__PURE__*/ _reactDefault.default.createElement("span", null, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
@@ -22303,7 +22304,40 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 144
+                lineNumber: 145
+            },
+            __self: this
+        }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
+            exact: true,
+            path: "/users/:Username",
+            render: ({ match , history  })=>{
+                if (!user) return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, null, /*#__PURE__*/ _reactDefault.default.createElement(_loginView.LoginView, {
+                    onLoggedIn: (user1)=>this.onLoggedIn(user1)
+                })));
+                return(/*#__PURE__*/ _reactDefault.default.createElement(_reactDefault.default.Fragment, null, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
+                    md: 8
+                }, /*#__PURE__*/ _reactDefault.default.createElement(_profileView.ProfileView, {
+                    moviesData: movies,
+                    director: movies.find((movie)=>movie.Director.Name === match.params.Name
+                    ).Director,
+                    onBackClick: ()=>{
+                        history.goBack();
+                    }
+                })), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Row, {
+                    className: "justify-content-md-right"
+                }, /*#__PURE__*/ _reactDefault.default.createElement("span", null, /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
+                    to: "/movies"
+                }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
+                    variant: "link"
+                }, "All Movies"))), /*#__PURE__*/ _reactDefault.default.createElement("span", null, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
+                    md: 8
+                }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
+                    onClick: ()=>this.onLoggedOut()
+                }, "Logout"))))));
+            },
+            __source: {
+                fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/main-view/main-view.jsx",
+                lineNumber: 168
             },
             __self: this
         })))));
@@ -22324,7 +22358,7 @@ class MainView extends _reactDefault.default.Component {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","axios":"7rA65","react-router-dom":"1PMSK","react-bootstrap":"4n7hB","../login-view/login-view":"niGrT","../registration-view/registration-view":"1NaE2","../movie-card/movie-card":"5olpj","../movie-view/movie-view":"7zYST","../genre-view/genre-view":"20Q0t","../director-view/director-view":"3FEv9","@parcel/transformer-js/src/esmodule-helpers.js":"2Ogsb","../../../../../../.nvm/versions/node/v14.17.0/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"6XILU"}],"7rA65":[function(require,module,exports) {
+},{"react":"3b2NM","axios":"7rA65","react-router-dom":"1PMSK","react-bootstrap":"4n7hB","../login-view/login-view":"niGrT","../registration-view/registration-view":"1NaE2","../movie-card/movie-card":"5olpj","../movie-view/movie-view":"7zYST","../genre-view/genre-view":"20Q0t","../director-view/director-view":"3FEv9","@parcel/transformer-js/src/esmodule-helpers.js":"2Ogsb","../../../../../../.nvm/versions/node/v14.17.0/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"6XILU","../profile-view/profile-view":"1evOu"}],"7rA65":[function(require,module,exports) {
 module.exports = require('./lib/axios');
 
 },{"./lib/axios":"4qfhW"}],"4qfhW":[function(require,module,exports) {
@@ -40000,6 +40034,228 @@ $RefreshReg$(_c, "DirectorView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","prop-types":"4dfy5","react-bootstrap":"4n7hB","../movie-card/movie-card":"5olpj","@parcel/transformer-js/src/esmodule-helpers.js":"2Ogsb","../../../../../../.nvm/versions/node/v14.17.0/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"6XILU"}],"7BWQZ":[function() {},{}]},["1j6wU","Yyf5R","4Na01"], "4Na01", "parcelRequire279c")
+},{"react":"3b2NM","prop-types":"4dfy5","react-bootstrap":"4n7hB","../movie-card/movie-card":"5olpj","@parcel/transformer-js/src/esmodule-helpers.js":"2Ogsb","../../../../../../.nvm/versions/node/v14.17.0/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"6XILU"}],"1evOu":[function(require,module,exports) {
+var helpers = require("../../../../../../.nvm/versions/node/v14.17.0/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "ProfileView", ()=>ProfileView
+);
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
+var _axios = require("axios");
+var _axiosDefault = parcelHelpers.interopDefault(_axios);
+var _reactBootstrap = require("react-bootstrap");
+var _s = $RefreshSig$();
+function ProfileView(props) {
+    _s();
+    //useState() returns a stateful value and a function to update it
+    const [username, setUsername] = _react.useState('');
+    const [password, setPassword] = _react.useState('');
+    const [email, setEmail] = _react.useState('');
+    const [birthday, setBirthday] = _react.useState('');
+    const [validated, setValidated] = _react.useState(false);
+    const handleSubmit = (e)=>{
+        e.preventDefault();
+        const form = e.currentTarget;
+        form.checkValidity();
+        console.log(username, password, email, birthday);
+        //send a request to the server for authentication
+        setValidated(true);
+        _axiosDefault.default.post('http://jny-myflix.herokuapp.com/register', {
+            Username: username,
+            Password: password,
+            Email: email,
+            Birthday: birthday
+        }).then((response)=>{
+            const data = response.data;
+            console.log(data);
+            window.open('/login', '_self'); // the second argument '_self' is necessary so that the page will open in the current tab
+            //THEN call props.onLoggedIn(username)
+            props.onRegistered(data);
+        }).catch(()=>{
+            console.log('error registering the user');
+        });
+    };
+    return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Container, {
+        __source: {
+            fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/profile-view/profile-view.jsx",
+            lineNumber: 41
+        },
+        __self: this
+    }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Row, {
+        className: "justify-content-md-center",
+        __source: {
+            fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/profile-view/profile-view.jsx",
+            lineNumber: 42
+        },
+        __self: this
+    }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
+        md: 8,
+        __source: {
+            fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/profile-view/profile-view.jsx",
+            lineNumber: 43
+        },
+        __self: this
+    }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form, {
+        noValidate: true,
+        validated: validated,
+        onSubmit: handleSubmit,
+        __source: {
+            fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/profile-view/profile-view.jsx",
+            lineNumber: 44
+        },
+        __self: this
+    }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Group, {
+        controlId: "formUsername",
+        __source: {
+            fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/profile-view/profile-view.jsx",
+            lineNumber: 45
+        },
+        __self: this
+    }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Label, {
+        __source: {
+            fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/profile-view/profile-view.jsx",
+            lineNumber: 46
+        },
+        __self: this
+    }, "Username: "), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Control, {
+        type: "text",
+        isInvalid: /[^0-9a-zA-Z]/.test(username) || username.length < 5,
+        onChange: (e)=>setUsername(e.target.value)
+        ,
+        required: true,
+        __source: {
+            fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/profile-view/profile-view.jsx",
+            lineNumber: 47
+        },
+        __self: this
+    }), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Control.Feedback, {
+        type: "invalid",
+        __source: {
+            fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/profile-view/profile-view.jsx",
+            lineNumber: 48
+        },
+        __self: this
+    }, "Please enter a username")), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Group, {
+        controlId: "formPassword",
+        __source: {
+            fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/profile-view/profile-view.jsx",
+            lineNumber: 50
+        },
+        __self: this
+    }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Label, {
+        __source: {
+            fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/profile-view/profile-view.jsx",
+            lineNumber: 51
+        },
+        __self: this
+    }, "Password: "), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Control, {
+        type: "password",
+        onChange: (e)=>setPassword(e.target.value)
+        ,
+        required: true,
+        __source: {
+            fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/profile-view/profile-view.jsx",
+            lineNumber: 52
+        },
+        __self: this
+    }), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Control.Feedback, {
+        type: "invalid",
+        __source: {
+            fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/profile-view/profile-view.jsx",
+            lineNumber: 53
+        },
+        __self: this
+    }, "Please enter a password")), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Group, {
+        controlId: "formEmail",
+        __source: {
+            fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/profile-view/profile-view.jsx",
+            lineNumber: 55
+        },
+        __self: this
+    }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Label, {
+        __source: {
+            fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/profile-view/profile-view.jsx",
+            lineNumber: 56
+        },
+        __self: this
+    }, "Email: "), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Control, {
+        type: "email",
+        isInvalid: email.indexOf('.') === -1,
+        onChange: (e)=>setEmail(e.target.value)
+        ,
+        required: true,
+        __source: {
+            fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/profile-view/profile-view.jsx",
+            lineNumber: 57
+        },
+        __self: this
+    }), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Control.Feedback, {
+        type: "invalid",
+        __source: {
+            fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/profile-view/profile-view.jsx",
+            lineNumber: 58
+        },
+        __self: this
+    }, "Please enter a email")), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Group, {
+        controlId: "formBirthday",
+        __source: {
+            fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/profile-view/profile-view.jsx",
+            lineNumber: 60
+        },
+        __self: this
+    }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Label, {
+        __source: {
+            fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/profile-view/profile-view.jsx",
+            lineNumber: 61
+        },
+        __self: this
+    }, "Birthday: "), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Control, {
+        type: "date",
+        onChange: (e)=>setBirthday(e.target.value)
+        ,
+        __source: {
+            fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/profile-view/profile-view.jsx",
+            lineNumber: 62
+        },
+        __self: this
+    }), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form.Control.Feedback, {
+        type: "invalid",
+        __source: {
+            fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/profile-view/profile-view.jsx",
+            lineNumber: 63
+        },
+        __self: this
+    }, "Please enter a birthday")), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
+        variant: "primary",
+        type: "submit",
+        __source: {
+            fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/profile-view/profile-view.jsx",
+            lineNumber: 65
+        },
+        __self: this
+    }, "Submit"))))));
+}
+_s(ProfileView, "DSoFqP5ilEr/TTrI8Fe/mbqpO6g=");
+_c = ProfileView;
+RegistrationView.propTypes = {
+    onRegistered: _propTypesDefault.default.func.isRequired
+};
+var _c;
+$RefreshReg$(_c, "ProfileView");
+
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react":"3b2NM","prop-types":"4dfy5","axios":"7rA65","react-bootstrap":"4n7hB","@parcel/transformer-js/src/esmodule-helpers.js":"2Ogsb","../../../../../../.nvm/versions/node/v14.17.0/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"6XILU"}],"7BWQZ":[function() {},{}]},["1j6wU","Yyf5R","4Na01"], "4Na01", "parcelRequire279c")
 
 //# sourceMappingURL=index.597606d6.js.map

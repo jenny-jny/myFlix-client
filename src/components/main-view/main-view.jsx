@@ -3,12 +3,13 @@ import axios from 'axios';
 import {BrowserRouter as Router, Route, Redirect, Link} from 'react-router-dom';
 import {Container, Row, Col, Button} from 'react-bootstrap';
 
-import {LoginView} from '../login-view/login-view';
 import {RegistrationView} from '../registration-view/registration-view'
+import {LoginView} from '../login-view/login-view';
 import {MovieCard} from '../movie-card/movie-card';
 import {MovieView} from '../movie-view/movie-view';
 import {GenreView} from '../genre-view/genre-view';
 import {DirectorView} from '../director-view/director-view';
+import {ProfileView} from '../profile-view/profile-view';
 
 export class MainView extends React.Component{
   constructor(){ //creates component/class; good place to initialize values
@@ -69,100 +70,122 @@ export class MainView extends React.Component{
       <Router>
         <Container>
           <Row className = "main-view justify-content-md-center"> 
+            <Route exact path = "/register" render = {() => { 
+              //If there is no user, the LoginView is rendered. If there is a user logged in, the user details are passed as a prop to the LoginView
+              if(!user) return <Col>
+                  <RegistrationView onRegistered = {user => this.onRegistered(user)}/>
+                </Col>
+                return <Redirect to = '/movies'/>
+            }}/>
             <Route exact path = "/login" render = {() => {
               //If there is no user, the LoginView is rendered. If there is a user logged in, the user details are passed as a prop to the LoginView
               if(!user) return <Col>
-                <LoginView onLoggedIn = {user => this.onLoggedIn(user)}/>
-              </Col>
-              return <Redirect to = '/movies'/>
+                  <LoginView onLoggedIn = {user => this.onLoggedIn(user)}/>
+                </Col>
+                return <Redirect to = '/movies'/>
             }}/>
             <Route exact path = "/movies" render = {() => {
               if(!user) return <Col>
                 <LoginView onLoggedIn = {user => this.onLoggedIn(user)}/>
               </Col>
               if(movies.length === 0) return <div className = "main-view"/> //curly braces required only for multiple statements, optional for single statement
-              return <React.Fragment>
-                <Row className = "justify-content-md-right">
-                  <Col md = {8}>
-                    <Button onClick = {() => this.onLoggedOut()}>Logout</Button>
-                  </Col>
-                </Row>
-                {/* map() loops through an array and calls a defined callback function on each element of an array, and returns an array that contains the results; in arrow function, return single statement does not require semicolon */}
-                {movies.map(movie => ( 
-                  <Col lg = {3} md = {4} sm = {12} key = {movie._id}>
-                    <MovieCard movieData = {movie}/>
-                  </Col>
-                ))}
-              </React.Fragment>
-            }}/>
-            <Route exact path = "/register" render = {() => { 
-              //If there is no user, the LoginView is rendered. If there is a user logged in, the user details are passed as a prop to the LoginView
-              if(!user) return <Col>
-                <RegistrationView onRegistered = {user => this.onRegistered(user)}/>
-              </Col>
-              return <Redirect to = '/movies'/>
+                return <React.Fragment>
+                  <Row className = "justify-content-md-right">
+                    <Col md = {8}>
+                      <Button onClick = {() => this.onLoggedOut()}>Logout</Button>
+                    </Col>
+                  </Row>
+                  {/* map() loops through an array and calls a defined callback function on each element of an array, and returns an array that contains the results; in arrow function, return single statement does not require semicolon */}
+                  {movies.map(movie => ( 
+                    <Col lg = {3} md = {4} sm = {12} key = {movie._id}>
+                      <MovieCard movieData = {movie}/>
+                    </Col>
+                  ))}
+                </React.Fragment>
             }}/>
             <Route exact path = "/movies/:movieId" render = {({match, history}) => { //match is the url 
               if(!user) return <Col>
                 <LoginView onLoggedIn = {user => this.onLoggedIn(user)}/>
               </Col>
               if(movies.length === 0) return <div className = "main-view"/>;
-              return <React.Fragment>
-                <Col md = {8}>
-                  <MovieView movie = {movies.find(m => m._id === match.params.movieId)} onBackClick = {() => {history.goBack()}}/>
-                </Col>
-                <Row className = "justify-content-md-left">
+                return <React.Fragment>
                   <Col md = {8}>
-                    <Button onClick = {() => this.onLoggedOut()}>Logout</Button>
+                    <MovieView movie = {movies.find(m => m._id === match.params.movieId)} onBackClick = {() => {history.goBack()}}/>
                   </Col>
-                </Row>
-              </React.Fragment>
+                  <Row className = "justify-content-md-left">
+                    <Col md = {8}>
+                      <Button onClick = {() => this.onLoggedOut()}>Logout</Button>
+                    </Col>
+                  </Row>
+                </React.Fragment>
             }}/>
             <Route exact path = "/movies/:Title/genre/:Name" render = {({match, history}) => { //match is the url
               if(!user) return <Col>
                 <LoginView onLoggedIn = {user => this.onLoggedIn(user)}/>
               </Col>
               if(movies.length === 0) return <div className = "main-view"/>;
-              return <React.Fragment>
-                <Col md = {8}>
-                  <GenreView moviesData = {movies} genre = {movies.find(movie => movie.Genre.Name === match.params.Name).Genre} onBackClick = {() => {history.goBack()}}/>
-                </Col>
-                <Row className = "justify-content-md-right">
-                  <span>
-                    <Link to = '/'>
-                      <Button variant = "link">All Movies</Button>
-                    </Link>
-                  </span>
-                  <span>
-                    <Col md = {8}>
-                      <Button onClick = {() => this.onLoggedOut()}>Logout</Button>
-                    </Col>
-                  </span>
-                </Row>
-              </React.Fragment>
+                return <React.Fragment>
+                  <Col md = {8}>
+                    <GenreView moviesData = {movies} genre = {movies.find(movie => movie.Genre.Name === match.params.Name).Genre} onBackClick = {() => {history.goBack()}}/>
+                  </Col>
+                  <Row className = "justify-content-md-right">
+                    <span>
+                      <Link to = '/movies'>
+                        <Button variant = "link">All Movies</Button>
+                      </Link>
+                    </span>
+                    <span>
+                      <Col md = {8}>
+                        <Button onClick = {() => this.onLoggedOut()}>Logout</Button>
+                      </Col>
+                    </span>
+                  </Row>
+                </React.Fragment>
             }}/>
             <Route exact path = "/movies/:Title/director/:Name" render = {({match, history}) => { //match is the url
               if(!user) return <Col>
                 <LoginView onLoggedIn = {user => this.onLoggedIn(user)}/>
               </Col>
               if(movies.length === 0) return <div className = "main-view"/>;
+                return <React.Fragment>
+                  <Col md = {8}>
+                    <DirectorView moviesData = {movies} director = {movies.find(movie => movie.Director.Name === match.params.Name).Director} onBackClick = {() => {history.goBack()}}/>
+                  </Col>
+                  <Row className = "justify-content-md-right">
+                    <span>
+                      <Link to = '/movies'>
+                        <Button variant = "link">All Movies</Button>
+                      </Link>
+                    </span>
+                    <span>
+                      <Col md = {8}>
+                        <Button onClick = {() => this.onLoggedOut()}>Logout</Button>
+                      </Col>
+                    </span>
+                  </Row>
+                </React.Fragment>
+            }}/>
+            <Route exact path= "/users/:Username" render = {({match, history}) => { //match is the url
+              if(!user) return <Col>
+                <LoginView onLoggedIn = {user => this.onLoggedIn(user)}/>
+              </Col>
               return <React.Fragment>
-                <Col md = {8}>
-                  <DirectorView moviesData = {movies} director = {movies.find(movie => movie.Director.Name === match.params.Name).Director} onBackClick = {() => {history.goBack()}}/>
-                </Col>
-                <Row className = "justify-content-md-right">
-                  <span>
-                    <Link to = '/'>
-                      <Button variant = "link">All Movies</Button>
-                    </Link>
-                  </span>
-                  <span>
-                    <Col md = {8}>
-                      <Button onClick = {() => this.onLoggedOut()}>Logout</Button>
-                    </Col>
-                  </span>
-                </Row>
-              </React.Fragment>
+              <Col md = {8}>
+                <ProfileView moviesData = {movies} director = {movies.find(movie => movie.Director.Name === match.params.Name).Director} onBackClick = {() => {history.goBack()}}/>
+              </Col>
+              <Row className = "justify-content-md-right">
+                <span>
+                  <Link to = '/movies'>
+                    <Button variant = "link">All Movies</Button>
+                  </Link>
+                </span>
+                <span>
+                  <Col md = {8}>
+                    <Button onClick = {() => this.onLoggedOut()}>Logout</Button>
+                  </Col>
+                </span>
+              </Row>
+            </React.Fragment>           
             }}/>
           </Row>
         </Container>
