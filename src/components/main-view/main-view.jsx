@@ -15,7 +15,7 @@ export class MainView extends React.Component{
     super(); //calls parent class React.Component
     this.state = { //refers to the MainView class instance created in memory
       movies: [],
-      user: null,
+      user: null
     };
   }
 
@@ -132,7 +132,7 @@ export class MainView extends React.Component{
               if(movies.length === 0) return <div className = "main-view"/>;
               return <React.Fragment>
                 <Col md = {8}>
-                  <DirectorView director = {movies.find(movie => movie.Director.Name === match.params.Name).Director} onBackClick = {() => {history.goBack()}}/>
+                  <DirectorView moviesData = {movies} director = {movies.find(movie => movie.Director.Name === match.params.Name).Director} onBackClick = {() => {history.goBack()}}/>
                 </Col>
                 <Row className = "justify-content-md-right">
                   <Col md = {8}>
