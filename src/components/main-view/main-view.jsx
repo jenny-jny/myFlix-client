@@ -20,9 +20,9 @@ export class MainView extends React.Component{
   }
 
   //When a movie is clicked, this function is invoked and updates the state of the selectedMovie property to that movie
-  setSelectedMovie(newSelectedMovie){
-    this.setState({selectedMovie: newSelectedMovie});
-  }
+  // setSelectedMovie(newSelectedMovie){
+  //   this.setState({selectedMovie: newSelectedMovie});
+  // }
 
   getMovies(token){
     axios.get('https://jny-myflix.herokuapp.com/movies', {
@@ -39,6 +39,14 @@ export class MainView extends React.Component{
 
   //When a user successfully logs in, this function updates the user property in state to that particular user
   onLoggedIn(authData){
+    console.log(authData);
+    this.setState({user: authData.user.Username});
+    localStorage.setItem('token', authData.token);
+    localStorage.setItem('user', authData.user.Username);
+    this.getMovies(authData.token);
+  }
+
+  onRegistered(authData){
     console.log(authData);
     this.setState({user: authData.user.Username});
     localStorage.setItem('token', authData.token);
@@ -66,9 +74,9 @@ export class MainView extends React.Component{
               if(!user) return <Col>
                 <LoginView onLoggedIn = {user => this.onLoggedIn(user)}/>
               </Col>
-              return <Redirect to = '/'/>
+              return <Redirect to = '/movies'/>
             }}/>
-            <Route exact path = "/" render = {() => {
+            <Route exact path = "/movies" render = {() => {
               if(!user) return <Col>
                 <LoginView onLoggedIn = {user => this.onLoggedIn(user)}/>
               </Col>
@@ -88,10 +96,11 @@ export class MainView extends React.Component{
               </React.Fragment>
             }}/>
             <Route exact path = "/register" render = {() => { 
-              if(user) return <Redirect to = '/'/>
-              return <Col>
-                <RegistrationView/>
+              //If there is no user, the LoginView is rendered. If there is a user logged in, the user details are passed as a prop to the LoginView
+              if(!user) return <Col>
+                <RegistrationView onRegistered = {user => this.onRegistered(user)}/>
               </Col>
+              return <Redirect to = '/movies'/>
             }}/>
             <Route exact path = "/movies/:movieId" render = {({match, history}) => { //match is the url 
               if(!user) return <Col>

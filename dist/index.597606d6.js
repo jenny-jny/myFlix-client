@@ -22073,11 +22073,9 @@ class MainView extends _reactDefault.default.Component {
         };
     }
     //When a movie is clicked, this function is invoked and updates the state of the selectedMovie property to that movie
-    setSelectedMovie(newSelectedMovie) {
-        this.setState({
-            selectedMovie: newSelectedMovie
-        });
-    }
+    // setSelectedMovie(newSelectedMovie){
+    //   this.setState({selectedMovie: newSelectedMovie});
+    // }
     getMovies(token) {
         _axiosDefault.default.get('https://jny-myflix.herokuapp.com/movies', {
             headers: {
@@ -22102,6 +22100,15 @@ class MainView extends _reactDefault.default.Component {
         localStorage.setItem('user', authData.user.Username);
         this.getMovies(authData.token);
     }
+    onRegistered(authData) {
+        console.log(authData);
+        this.setState({
+            user: authData.user.Username
+        });
+        localStorage.setItem('token', authData.token);
+        localStorage.setItem('user', authData.user.Username);
+        this.getMovies(authData.token);
+    }
     onLoggedOut() {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
@@ -22115,20 +22122,20 @@ class MainView extends _reactDefault.default.Component {
         return(/*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.BrowserRouter, {
             __source: {
                 fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 61
+                lineNumber: 69
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Container, {
             __source: {
                 fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 62
+                lineNumber: 70
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Row, {
             className: "main-view justify-content-md-center",
             __source: {
                 fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 63
+                lineNumber: 71
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22140,17 +22147,17 @@ class MainView extends _reactDefault.default.Component {
                     onLoggedIn: (user1)=>this.onLoggedIn(user1)
                 })));
                 return(/*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Redirect, {
-                    to: "/"
+                    to: "/movies"
                 }));
             },
             __source: {
                 fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 64
+                lineNumber: 72
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
             exact: true,
-            path: "/",
+            path: "/movies",
             render: ()=>{
                 if (!user) return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, null, /*#__PURE__*/ _reactDefault.default.createElement(_loginView.LoginView, {
                     onLoggedIn: (user1)=>this.onLoggedIn(user1)
@@ -22176,21 +22183,24 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 71
+                lineNumber: 79
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
             exact: true,
             path: "/register",
             render: ()=>{
-                if (user) return(/*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Redirect, {
-                    to: "/"
+                //If there is no user, the LoginView is rendered. If there is a user logged in, the user details are passed as a prop to the LoginView
+                if (!user) return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, null, /*#__PURE__*/ _reactDefault.default.createElement(_registrationView.RegistrationView, {
+                    onRegistered: (user1)=>this.onRegistered(user1)
+                })));
+                return(/*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Redirect, {
+                    to: "/movies"
                 }));
-                return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, null, /*#__PURE__*/ _reactDefault.default.createElement(_registrationView.RegistrationView, null)));
             },
             __source: {
                 fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 90
+                lineNumber: 98
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22221,7 +22231,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 96
+                lineNumber: 105
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22257,7 +22267,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 112
+                lineNumber: 121
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22293,7 +22303,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 135
+                lineNumber: 144
             },
             __self: this
         })))));
@@ -39132,9 +39142,7 @@ try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "RegistrationView", ()=>RegistrationView
-); // RegistrationView.propTypes = {
- //   onLoggedIn: PropTypes.func.isRequired
- // };
+);
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _propTypes = require("prop-types");
@@ -39143,7 +39151,7 @@ var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var _reactBootstrap = require("react-bootstrap");
 var _s = $RefreshSig$();
-function RegistrationView() {
+function RegistrationView(props) {
     _s();
     //useState() returns a stateful value and a function to update it
     const [username, setUsername] = _react.useState('');
@@ -39158,7 +39166,7 @@ function RegistrationView() {
         console.log(username, password, email, birthday);
         //send a request to the server for authentication
         setValidated(true);
-        _axiosDefault.default.post('http://jny-myflix.herokuapp.com/users/', {
+        _axiosDefault.default.post('http://jny-myflix.herokuapp.com/register', {
             Username: username,
             Password: password,
             Email: email,
@@ -39166,9 +39174,9 @@ function RegistrationView() {
         }).then((response)=>{
             const data = response.data;
             console.log(data);
-            windows.open('/', '_self'); // the second argument '_self' is necessary so that the page will open in the current tab
-        //THEN call props.onLoggedIn(username)
-        // props.onLoggedIn(data);
+            window.open('/login', '_self'); // the second argument '_self' is necessary so that the page will open in the current tab
+            //THEN call props.onLoggedIn(username)
+            props.onRegistered(data);
         }).catch(()=>{
             console.log('error registering the user');
         });
@@ -39311,7 +39319,6 @@ function RegistrationView() {
         type: "date",
         onChange: (e)=>setBirthday(e.target.value)
         ,
-        required: true,
         __source: {
             fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/registration-view/registration-view.jsx",
             lineNumber: 62
@@ -39336,6 +39343,9 @@ function RegistrationView() {
 }
 _s(RegistrationView, "DSoFqP5ilEr/TTrI8Fe/mbqpO6g=");
 _c = RegistrationView;
+RegistrationView.propTypes = {
+    onRegistered: _propTypesDefault.default.func.isRequired
+};
 var _c;
 $RefreshReg$(_c, "RegistrationView");
 
