@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Redirect, Link} from 'react-router-dom';
 import {Container, Row, Col, Button} from 'react-bootstrap';
 
 import {LoginView} from '../login-view/login-view';
@@ -119,9 +119,16 @@ export class MainView extends React.Component{
                   <GenreView moviesData = {movies} genre = {movies.find(movie => movie.Genre.Name === match.params.Name).Genre} onBackClick = {() => {history.goBack()}}/>
                 </Col>
                 <Row className = "justify-content-md-right">
-                  <Col md = {8}>
-                    <Button onClick = {() => this.onLoggedOut()}>Logout</Button>
-                  </Col>
+                  <span>
+                    <Link to = '/'>
+                      <Button variant = "link">All Movies</Button>
+                    </Link>
+                  </span>
+                  <span>
+                    <Col md = {8}>
+                      <Button onClick = {() => this.onLoggedOut()}>Logout</Button>
+                    </Col>
+                  </span>
                 </Row>
               </React.Fragment>
             }}/>
@@ -135,9 +142,16 @@ export class MainView extends React.Component{
                   <DirectorView moviesData = {movies} director = {movies.find(movie => movie.Director.Name === match.params.Name).Director} onBackClick = {() => {history.goBack()}}/>
                 </Col>
                 <Row className = "justify-content-md-right">
-                  <Col md = {8}>
-                    <Button onClick = {() => this.onLoggedOut()}>Logout</Button>
-                  </Col>
+                  <span>
+                    <Link to = '/'>
+                      <Button variant = "link">All Movies</Button>
+                    </Link>
+                  </span>
+                  <span>
+                    <Col md = {8}>
+                      <Button onClick = {() => this.onLoggedOut()}>Logout</Button>
+                    </Col>
+                  </span>
                 </Row>
               </React.Fragment>
             }}/>
