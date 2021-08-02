@@ -15,9 +15,6 @@ export function DirectorView(props){
         <Col md = {8}>{props.director.Name}</Col>
       </Row>
       <Row className = "justify-content-md-center">
-        <Col md = {8}>{props.director.Bio}</Col>
-      </Row>
-      <Row className = "justify-content-md-center">
         <Col md = {8}>
           <div className = "director-birth">
             <span className = "label">Born in </span>
@@ -32,6 +29,9 @@ export function DirectorView(props){
             <span className = "value">{props.director.Death}</span>
           </div>
         </Col>
+      </Row>
+      <Row className = "justify-content-md-center">
+        <Col md = {8}>{props.director.Bio}</Col>
       </Row>
       <br/>
       <br/>
