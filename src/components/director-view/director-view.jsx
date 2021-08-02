@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Container, Row, Col, Button} from 'react-bootstrap';
-
+import {MovieCard} from '../movie-card/movie-card';
 
 export function DirectorView(props){
   return (
@@ -32,6 +32,23 @@ export function DirectorView(props){
             <span className = "value">{props.director.Death}</span>
           </div>
         </Col>
+      </Row>
+      <br/>
+      <br/>
+      <br/>
+      <Row className = "justify-content-md-center">
+        <Col md = {8}>
+          <Row className = "director-movies">
+            <Col md = {8} className = "label">Some movies from this director</Col>
+          </Row>
+          <Row className = "justify-content-md-center">
+            {props.moviesData.filter(movie => movie.Director.Name === props.director.Name).map(movie => ( 
+              <Col lg = {4} md = {6} sm = {12} key = {movie._id}>
+                <MovieCard movieData = {movie} simple = {true}/>
+              </Col>
+            ))}
+          </Row>
+        </Col>      
       </Row>
     </Container>
   );
