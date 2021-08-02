@@ -4,7 +4,7 @@ import axios from 'axios';
 import {Container, Row, Col, Form, Button} from 'react-bootstrap';
 
 
-export function RegistrationView(){
+export function RegistrationView(props){
   //useState() returns a stateful value and a function to update it
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -21,7 +21,7 @@ export function RegistrationView(){
     console.log(username, password, email, birthday);
     //send a request to the server for authentication
     setValidated(true);
-    axios.post('http://jny-myflix.herokuapp.com/users/', {
+    axios.post('http://jny-myflix.herokuapp.com/register', {
       Username: username,
       Password: password,
       Email: email,
@@ -29,9 +29,9 @@ export function RegistrationView(){
     }).then(response => {
       const data = response.data;
       console.log(data);
-      windows.open('/', '_self'); // the second argument '_self' is necessary so that the page will open in the current tab
+      window.open('/login', '_self'); // the second argument '_self' is necessary so that the page will open in the current tab
       //THEN call props.onLoggedIn(username)
-      // props.onLoggedIn(data);
+      props.onRegistered(data);
     }).catch(() => {
       console.log('error registering the user');
     });
@@ -59,7 +59,7 @@ export function RegistrationView(){
             </Form.Group>
             <Form.Group controlId = "formBirthday">
               <Form.Label>Birthday: </Form.Label>
-              <Form.Control type = "date" onChange = {e => setBirthday(e.target.value)} required/>
+              <Form.Control type = "date" onChange = {e => setBirthday(e.target.value)}/>
               <Form.Control.Feedback type = "invalid">Please enter a birthday</Form.Control.Feedback>
             </Form.Group>
             <Button variant = "primary" type = "submit">Submit</Button>
@@ -70,6 +70,6 @@ export function RegistrationView(){
   );
 }
 
-// RegistrationView.propTypes = {
-//   onLoggedIn: PropTypes.func.isRequired
-// };
+RegistrationView.propTypes = {
+  onRegistered: PropTypes.func.isRequired
+};
