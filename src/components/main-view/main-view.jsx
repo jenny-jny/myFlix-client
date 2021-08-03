@@ -92,7 +92,7 @@ export class MainView extends React.Component{
                 return <React.Fragment>
                   <Row className = "justify-content-md-right">
                     <span>
-                      <Link to = {`/users/${user.Username}`}>
+                      <Link to = {`/users/${user}`}>
                         <Button variant = "link">Profile</Button>
                       </Link>
                     </span>
