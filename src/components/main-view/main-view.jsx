@@ -93,7 +93,7 @@ export class MainView extends React.Component{
                   <Row className = "justify-content-md-right">
                     <span>
                       <Link to = {`/users/${user}`}>
-                        <Button variant = "link">Profile</Button>
+                        <Button>Profile</Button>
                       </Link>
                     </span>
                     <span>
@@ -119,11 +119,19 @@ export class MainView extends React.Component{
                   <Col md = {8}>
                     <MovieView movie = {movies.find(m => m._id === match.params.movieId)} onBackClick = {() => {history.goBack()}}/>
                   </Col>
-                  <Row className = "justify-content-md-left">
-                    <Col md = {8}>
-                      <Button onClick = {() => this.onLoggedOut()}>Logout</Button>
-                    </Col>
+                  <Row className = "justify-content-md-right">
+                    <span>
+                      <Link to = {`/users/${user}`}>
+                        <Button>Profile</Button>
+                      </Link>
+                    </span>
+                    <span>
+                      <Col md = {8}>
+                        <Button onClick = {() => this.onLoggedOut()}>Logout</Button>
+                      </Col>
+                    </span>
                   </Row>
+
                 </React.Fragment>
             }}/>
             <Route exact path = "/movies/:Title/genre/:Name" render = {({match, history}) => { //match is the url
@@ -141,6 +149,11 @@ export class MainView extends React.Component{
                         <Button variant = "link">All Movies</Button>
                       </Link>
                     </span>
+                    <span>
+                      <Link to = {`/users/${user}`}>
+                        <Button>Profile</Button>
+                      </Link>
+                    </span>                    
                     <span>
                       <Col md = {8}>
                         <Button onClick = {() => this.onLoggedOut()}>Logout</Button>
@@ -164,6 +177,11 @@ export class MainView extends React.Component{
                         <Button variant = "link">All Movies</Button>
                       </Link>
                     </span>
+                    <span>
+                      <Link to = {`/users/${user}`}>
+                        <Button>Profile</Button>
+                      </Link>
+                    </span>                    
                     <span>
                       <Col md = {8}>
                         <Button onClick = {() => this.onLoggedOut()}>Logout</Button>
