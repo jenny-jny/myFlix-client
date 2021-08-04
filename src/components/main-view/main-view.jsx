@@ -98,7 +98,9 @@ export class MainView extends React.Component{
                     </span>
                     <span>
                       <Col md = {8}>
-                        <Button onClick = {() => this.onLoggedOut()}>Logout</Button>
+                        <Link to = {`/login`}>
+                          <Button onClick = {() => this.onLoggedOut()}>Logout</Button>
+                        </Link>
                       </Col>
                     </span>
                   </Row>
@@ -127,11 +129,12 @@ export class MainView extends React.Component{
                     </span>
                     <span>
                       <Col md = {8}>
-                        <Button onClick = {() => this.onLoggedOut()}>Logout</Button>
+                        <Link to = {`/login`}>
+                          <Button onClick = {() => this.onLoggedOut()}>Logout</Button>
+                        </Link>
                       </Col>
                     </span>
                   </Row>
-
                 </React.Fragment>
             }}/>
             <Route exact path = "/movies/:Title/genre/:Name" render = {({match, history}) => { //match is the url
@@ -156,7 +159,9 @@ export class MainView extends React.Component{
                     </span>                    
                     <span>
                       <Col md = {8}>
-                        <Button onClick = {() => this.onLoggedOut()}>Logout</Button>
+                        <Link to = {`/login`}>
+                          <Button onClick = {() => this.onLoggedOut()}>Logout</Button>
+                        </Link>
                       </Col>
                     </span>
                   </Row>
@@ -184,7 +189,9 @@ export class MainView extends React.Component{
                     </span>                    
                     <span>
                       <Col md = {8}>
-                        <Button onClick = {() => this.onLoggedOut()}>Logout</Button>
+                        <Link to = {`/login`}>
+                          <Button onClick = {() => this.onLoggedOut()}>Logout</Button>
+                        </Link>
                       </Col>
                     </span>
                   </Row>
@@ -206,7 +213,9 @@ export class MainView extends React.Component{
                 </span>
                 <span>
                   <Col md = {8}>
-                    <Button onClick = {() => this.onLoggedOut()}>Logout</Button>
+                    <Link to = {`/login`}>
+                      <Button onClick = {() => this.onLoggedOut()}>Logout</Button>
+                    </Link>
                   </Col>
                 </span>
               </Row>
