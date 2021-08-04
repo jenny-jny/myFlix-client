@@ -24,12 +24,10 @@ export function ProfileView(props){
     console.log(`Bearer ${localStorage.getItem('token')}`);
 
     axios.put(`http://jny-myflix.herokuapp.com/users/${props.user}`, {
-      data: {
-        Username: username,
-        Password: password,
-        Email: email,
-        Birthday: birthday
-      }
+      Username: username,
+      Password: password,
+      Email: email,
+      Birthday: birthday
     }, {
       headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}
     }).then(response => {
