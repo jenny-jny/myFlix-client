@@ -12,7 +12,7 @@ export function ProfileView(props){
   const [birthday, setBirthday] = useState('');
   const [validated, setValidated] = useState(false);
 
-  const handleSubmit = e => {
+  const handleUpdate = e => {
     e.preventDefault();
     const form = e.currentTarget;
     if(form.checkValidity() === false){
@@ -21,18 +21,24 @@ export function ProfileView(props){
     console.log(username, password, email, birthday);
     //send a request to the server for authentication
     setValidated(true);
-    axios.put('http://jny-myflix.herokuapp.com/users/', {
-      Username: username,
-      Password: password,
-      Email: email,
-      Birthday: birthday
+    console.log(`Bearer ${localStorage.getItem('token')}`);
+
+    axios.put(`http://jny-myflix.herokuapp.com/users/${props.user}`, {
+      data: {
+        Username: username,
+        Password: password,
+        Email: email,
+        Birthday: birthday
+      }
+    }, {
+      headers: {Authorization: `Bearer ${localStorage.getItem('token')}`}
     }).then(response => {
       const data = response.data;
       console.log(data);
       //THEN call props.onLoggedIn(username)
-      props.onRegistered(data);
+      // props.onRegistered(data);
     }).catch(() => {
-      console.log('error registering the user');
+      console.log('error updating the user');
     });
   };
 
@@ -45,20 +51,20 @@ export function ProfileView(props){
       </Row>
       <Row className = "justify-content-md-center">
         <Col md = {8}>
-          <Form noValidate validated = {validated} onSubmit = {handleSubmit}>
+          <Form noValidate validated = {validated} onSubmit = {handleUpdate}>
             <Form.Group controlId = "formUsername">
               <Form.Label>Username: </Form.Label>
-              <Form.Control type = "text" isInvalid = {/[^0-9a-zA-Z]/.test(username) || username.length < 5} onChange = {e => setUsername(e.target.value)} required/>
+              <Form.Control type = "text" isInvalid = {/[^0-9a-zA-Z]/.test(username) || username.length < 5} onChange = {e => setUsername(e.target.value)}/>
               <Form.Control.Feedback type = "invalid">Please enter a username</Form.Control.Feedback>
             </Form.Group>
             <Form.Group controlId = "formPassword">
               <Form.Label>Password: </Form.Label>
-              <Form.Control type = "password" onChange = {e => setPassword(e.target.value)} required/>
+              <Form.Control type = "password" onChange = {e => setPassword(e.target.value)}/>
               <Form.Control.Feedback type = "invalid">Please enter a password</Form.Control.Feedback>
             </Form.Group>
             <Form.Group controlId = "formEmail">
               <Form.Label>Email: </Form.Label>
-              <Form.Control type = "email" isInvalid = {email.indexOf('.') === -1} onChange = {e => setEmail(e.target.value)} required/>
+              <Form.Control type = "email" isInvalid = {email.indexOf('.') === -1} onChange = {e => setEmail(e.target.value)}/>
               <Form.Control.Feedback type = "invalid">Please enter a email</Form.Control.Feedback>
             </Form.Group>
             <Form.Group controlId = "formBirthday">
@@ -66,7 +72,7 @@ export function ProfileView(props){
               <Form.Control type = "date" onChange = {e => setBirthday(e.target.value)}/>
               <Form.Control.Feedback type = "invalid">Please enter a birthday</Form.Control.Feedback>
             </Form.Group>
-            <Button variant = "primary" type = "submit">Submit</Button>
+            <Button variant = "primary" type = "submit">Update</Button>
           </Form>
         </Col>
       </Row>
@@ -75,23 +81,23 @@ export function ProfileView(props){
 }
 
 ProfileView.propTypes = {
-  movieData: PropTypes.shape({
-    ImagePath: PropTypes.string.isRequired, 
-    Title: PropTypes.string.isRequired, 
-    Description: PropTypes.string.isRequired,
-    Genre: PropTypes.shape({
-      Name: PropTypes.string.isRequired
-    }).isRequired,
-    Director: PropTypes.shape({
-      Name: PropTypes.string.isRequired
-    }).isRequired
-  }).isRequired,
-  user: PropTypes.shape({
-    Username: PropTypes.string.isRequired,
-    Password: PropTypes.string.isRequired,
-    Email: PropTypes.string.isRequired,
-    Birthday: PropTypes.instanceOf(Date).isRequired,
-    FavoriteMovies: PropTypes.array.isRequired
-  }).isRequired,
-  onBackClick: PropTypes.func.isRequired
+  // moviesData: PropTypes.shape({
+  //   ImagePath: PropTypes.string.isRequired, 
+  //   Title: PropTypes.string.isRequired, 
+  //   Description: PropTypes.string.isRequired,
+  //   Genre: PropTypes.shape({
+  //     Name: PropTypes.string.isRequired
+  //   }).isRequired,
+  //   Director: PropTypes.shape({
+  //     Name: PropTypes.string.isRequired
+  //   }).isRequired
+  // }).isRequired,
+  // user: PropTypes.shape({
+  //   Username: PropTypes.string.isRequired,
+  //   Password: PropTypes.string.isRequired,
+  //   Email: PropTypes.string.isRequired,
+  //   Birthday: PropTypes.instanceOf(Date).isRequired,
+  //   FavoriteMovies: PropTypes.array.isRequired
+  // }).isRequired,
+  // onBackClick: PropTypes.func.isRequired
 };
