@@ -22,7 +22,6 @@ export function ProfileView(props){
     //send a request to the server for authentication
     setValidated(true);
     console.log(`Bearer ${localStorage.getItem('token')}`);
-
     axios.put(`http://jny-myflix.herokuapp.com/users/${props.user}`, {
       Username: username,
       Password: password,
@@ -39,6 +38,16 @@ export function ProfileView(props){
       console.log('error updating the user');
     });
   };
+
+  useEffect(() => {
+    let accessToken = localStorage.getItem('token');
+    if(accessToken !== null){
+      this.setState({
+        user: localStorage.getItem('user')
+      });
+      this.getMovies(accessToken);
+    }
+  });
 
   return (
     <Container>
@@ -72,6 +81,25 @@ export function ProfileView(props){
             </Form.Group>
             <Button variant = "primary" type = "submit">Update</Button>
           </Form>
+        </Col>
+      </Row>
+      <Row className = "justify-content-md-center">
+        <Col md = {8}>
+          <Row className = "favorite-movies">
+            <Col md = {8} className = "label">My favorite movies</Col>
+            <Row className = "justify-content-md-center">
+              {/* {props.moviesData.filter(movie => movie.Genre.Name === props.genre.Name).map(movie => ( 
+                <Col lg = {4} md = {6} sm = {12} key = {movie._id}>
+                  <MovieCard movieData = {movie} simple = {true}/>
+                </Col>
+              ))} */}
+              {props.user.FavoriteMovies.map(favoriteMovies => {
+                <Col lg = {4} md = {6} sm = {12} key = {favoriteMovies._id}>
+                  <MovieCard movieData = {favoriteMovies} simple = {true}/>
+              </Col>
+              })}
+            </Row>
+          </Row>
         </Col>
       </Row>
     </Container>

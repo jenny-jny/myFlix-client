@@ -197,7 +197,7 @@ export class MainView extends React.Component{
                   </Row>
                 </React.Fragment>
             }}/>
-            <Route exact path= "/users/:Username" render = {({match, history}) => { //match is the url
+            <Route exact path= "/users/:Username" render = {({history}) => {
               if(!user) return <Col>
                 <LoginView onLoggedIn = {user => this.onLoggedIn(user)}/>
               </Col>
