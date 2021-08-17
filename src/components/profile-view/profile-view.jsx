@@ -10,9 +10,13 @@ export function ProfileView(props){
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [birthday, setBirthday] = useState('');
-  const [favoriteMovies, setFavoriteMovies] = useState(null);
+  const [favoriteMovies, setFavoriteMovies] = useState([]);
   const [validated, setValidated] = useState(false);
-
+  const favoriteMoviesList = props.moviesData.filter(movie => {
+    return favoriteMovies.includes(movie._id);
+  });
+  // console.log(favoriteMoviesList);
+  
   const handleUpdate = e => {
     e.preventDefault();
     const form = e.currentTarget;
@@ -47,8 +51,8 @@ export function ProfileView(props){
     axios.get(`https://jny-myflix.herokuapp.com/users/${username}`, {
       headers: {Authorization: `Bearer ${accessToken}`}
     }).then(response => {
-      console.log(response.data);
-      console.log(favoriteMovies);
+      // console.log(response.data);
+      // console.log(favoriteMovies);
       //assign the result to the state 
       setUsername(response.data.Username);
       setPassword(response.data.Password);
@@ -94,22 +98,21 @@ export function ProfileView(props){
           </Form>
         </Col>
       </Row>
+      <br/>
+      <br/>
+      <br/>
       <Row className = "justify-content-md-center">
         <Col md = {8}>
           <Row className = "favorite-movies">
             <Col md = {8} className = "label">My favorite movies</Col>
-            <Row className = "justify-content-md-center">
-              {/* {props.moviesData.filter(movie => movie.Genre.Name === props.genre.Name).map(movie => ( 
-                <Col lg = {4} md = {6} sm = {12} key = {movie._id}>
-                  <MovieCard movieData = {movie} simple = {true}/>
-                </Col>
-              ))} */}
-              {/* {favoriteMovies.map(favoriteMovie => {
-                <Col lg = {4} md = {6} sm = {12} key = {favoriteMovie._id}>
-                  <MovieCard movieData = {favoriteMovie} simple = {true}/>
+          </Row>
+          <Row className = "justify-content-md-center">
+            {favoriteMoviesList.length > 0 && favoriteMoviesList.map(favoriteMovie => {
+              <Col lg = {4} md = {6} sm = {12} key = {favoriteMovie._id}>
+                {console.log(favoriteMoviesList[0])}
+                <MovieCard movieData = {favoriteMovie} simple = {true}/>
               </Col>
-              })} */}
-            </Row>
+            })}
           </Row>
         </Col>
       </Row>
