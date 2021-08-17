@@ -10,6 +10,7 @@ export function ProfileView(props){
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [birthday, setBirthday] = useState('');
+  // const [favoriteMovies, setFavoriteMovies] = useState('');
   const [validated, setValidated] = useState(false);
 
   const handleUpdate = e => {
@@ -41,13 +42,18 @@ export function ProfileView(props){
 
   useEffect(() => {
     let accessToken = localStorage.getItem('token');
-    if(accessToken !== null){
-      this.setState({
-        user: localStorage.getItem('user')
-      });
-      this.getMovies(accessToken);
-    }
-  });
+    let username = localStorage.getItem('user');
+    if (!username) return;
+    axios.get(`https://jny-myflix.herokuapp.com/users/${username}`, {
+      headers: {Authorization: `Bearer ${accessToken}`}
+    }).then(response => {
+      //assign the result to the state 
+      //setFavoriteMovies(response.FavoriteMovies);
+      console.log(response.data)
+    }).catch(function(error){
+      console.log(error);
+    });
+  }, []);
 
   return (
     <Container>
