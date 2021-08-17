@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import {Container, Row, Col, Form, Button} from 'react-bootstrap';
-
+import {MovieCard} from '../movie-card/movie-card';
 
 export function ProfileView(props){
   //useState() returns a stateful value and a function to update it
@@ -10,7 +10,7 @@ export function ProfileView(props){
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [birthday, setBirthday] = useState('');
-  // const [favoriteMovies, setFavoriteMovies] = useState('');
+  const [favoriteMovies, setFavoriteMovies] = useState(null);
   const [validated, setValidated] = useState(false);
 
   const handleUpdate = e => {
@@ -47,9 +47,14 @@ export function ProfileView(props){
     axios.get(`https://jny-myflix.herokuapp.com/users/${username}`, {
       headers: {Authorization: `Bearer ${accessToken}`}
     }).then(response => {
+      console.log(response.data);
+      console.log(favoriteMovies);
       //assign the result to the state 
-      //setFavoriteMovies(response.FavoriteMovies);
-      console.log(response.data)
+      setUsername(response.data.Username);
+      setPassword(response.data.Password);
+      setEmail(response.data.Email);
+      setBirthday(response.data.Birthday);
+      setFavoriteMovies(response.data.FavoriteMovies);
     }).catch(function(error){
       console.log(error);
     });
@@ -99,11 +104,11 @@ export function ProfileView(props){
                   <MovieCard movieData = {movie} simple = {true}/>
                 </Col>
               ))} */}
-              {props.user.FavoriteMovies.map(favoriteMovies => {
-                <Col lg = {4} md = {6} sm = {12} key = {favoriteMovies._id}>
-                  <MovieCard movieData = {favoriteMovies} simple = {true}/>
+              {/* {favoriteMovies.map(favoriteMovie => {
+                <Col lg = {4} md = {6} sm = {12} key = {favoriteMovie._id}>
+                  <MovieCard movieData = {favoriteMovie} simple = {true}/>
               </Col>
-              })}
+              })} */}
             </Row>
           </Row>
         </Col>
@@ -112,7 +117,7 @@ export function ProfileView(props){
   );
 }
 
-ProfileView.propTypes = {
+// ProfileView.propTypes = {
   // moviesData: PropTypes.shape({
   //   ImagePath: PropTypes.string.isRequired, 
   //   Title: PropTypes.string.isRequired, 
@@ -132,4 +137,4 @@ ProfileView.propTypes = {
   //   FavoriteMovies: PropTypes.array.isRequired
   // }).isRequired,
   // onBackClick: PropTypes.func.isRequired
-};
+// };
