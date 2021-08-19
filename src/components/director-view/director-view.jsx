@@ -54,23 +54,29 @@ export function DirectorView(props){
   );
 }
 
-// DirectorView.propTypes = {
-//   movieData: PropTypes.shape({
-//     ImagePath: PropTypes.string.isRequired, 
-//     Title: PropTypes.string.isRequired, 
-//     Description: PropTypes.string.isRequired,
-//     Genre: PropTypes.shape({
-//       Name: PropTypes.string.isRequired
-//     }).isRequired,
-//     Director: PropTypes.shape({
-//       Name: PropTypes.string.isRequired
-//     }).isRequired
-//   }).isRequired,
-//   director: PropTypes.shape({
-//     Name: PropTypes.string.isRequired,
-//     Bio: PropTypes.string.isRequired,
-//     Birth: PropTypes.string.isRequired,
-//     Death: PropTypes.string.isRequired
-//   }).isRequired,
-//   onBackClick: PropTypes.func.isRequired
-// };
+DirectorView.propTypes = {
+  moviesData: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    ImagePath: PropTypes.string.isRequired, 
+    Title: PropTypes.string.isRequired, 
+    Description: PropTypes.string.isRequired,
+    Featured: PropTypes.bool.isRequired,
+    Genre: PropTypes.shape({
+      Name: PropTypes.string.isRequired,
+      Description: PropTypes.string.isRequire
+    }).isRequired,
+    Director: PropTypes.shape({
+      Name: PropTypes.string.isRequired,
+      Bio: PropTypes.string.isRequired,
+      Birth: PropTypes.string.isRequired,
+      Death: PropTypes.string.isRequired
+    }).isRequired
+  }).isRequired,
+  director: PropTypes.shape({
+    Name: PropTypes.string.isRequired,
+    Bio: PropTypes.string.isRequired,
+    Birth: PropTypes.string.isRequired,
+    Death: PropTypes.string.isRequired
+  }).isRequired,
+  onBackClick: PropTypes.func.isRequired
+};

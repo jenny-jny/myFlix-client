@@ -120,24 +120,30 @@ export function ProfileView(props){
   );
 }
 
-// ProfileView.propTypes = {
-  // moviesData: PropTypes.shape({
-  //   ImagePath: PropTypes.string.isRequired, 
-  //   Title: PropTypes.string.isRequired, 
-  //   Description: PropTypes.string.isRequired,
-  //   Genre: PropTypes.shape({
-  //     Name: PropTypes.string.isRequired
-  //   }).isRequired,
-  //   Director: PropTypes.shape({
-  //     Name: PropTypes.string.isRequired
-  //   }).isRequired
-  // }).isRequired,
-  // user: PropTypes.shape({
-  //   Username: PropTypes.string.isRequired,
-  //   Password: PropTypes.string.isRequired,
-  //   Email: PropTypes.string.isRequired,
-  //   Birthday: PropTypes.instanceOf(Date).isRequired,
-  //   FavoriteMovies: PropTypes.array.isRequired
-  // }).isRequired,
-  // onBackClick: PropTypes.func.isRequired
-// };
+ProfileView.propTypes = {
+  moviesData: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    ImagePath: PropTypes.string.isRequired, 
+    Title: PropTypes.string.isRequired, 
+    Description: PropTypes.string.isRequired,
+    Featured: PropTypes.bool.isRequired,
+    Genre: PropTypes.shape({
+      Name: PropTypes.string.isRequired,
+      Description: PropTypes.string.isRequire
+    }).isRequired,
+    Director: PropTypes.shape({
+      Name: PropTypes.string.isRequired,
+      Bio: PropTypes.string.isRequired,
+      Birth: PropTypes.string.isRequired,
+      Death: PropTypes.string.isRequired
+    }).isRequired
+  }).isRequired,
+  user: PropTypes.shape({
+    Username: PropTypes.string.isRequired,
+    Password: PropTypes.string.isRequired,
+    Email: PropTypes.string.isRequired,
+    Birthday: PropTypes.instanceOf(Date).isRequired,
+    FavoriteMovies: PropTypes.array.isRequired
+  }).isRequired,
+  onBackClick: PropTypes.func.isRequired
+};

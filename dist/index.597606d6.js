@@ -39476,14 +39476,20 @@ class MovieCard extends _reactDefault.default.Component {
 }
 MovieCard.propTypes = {
     movieData: _propTypesDefault.default.shape({
+        _id: _propTypesDefault.default.string.isRequired,
         ImagePath: _propTypesDefault.default.string.isRequired,
         Title: _propTypesDefault.default.string.isRequired,
         Description: _propTypesDefault.default.string.isRequired,
+        Featured: _propTypesDefault.default.bool.isRequired,
         Genre: _propTypesDefault.default.shape({
-            Name: _propTypesDefault.default.string.isRequired
+            Name: _propTypesDefault.default.string.isRequired,
+            Description: _propTypesDefault.default.string.isRequire
         }).isRequired,
         Director: _propTypesDefault.default.shape({
-            Name: _propTypesDefault.default.string.isRequired
+            Name: _propTypesDefault.default.string.isRequired,
+            Bio: _propTypesDefault.default.string.isRequired,
+            Birth: _propTypesDefault.default.string.isRequired,
+            Death: _propTypesDefault.default.string.isRequired
         }).isRequired
     }).isRequired
 };
@@ -39689,14 +39695,20 @@ class MovieView extends _reactDefault.default.Component {
 }
 MovieView.propTypes = {
     movie: _propTypesDefault.default.shape({
+        _id: _propTypesDefault.default.string.isRequired,
         ImagePath: _propTypesDefault.default.string.isRequired,
         Title: _propTypesDefault.default.string.isRequired,
         Description: _propTypesDefault.default.string.isRequired,
+        Featured: _propTypesDefault.default.bool.isRequired,
         Genre: _propTypesDefault.default.shape({
-            Name: _propTypesDefault.default.string.isRequired
+            Name: _propTypesDefault.default.string.isRequired,
+            Description: _propTypesDefault.default.string.isRequire
         }).isRequired,
         Director: _propTypesDefault.default.shape({
-            Name: _propTypesDefault.default.string.isRequired
+            Name: _propTypesDefault.default.string.isRequired,
+            Bio: _propTypesDefault.default.string.isRequired,
+            Birth: _propTypesDefault.default.string.isRequired,
+            Death: _propTypesDefault.default.string.isRequired
         }).isRequired
     }).isRequired,
     onBackClick: _propTypesDefault.default.func.isRequired
@@ -39717,24 +39729,7 @@ try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "GenreView", ()=>GenreView
-); // GenreView.propTypes = {
- //   movieData: PropTypes.shape({
- //     ImagePath: PropTypes.string.isRequired, 
- //     Title: PropTypes.string.isRequired, 
- //     Description: PropTypes.string.isRequired,
- //     Genre: PropTypes.shape({
- //       Name: PropTypes.string.isRequired
- //     }).isRequired,
- //     Director: PropTypes.shape({
- //       Name: PropTypes.string.isRequired
- //     }).isRequired
- //   }).isRequired,
- //   genre: PropTypes.shape({
- //     Name: PropTypes.string.isRequired,
- //     Description: PropTypes.string.isRequired
- //   }).isRequired,
- //   onBackClick: PropTypes.func.isRequired
- // };
+);
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _propTypes = require("prop-types");
@@ -39861,6 +39856,30 @@ function GenreView(props) {
     )))))));
 }
 _c = GenreView;
+GenreView.propTypes = {
+    moviesData: _propTypesDefault.default.shape({
+        _id: _propTypesDefault.default.string.isRequired,
+        ImagePath: _propTypesDefault.default.string.isRequired,
+        Title: _propTypesDefault.default.string.isRequired,
+        Description: _propTypesDefault.default.string.isRequired,
+        Featured: _propTypesDefault.default.bool.isRequired,
+        Genre: _propTypesDefault.default.shape({
+            Name: _propTypesDefault.default.string.isRequired,
+            Description: _propTypesDefault.default.string.isRequire
+        }).isRequired,
+        Director: _propTypesDefault.default.shape({
+            Name: _propTypesDefault.default.string.isRequired,
+            Bio: _propTypesDefault.default.string.isRequired,
+            Birth: _propTypesDefault.default.string.isRequired,
+            Death: _propTypesDefault.default.string.isRequired
+        }).isRequired
+    }).isRequired,
+    genre: _propTypesDefault.default.shape({
+        Name: _propTypesDefault.default.string.isRequired,
+        Description: _propTypesDefault.default.string.isRequired
+    }).isRequired,
+    onBackClick: _propTypesDefault.default.func.isRequired
+};
 var _c;
 $RefreshReg$(_c, "GenreView");
 
@@ -39879,26 +39898,7 @@ try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "DirectorView", ()=>DirectorView
-); // DirectorView.propTypes = {
- //   movieData: PropTypes.shape({
- //     ImagePath: PropTypes.string.isRequired, 
- //     Title: PropTypes.string.isRequired, 
- //     Description: PropTypes.string.isRequired,
- //     Genre: PropTypes.shape({
- //       Name: PropTypes.string.isRequired
- //     }).isRequired,
- //     Director: PropTypes.shape({
- //       Name: PropTypes.string.isRequired
- //     }).isRequired
- //   }).isRequired,
- //   director: PropTypes.shape({
- //     Name: PropTypes.string.isRequired,
- //     Bio: PropTypes.string.isRequired,
- //     Birth: PropTypes.string.isRequired,
- //     Death: PropTypes.string.isRequired
- //   }).isRequired,
- //   onBackClick: PropTypes.func.isRequired
- // };
+);
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _propTypes = require("prop-types");
@@ -40108,6 +40108,32 @@ function DirectorView(props) {
     ))))));
 }
 _c = DirectorView;
+DirectorView.propTypes = {
+    moviesData: _propTypesDefault.default.shape({
+        _id: _propTypesDefault.default.string.isRequired,
+        ImagePath: _propTypesDefault.default.string.isRequired,
+        Title: _propTypesDefault.default.string.isRequired,
+        Description: _propTypesDefault.default.string.isRequired,
+        Featured: _propTypesDefault.default.bool.isRequired,
+        Genre: _propTypesDefault.default.shape({
+            Name: _propTypesDefault.default.string.isRequired,
+            Description: _propTypesDefault.default.string.isRequire
+        }).isRequired,
+        Director: _propTypesDefault.default.shape({
+            Name: _propTypesDefault.default.string.isRequired,
+            Bio: _propTypesDefault.default.string.isRequired,
+            Birth: _propTypesDefault.default.string.isRequired,
+            Death: _propTypesDefault.default.string.isRequired
+        }).isRequired
+    }).isRequired,
+    director: _propTypesDefault.default.shape({
+        Name: _propTypesDefault.default.string.isRequired,
+        Bio: _propTypesDefault.default.string.isRequired,
+        Birth: _propTypesDefault.default.string.isRequired,
+        Death: _propTypesDefault.default.string.isRequired
+    }).isRequired,
+    onBackClick: _propTypesDefault.default.func.isRequired
+};
 var _c;
 $RefreshReg$(_c, "DirectorView");
 
@@ -40126,27 +40152,7 @@ try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "ProfileView", ()=>ProfileView
-); // ProfileView.propTypes = {
- // moviesData: PropTypes.shape({
- //   ImagePath: PropTypes.string.isRequired, 
- //   Title: PropTypes.string.isRequired, 
- //   Description: PropTypes.string.isRequired,
- //   Genre: PropTypes.shape({
- //     Name: PropTypes.string.isRequired
- //   }).isRequired,
- //   Director: PropTypes.shape({
- //     Name: PropTypes.string.isRequired
- //   }).isRequired
- // }).isRequired,
- // user: PropTypes.shape({
- //   Username: PropTypes.string.isRequired,
- //   Password: PropTypes.string.isRequired,
- //   Email: PropTypes.string.isRequired,
- //   Birthday: PropTypes.instanceOf(Date).isRequired,
- //   FavoriteMovies: PropTypes.array.isRequired
- // }).isRequired,
- // onBackClick: PropTypes.func.isRequired
- // };
+);
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _propTypes = require("prop-types");
@@ -40469,6 +40475,33 @@ function ProfileView(props) {
 }
 _s(ProfileView, "xC9Dl5d39fw5mSC7CZi5fjxXvj4=");
 _c = ProfileView;
+ProfileView.propTypes = {
+    moviesData: _propTypesDefault.default.shape({
+        _id: _propTypesDefault.default.string.isRequired,
+        ImagePath: _propTypesDefault.default.string.isRequired,
+        Title: _propTypesDefault.default.string.isRequired,
+        Description: _propTypesDefault.default.string.isRequired,
+        Featured: _propTypesDefault.default.bool.isRequired,
+        Genre: _propTypesDefault.default.shape({
+            Name: _propTypesDefault.default.string.isRequired,
+            Description: _propTypesDefault.default.string.isRequire
+        }).isRequired,
+        Director: _propTypesDefault.default.shape({
+            Name: _propTypesDefault.default.string.isRequired,
+            Bio: _propTypesDefault.default.string.isRequired,
+            Birth: _propTypesDefault.default.string.isRequired,
+            Death: _propTypesDefault.default.string.isRequired
+        }).isRequired
+    }).isRequired,
+    user: _propTypesDefault.default.shape({
+        Username: _propTypesDefault.default.string.isRequired,
+        Password: _propTypesDefault.default.string.isRequired,
+        Email: _propTypesDefault.default.string.isRequired,
+        Birthday: _propTypesDefault.default.instanceOf(Date).isRequired,
+        FavoriteMovies: _propTypesDefault.default.array.isRequired
+    }).isRequired,
+    onBackClick: _propTypesDefault.default.func.isRequired
+};
 var _c;
 $RefreshReg$(_c, "ProfileView");
 
