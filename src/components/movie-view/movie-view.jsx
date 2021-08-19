@@ -1,9 +1,32 @@
 import React from 'react';
+import axios from 'axios';
 import PropTypes from 'prop-types';
 import {Container, Row, Col, Button} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 
 export class MovieView extends React.Component{
+  addFavorite() {
+    const accessToken = localStorage.getItem('token');
+    const username = localStorage.getItem('user');
+    axios.post(`http://jny-myflix.herokuapp.com/users/${username}/favorites/` + this.props.movie._id, {}, {
+      headers: {Authorization: `Bearer ${accessToken}`}
+    }).then((response) => {
+      console.log(response);
+      alert(this.props.movie.Title + " has been added to your favorites!");
+    })
+  }
+
+  removeFavorite() {
+    const accessToken = localStorage.getItem('token');
+    const username = localStorage.getItem('user');
+    axios.delete(`http://jny-myflix.herokuapp.com/users/${username}/favorites/` + this.props.movie._id, {
+      headers: {Authorization: `Bearer ${accessToken}`}
+    }).then((response) => {
+      console.log(response);
+      alert(this.props.movie.Title + " has been removed from your favorites!");
+    })
+  }
+
   render(){
     const {movie, onBackClick} = this.props;
     return (
@@ -11,33 +34,31 @@ export class MovieView extends React.Component{
         <Button onClick = {() => onBackClick()}>Back</Button>
         <Row className = "movie-view justify-content-md-center">
           <Col md = {8}>
-            <span>
-              <div className = "movie-title">
-                <div className = "value">{movie.Title}</div>
-              </div>
-              <div className = "movie-genre">
-                {/* <span className = "label">Genre: </span>
-                <span className = "value">{movie.Genre.Name}</span> */}
-                <Link to = {`${movie.Title}/genre/${movie.Genre.Name}`}>
-                  <Button variant = "link">Genre</Button>
-                </Link>
-              </div>
-              <div className = "movie-director">
-                {/* <span className = "label">Director: </span>
-                <span className = "value">{movie.Director.Name}</span> */}
-                <Link to = {`${movie.Title}/director/${movie.Director.Name}`}>
-                  <Button variant = "link">Director</Button>
-                </Link>
-              </div>
-              <div className = "movie-description">
-                <div className = "value">{movie.Description}</div>
-              </div>  
-            </span>
-            <span>
-              <div className = "movie-poster">
-                <img src = {movie.ImagePath}/>
-              </div>
-            </span>
+            <div className = "movie-title">
+              <div className = "value">{movie.Title}</div>
+            </div>
+            <Button variant = "success" onClick = {() => this.addFavorite()}>Add to favorites</Button>
+            <Button variant = "danger" onClick = {() => this.removeFavorite()}>Remove from favorites</Button>
+            <div className = "movie-genre">
+              <Link to = {`${movie.Title}/genre/${movie.Genre.Name}`}>
+                <Button variant = "link">Genre</Button>
+              </Link>
+            </div>
+            <div className = "movie-director">
+              <Link to = {`${movie.Title}/director/${movie.Director.Name}`}>
+                <Button variant = "link">Director</Button>
+              </Link>
+            </div>
+            <div className = "movie-description">
+              <div className = "value">{movie.Description}</div>
+            </div>  
+          </Col>
+        </Row>
+        <Row className = "movie-view justify-content-md-center">
+          <Col md = {8}>
+            <div className = "movie-poster">
+              <img src = {movie.ImagePath}/>
+            </div>
           </Col>
         </Row>
       </Container>
