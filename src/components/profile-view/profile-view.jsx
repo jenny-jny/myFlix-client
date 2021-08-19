@@ -15,7 +15,6 @@ export function ProfileView(props){
   const favoriteMoviesList = props.moviesData.filter(movie => {
     return favoriteMovies.includes(movie._id);
   });
-  // console.log(favoriteMoviesList);
   
   const handleUpdate = e => {
     e.preventDefault();
@@ -106,12 +105,13 @@ export function ProfileView(props){
           <Row className = "favorite-movies">
             <Col md = {8} className = "label">My favorite movies</Col>
           </Row>
-          <Row className = "justify-content-md-center">
+          <Row className = "justify-content-md-left">
             {favoriteMoviesList.length > 0 && favoriteMoviesList.map(favoriteMovie => {
-              <Col lg = {4} md = {6} sm = {12} key = {favoriteMovie._id}>
-                {console.log(favoriteMoviesList[0])}
-                <MovieCard movieData = {favoriteMovie} simple = {true}/>
-              </Col>
+              return (
+                <Col lg = {4} md = {6} sm = {12} key = {favoriteMovie._id}>
+                  <MovieCard movieData = {favoriteMovie} simple = {true}/>
+                </Col>
+              );
             })}
           </Row>
         </Col>
