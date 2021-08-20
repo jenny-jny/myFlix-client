@@ -138,12 +138,6 @@ ProfileView.propTypes = {
       Death: PropTypes.string.isRequired
     }).isRequired
   })).isRequired,
-  user: PropTypes.arrayOf(PropTypes.shape({
-    Username: PropTypes.string.isRequired,
-    Password: PropTypes.string.isRequired,
-    Email: PropTypes.string.isRequired,
-    Birthday: PropTypes.instanceOf(Date).isRequired,
-    FavoriteMovies: PropTypes.array.isRequired
-  })).isRequired,
+  user: PropTypes.string.isRequired,
   onBackClick: PropTypes.func.isRequired
 };
