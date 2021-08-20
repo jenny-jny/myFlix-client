@@ -44,7 +44,7 @@ export function DirectorView(props){
           <Row className = "justify-content-md-center">
             {props.moviesData.filter(movie => movie.Director.Name === props.director.Name).map(movie => ( 
               <Col lg = {4} md = {6} sm = {12} key = {movie._id}>
-                <MovieCard movieData = {movie} simple = {true}/>
+                <MovieCard movieData = {movie} simple = {true} simple2 = {true}/>
               </Col>
             ))}
           </Row>

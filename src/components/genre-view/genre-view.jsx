@@ -23,7 +23,7 @@ export function GenreView(props){
             <Row className = "justify-content-md-center">
               {props.moviesData.filter(movie => movie.Genre.Name === props.genre.Name).map(movie => ( 
                 <Col lg = {4} md = {6} sm = {12} key = {movie._id}>
-                  <MovieCard movieData = {movie} simple = {true}/>
+                  <MovieCard movieData = {movie} simple = {true} simple2 = {true}/>
                 </Col>
               ))}
             </Row>

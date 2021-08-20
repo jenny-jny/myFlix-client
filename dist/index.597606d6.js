@@ -22194,7 +22194,8 @@ class MainView extends _reactDefault.default.Component {
                         sm: 12,
                         key: movie._id
                     }, /*#__PURE__*/ _reactDefault.default.createElement(_movieCard.MovieCard, {
-                        movieData: movie
+                        movieData: movie,
+                        simple2: true
                     }))
                 )));
             },
@@ -39415,15 +39416,29 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _propTypes = require("prop-types");
 var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
+var _axios = require("axios");
+var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var _reactBootstrap = require("react-bootstrap");
 var _reactRouterDom = require("react-router-dom");
 class MovieCard extends _reactDefault.default.Component {
+    removeFavorite() {
+        const accessToken = localStorage.getItem('token');
+        const username = localStorage.getItem('user');
+        _axiosDefault.default.delete(`http://jny-myflix.herokuapp.com/users/${username}/favorites/` + this.props.movieData._id, {
+            headers: {
+                Authorization: `Bearer ${accessToken}`
+            }
+        }).then((response)=>{
+            console.log(response);
+            alert(this.props.movieData.Title + " has been removed from your favorites!");
+        });
+    }
     render() {
-        const { movieData , simple  } = this.props;
+        const { movieData , simple , simple2  } = this.props;
         return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card, {
             __source: {
                 fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/movie-card/movie-card.jsx",
-                lineNumber: 10
+                lineNumber: 23
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Img, {
@@ -39431,42 +39446,51 @@ class MovieCard extends _reactDefault.default.Component {
             src: movieData.ImagePath,
             __source: {
                 fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/movie-card/movie-card.jsx",
-                lineNumber: 11
+                lineNumber: 24
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Body, {
             __source: {
                 fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/movie-card/movie-card.jsx",
-                lineNumber: 12
+                lineNumber: 25
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Title, {
             __source: {
                 fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/movie-card/movie-card.jsx",
-                lineNumber: 13
+                lineNumber: 26
             },
             __self: this
         }, movieData.Title), console.log(movieData), !simple && /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Text, {
             __source: {
                 fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/movie-card/movie-card.jsx",
-                lineNumber: 15
+                lineNumber: 28
             },
             __self: this
         }, movieData.Description), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
             to: `/movies/${movieData._id}`,
             __source: {
                 fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/movie-card/movie-card.jsx",
-                lineNumber: 16
+                lineNumber: 29
             },
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
             variant: "link",
             __source: {
                 fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/movie-card/movie-card.jsx",
-                lineNumber: 17
+                lineNumber: 30
             },
             __self: this
-        }, "Open")))));
+        }, "Open")), !simple2 && /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
+            variant: "link",
+            onClick: ()=>this.removeFavorite()
+            ,
+            __source: {
+                fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/movie-card/movie-card.jsx",
+                lineNumber: 32
+            },
+            __self: this
+        }, "Remove"))));
     }
 }
 MovieCard.propTypes = {
@@ -39494,7 +39518,7 @@ MovieCard.propTypes = {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","prop-types":"4dfy5","react-bootstrap":"4n7hB","react-router-dom":"1PMSK","@parcel/transformer-js/src/esmodule-helpers.js":"2Ogsb","../../../../../../.nvm/versions/node/v14.17.0/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"6XILU"}],"7zYST":[function(require,module,exports) {
+},{"react":"3b2NM","prop-types":"4dfy5","react-bootstrap":"4n7hB","react-router-dom":"1PMSK","@parcel/transformer-js/src/esmodule-helpers.js":"2Ogsb","../../../../../../.nvm/versions/node/v14.17.0/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"6XILU","axios":"7rA65"}],"7zYST":[function(require,module,exports) {
 var helpers = require("../../../../../../.nvm/versions/node/v14.17.0/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -39842,6 +39866,7 @@ function GenreView(props) {
         }, /*#__PURE__*/ _reactDefault.default.createElement(_movieCard.MovieCard, {
             movieData: movie,
             simple: true,
+            simple2: true,
             __source: {
                 fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/genre-view/genre-view.jsx",
                 lineNumber: 26
@@ -40094,6 +40119,7 @@ function DirectorView(props) {
         }, /*#__PURE__*/ _reactDefault.default.createElement(_movieCard.MovieCard, {
             movieData: movie,
             simple: true,
+            simple2: true,
             __source: {
                 fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/director-view/director-view.jsx",
                 lineNumber: 47
