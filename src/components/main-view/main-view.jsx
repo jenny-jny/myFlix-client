@@ -20,11 +20,6 @@ export class MainView extends React.Component{
     };
   }
 
-  //When a movie is clicked, this function is invoked and updates the state of the selectedMovie property to that movie
-  // setSelectedMovie(newSelectedMovie){
-  //   this.setState({selectedMovie: newSelectedMovie});
-  // }
-
   getMovies(token){
     axios.get('https://jny-myflix.herokuapp.com/movies', {
       headers: {Authorization: `Bearer ${token}`}
@@ -65,7 +60,6 @@ export class MainView extends React.Component{
 
   render(){
     const {movies, user} = this.state; //object destruction; equivalent to const movies = this.state.movies;
-    // if(!user) return <RegistrationView onLoggedIn = {user => this.onLoggedIn(user)}/>;
     return (
       <Router>
         <Container>
