@@ -39475,7 +39475,7 @@ class MovieCard extends _reactDefault.default.Component {
     }
 }
 MovieCard.propTypes = {
-    movieData: _propTypesDefault.default.shape({
+    movieData: _propTypesDefault.default.arrayOf(_propTypesDefault.default.shape({
         _id: _propTypesDefault.default.string.isRequired,
         ImagePath: _propTypesDefault.default.string.isRequired,
         Title: _propTypesDefault.default.string.isRequired,
@@ -39491,7 +39491,7 @@ MovieCard.propTypes = {
             Birth: _propTypesDefault.default.string.isRequired,
             Death: _propTypesDefault.default.string.isRequired
         }).isRequired
-    }).isRequired
+    })).isRequired
 };
 
   helpers.postlude(module);
@@ -39694,7 +39694,7 @@ class MovieView extends _reactDefault.default.Component {
     }
 }
 MovieView.propTypes = {
-    movie: _propTypesDefault.default.shape({
+    movie: _propTypesDefault.default.arrayOf(_propTypesDefault.default.shape({
         _id: _propTypesDefault.default.string.isRequired,
         ImagePath: _propTypesDefault.default.string.isRequired,
         Title: _propTypesDefault.default.string.isRequired,
@@ -39710,7 +39710,7 @@ MovieView.propTypes = {
             Birth: _propTypesDefault.default.string.isRequired,
             Death: _propTypesDefault.default.string.isRequired
         }).isRequired
-    }).isRequired,
+    })).isRequired,
     onBackClick: _propTypesDefault.default.func.isRequired
 };
 
@@ -39719,7 +39719,7 @@ MovieView.propTypes = {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","prop-types":"4dfy5","react-bootstrap":"4n7hB","react-router-dom":"1PMSK","@parcel/transformer-js/src/esmodule-helpers.js":"2Ogsb","../../../../../../.nvm/versions/node/v14.17.0/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"6XILU","axios":"7rA65"}],"20Q0t":[function(require,module,exports) {
+},{"react":"3b2NM","axios":"7rA65","prop-types":"4dfy5","react-bootstrap":"4n7hB","react-router-dom":"1PMSK","@parcel/transformer-js/src/esmodule-helpers.js":"2Ogsb","../../../../../../.nvm/versions/node/v14.17.0/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"6XILU"}],"20Q0t":[function(require,module,exports) {
 var helpers = require("../../../../../../.nvm/versions/node/v14.17.0/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -39857,7 +39857,7 @@ function GenreView(props) {
 }
 _c = GenreView;
 GenreView.propTypes = {
-    moviesData: _propTypesDefault.default.shape({
+    moviesData: _propTypesDefault.default.arrayOf(_propTypesDefault.default.shape({
         _id: _propTypesDefault.default.string.isRequired,
         ImagePath: _propTypesDefault.default.string.isRequired,
         Title: _propTypesDefault.default.string.isRequired,
@@ -39873,7 +39873,7 @@ GenreView.propTypes = {
             Birth: _propTypesDefault.default.string.isRequired,
             Death: _propTypesDefault.default.string.isRequired
         }).isRequired
-    }).isRequired,
+    })).isRequired,
     genre: _propTypesDefault.default.shape({
         Name: _propTypesDefault.default.string.isRequired,
         Description: _propTypesDefault.default.string.isRequired
@@ -40109,7 +40109,7 @@ function DirectorView(props) {
 }
 _c = DirectorView;
 DirectorView.propTypes = {
-    moviesData: _propTypesDefault.default.shape({
+    moviesData: _propTypesDefault.default.arrayOf(_propTypesDefault.default.shape({
         _id: _propTypesDefault.default.string.isRequired,
         ImagePath: _propTypesDefault.default.string.isRequired,
         Title: _propTypesDefault.default.string.isRequired,
@@ -40125,7 +40125,7 @@ DirectorView.propTypes = {
             Birth: _propTypesDefault.default.string.isRequired,
             Death: _propTypesDefault.default.string.isRequired
         }).isRequired
-    }).isRequired,
+    })).isRequired,
     director: _propTypesDefault.default.shape({
         Name: _propTypesDefault.default.string.isRequired,
         Bio: _propTypesDefault.default.string.isRequired,
@@ -40476,7 +40476,7 @@ function ProfileView(props) {
 _s(ProfileView, "xC9Dl5d39fw5mSC7CZi5fjxXvj4=");
 _c = ProfileView;
 ProfileView.propTypes = {
-    moviesData: _propTypesDefault.default.shape({
+    moviesData: _propTypesDefault.default.arrayOf(_propTypesDefault.default.shape({
         _id: _propTypesDefault.default.string.isRequired,
         ImagePath: _propTypesDefault.default.string.isRequired,
         Title: _propTypesDefault.default.string.isRequired,
@@ -40492,14 +40492,14 @@ ProfileView.propTypes = {
             Birth: _propTypesDefault.default.string.isRequired,
             Death: _propTypesDefault.default.string.isRequired
         }).isRequired
-    }).isRequired,
-    user: _propTypesDefault.default.shape({
+    })).isRequired,
+    user: _propTypesDefault.default.arrayOf(_propTypesDefault.default.shape({
         Username: _propTypesDefault.default.string.isRequired,
         Password: _propTypesDefault.default.string.isRequired,
         Email: _propTypesDefault.default.string.isRequired,
         Birthday: _propTypesDefault.default.instanceOf(Date).isRequired,
         FavoriteMovies: _propTypesDefault.default.array.isRequired
-    }).isRequired,
+    })).isRequired,
     onBackClick: _propTypesDefault.default.func.isRequired
 };
 var _c;

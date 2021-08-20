@@ -55,7 +55,7 @@ export function DirectorView(props){
 }
 
 DirectorView.propTypes = {
-  moviesData: PropTypes.shape({
+  moviesData: PropTypes.arrayOf(PropTypes.shape({
     _id: PropTypes.string.isRequired,
     ImagePath: PropTypes.string.isRequired, 
     Title: PropTypes.string.isRequired, 
@@ -71,7 +71,7 @@ DirectorView.propTypes = {
       Birth: PropTypes.string.isRequired,
       Death: PropTypes.string.isRequired
     }).isRequired
-  }).isRequired,
+  })).isRequired,
   director: PropTypes.shape({
     Name: PropTypes.string.isRequired,
     Bio: PropTypes.string.isRequired,

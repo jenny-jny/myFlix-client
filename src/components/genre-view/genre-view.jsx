@@ -35,7 +35,7 @@ export function GenreView(props){
 }
 
 GenreView.propTypes = {
-  moviesData: PropTypes.shape({
+  moviesData: PropTypes.arrayOf(PropTypes.shape({
     _id: PropTypes.string.isRequired,
     ImagePath: PropTypes.string.isRequired, 
     Title: PropTypes.string.isRequired, 
@@ -51,7 +51,7 @@ GenreView.propTypes = {
       Birth: PropTypes.string.isRequired,
       Death: PropTypes.string.isRequired
     }).isRequired
-  }).isRequired,
+  })).isRequired,
   genre: PropTypes.shape({
     Name: PropTypes.string.isRequired,
     Description: PropTypes.string.isRequired

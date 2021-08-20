@@ -121,7 +121,7 @@ export function ProfileView(props){
 }
 
 ProfileView.propTypes = {
-  moviesData: PropTypes.shape({
+  moviesData: PropTypes.arrayOf(PropTypes.shape({
     _id: PropTypes.string.isRequired,
     ImagePath: PropTypes.string.isRequired, 
     Title: PropTypes.string.isRequired, 
@@ -137,13 +137,13 @@ ProfileView.propTypes = {
       Birth: PropTypes.string.isRequired,
       Death: PropTypes.string.isRequired
     }).isRequired
-  }).isRequired,
-  user: PropTypes.shape({
+  })).isRequired,
+  user: PropTypes.arrayOf(PropTypes.shape({
     Username: PropTypes.string.isRequired,
     Password: PropTypes.string.isRequired,
     Email: PropTypes.string.isRequired,
     Birthday: PropTypes.instanceOf(Date).isRequired,
     FavoriteMovies: PropTypes.array.isRequired
-  }).isRequired,
+  })).isRequired,
   onBackClick: PropTypes.func.isRequired
 };
