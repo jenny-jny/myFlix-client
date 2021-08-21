@@ -22179,6 +22179,16 @@ class MainView extends _reactDefault.default.Component {
                     className: "main-view"
                 })); //curly braces required only for multiple statements, optional for single statement
                 return(/*#__PURE__*/ _reactDefault.default.createElement(_reactDefault.default.Fragment, null, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Row, {
+                    className: "justify-content-md-left"
+                }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
+                    md: 8
+                }, /*#__PURE__*/ _reactDefault.default.createElement("div", {
+                    className: "greeting"
+                }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
+                    className: "label"
+                }, "Hello, "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
+                    className: "value"
+                }, user)))), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Row, {
                     className: "justify-content-md-right"
                 }, /*#__PURE__*/ _reactDefault.default.createElement("span", null, /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
                     to: `/users/${user}`
@@ -22236,7 +22246,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 109
+                lineNumber: 117
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22276,7 +22286,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 134
+                lineNumber: 142
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22316,7 +22326,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 164
+                lineNumber: 172
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22350,7 +22360,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 194
+                lineNumber: 202
             },
             __self: this
         })))));

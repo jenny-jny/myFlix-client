@@ -84,6 +84,14 @@ export class MainView extends React.Component{
               </Col>
               if(movies.length === 0) return <div className = "main-view"/> //curly braces required only for multiple statements, optional for single statement
                 return <React.Fragment>
+                  <Row className = "justify-content-md-left">
+                    <Col md = {8}>
+                      <div className = "greeting">
+                        <span className = "label">Hello, </span>
+                        <span className = "value">{user}</span>
+                      </div>
+                    </Col>
+                  </Row>
                   <Row className = "justify-content-md-right">
                     <span>
                       <Link to = {`/users/${user}`}>
