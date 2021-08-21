@@ -38,7 +38,7 @@ export class MovieCard extends React.Component{
 }
 
 MovieCard.propTypes = {
-  movieData: PropTypes.arrayOf(PropTypes.shape({
+  movieData: PropTypes.shape({
     _id: PropTypes.string.isRequired,
     ImagePath: PropTypes.string.isRequired, 
     Title: PropTypes.string.isRequired, 
@@ -54,5 +54,5 @@ MovieCard.propTypes = {
       Birth: PropTypes.string.isRequired,
       Death: PropTypes.string.isRequired
     }).isRequired
-  })).isRequired
+  }).isRequired
 };

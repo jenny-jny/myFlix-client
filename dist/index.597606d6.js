@@ -39495,7 +39495,7 @@ class MovieCard extends _reactDefault.default.Component {
     }
 }
 MovieCard.propTypes = {
-    movieData: _propTypesDefault.default.arrayOf(_propTypesDefault.default.shape({
+    movieData: _propTypesDefault.default.shape({
         _id: _propTypesDefault.default.string.isRequired,
         ImagePath: _propTypesDefault.default.string.isRequired,
         Title: _propTypesDefault.default.string.isRequired,
@@ -39511,7 +39511,7 @@ MovieCard.propTypes = {
             Birth: _propTypesDefault.default.string.isRequired,
             Death: _propTypesDefault.default.string.isRequired
         }).isRequired
-    })).isRequired
+    }).isRequired
 };
 
   helpers.postlude(module);
@@ -39714,7 +39714,7 @@ class MovieView extends _reactDefault.default.Component {
     }
 }
 MovieView.propTypes = {
-    movie: _propTypesDefault.default.arrayOf(_propTypesDefault.default.shape({
+    movie: _propTypesDefault.default.shape({
         _id: _propTypesDefault.default.string.isRequired,
         ImagePath: _propTypesDefault.default.string.isRequired,
         Title: _propTypesDefault.default.string.isRequired,
@@ -39730,7 +39730,7 @@ MovieView.propTypes = {
             Birth: _propTypesDefault.default.string.isRequired,
             Death: _propTypesDefault.default.string.isRequired
         }).isRequired
-    })).isRequired,
+    }).isRequired,
     onBackClick: _propTypesDefault.default.func.isRequired
 };
 

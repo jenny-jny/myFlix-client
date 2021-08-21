@@ -67,7 +67,7 @@ export class MovieView extends React.Component{
 }
 
 MovieView.propTypes = {
-  movie: PropTypes.arrayOf(PropTypes.shape({
+  movie: PropTypes.shape({
     _id: PropTypes.string.isRequired,
     ImagePath: PropTypes.string.isRequired, 
     Title: PropTypes.string.isRequired, 
@@ -83,6 +83,6 @@ MovieView.propTypes = {
       Birth: PropTypes.string.isRequired,
       Death: PropTypes.string.isRequired
     }).isRequired
-  })).isRequired,
+  }).isRequired,
   onBackClick: PropTypes.func.isRequired
 };
