@@ -43,6 +43,20 @@ export function ProfileView(props){
     });
   };
 
+  const unregister = () => {
+    const accessToken = localStorage.getItem('token');
+    const username = localStorage.getItem('user');
+    axios.delete(`http://jny-myflix.herokuapp.com/users/${username}`, {
+      headers: {Authorization: `Bearer ${accessToken}`}
+    }).then(response => {
+      console.log(response);
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      alert("Your account has been deleted.");
+      window.open('/register', '_self');
+    });
+  };
+
   useEffect(() => {
     let accessToken = localStorage.getItem('token');
     let username = localStorage.getItem('user');
@@ -71,7 +85,7 @@ export function ProfileView(props){
         </Col>
       </Row>
       <Row className = "justify-content-md-center">
-        <Col md = {8}>
+        <Col md = {7}>
           <Form noValidate validated = {validated} onSubmit = {handleUpdate}>
             <Form.Group controlId = "formUsername">
               <Form.Label>Username: </Form.Label>
@@ -95,6 +109,9 @@ export function ProfileView(props){
             </Form.Group>
             <Button variant = "primary" type = "submit">Update</Button>
           </Form>
+        </Col>
+        <Col md = {1}>
+          <Button variant = "secondary" onClick = {unregister}>Unregister</Button>
         </Col>
       </Row>
       <br/>
