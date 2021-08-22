@@ -22136,6 +22136,50 @@ class MainView extends _reactDefault.default.Component {
             __self: this
         }, /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
             exact: true,
+            path: "/",
+            render: ()=>{
+                if (!user) return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, null, /*#__PURE__*/ _reactDefault.default.createElement(_loginView.LoginView, {
+                    onLoggedIn: (user1)=>this.onLoggedIn(user1)
+                })));
+                if (movies.length === 0) return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
+                    className: "main-view"
+                }));
+                return(/*#__PURE__*/ _reactDefault.default.createElement(_reactDefault.default.Fragment, null, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Row, {
+                    className: "justify-content-md-left"
+                }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
+                    md: 8
+                }, /*#__PURE__*/ _reactDefault.default.createElement("div", {
+                    className: "greeting"
+                }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
+                    className: "label"
+                }, "Hello, "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
+                    className: "value"
+                }, user)))), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Row, {
+                    className: "justify-content-md-right"
+                }, /*#__PURE__*/ _reactDefault.default.createElement("span", null, /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
+                    to: `/users/${user}`
+                }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, null, "Profile"))), /*#__PURE__*/ _reactDefault.default.createElement("span", null, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
+                    md: 8
+                }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
+                    onClick: ()=>this.onLoggedOut()
+                }, "Logout")))), movies.map((movie)=>/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
+                        lg: 3,
+                        md: 4,
+                        sm: 12,
+                        key: movie._id
+                    }, /*#__PURE__*/ _reactDefault.default.createElement(_movieCard.MovieCard, {
+                        movieData: movie,
+                        simple2: true
+                    }))
+                )));
+            },
+            __source: {
+                fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/main-view/main-view.jsx",
+                lineNumber: 67
+            },
+            __self: this
+        }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
+            exact: true,
             path: "/register",
             render: ()=>{
                 //If there is no user, the LoginView is rendered. If there is a user logged in, the user details are passed as a prop to the LoginView
@@ -22148,7 +22192,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 67
+                lineNumber: 105
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22165,7 +22209,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 74
+                lineNumber: 112
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22211,7 +22255,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 81
+                lineNumber: 119
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22246,7 +22290,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 117
+                lineNumber: 155
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22286,7 +22330,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 142
+                lineNumber: 180
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22326,7 +22370,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 172
+                lineNumber: 210
             },
             __self: this
         }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
@@ -22360,7 +22404,7 @@ class MainView extends _reactDefault.default.Component {
             },
             __source: {
                 fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/main-view/main-view.jsx",
-                lineNumber: 202
+                lineNumber: 240
             },
             __self: this
         })))));
