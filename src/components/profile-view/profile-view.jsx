@@ -36,8 +36,7 @@ export function ProfileView(props){
     }).then(response => {
       const data = response.data;
       console.log(data);
-      //THEN call props.onLoggedIn(username)
-      // props.onRegistered(data);
+      localStorage.setItem('user', username);
     }).catch(() => {
       console.log('error updating the user');
     });
