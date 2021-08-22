@@ -16,17 +16,6 @@ export class MovieView extends React.Component{
     })
   }
 
-  removeFavorite() {
-    const accessToken = localStorage.getItem('token');
-    const username = localStorage.getItem('user');
-    axios.delete(`http://jny-myflix.herokuapp.com/users/${username}/favorites/` + this.props.movie._id, {
-      headers: {Authorization: `Bearer ${accessToken}`}
-    }).then((response) => {
-      console.log(response);
-      alert(this.props.movie.Title + " has been removed from your favorites!");
-    })
-  }
-
   render(){
     const {movie, onBackClick} = this.props;
     return (
@@ -38,16 +27,21 @@ export class MovieView extends React.Component{
               <div className = "value">{movie.Title}</div>
             </div>
             <Button variant = "success" onClick = {() => this.addFavorite()}>Add to favorites</Button>
-            <Button variant = "danger" onClick = {() => this.removeFavorite()}>Remove from favorites</Button>
             <div className = "movie-genre">
-              <Link to = {`${movie.Title}/genre/${movie.Genre.Name}`}>
-                <Button variant = "link">Genre</Button>
-              </Link>
+              <span className = "label">Genre: </span>
+              <span className = "value">
+                <Link to = {`${movie.Title}/genre/${movie.Genre.Name}`}>
+                  <Button variant = "link">{movie.Genre.Name}</Button>
+                </Link>
+              </span>
             </div>
             <div className = "movie-director">
-              <Link to = {`${movie.Title}/director/${movie.Director.Name}`}>
-                <Button variant = "link">Director</Button>
-              </Link>
+              <span className = "label">Director: </span>
+              <span className = "value">
+                <Link to = {`${movie.Title}/director/${movie.Director.Name}`}>
+                  <Button variant = "link">{movie.Director.Name}</Button>
+                </Link>
+              </span>
             </div>
             <div className = "movie-description">
               <div className = "value">{movie.Description}</div>
