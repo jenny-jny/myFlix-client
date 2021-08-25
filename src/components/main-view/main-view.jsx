@@ -66,40 +66,16 @@ export class MainView extends React.Component{
           <Row className = "main-view justify-content-md-center"> 
             <Route exact path = '/' render = {() => {
               if (!user) return ( 
-                <Col>
-                  <LoginView onLoggedIn = {(user) => this.onLoggedIn(user)} />
-                </Col>
+                <>
+                  <Col>
+                    <LoginView onLoggedIn = {(user) => this.onLoggedIn(user)} />
+                  </Col>
+                  <Link to = {`/register`}>
+                    <Button>Register</Button>
+                  </Link> 
+                </>
               );
-              if(movies.length === 0) return <div className = "main-view"/>;
-                return (
-                  <>
-                    <Row className = "justify-content-md-left">
-                      <Col md = {8}>
-                        <div className = "greeting">
-                          <span className = "label">Hello, </span>
-                          <span className = "value">{user}</span>
-                        </div>
-                      </Col>
-                    </Row>
-                    <Row className = "justify-content-md-right">
-                      <span>
-                        <Link to = {`/users/${user}`}>
-                          <Button>Profile</Button>
-                        </Link>
-                      </span>
-                      <span>
-                        <Col md = {8}>
-                          <Button onClick = {() => this.onLoggedOut()}>Logout</Button>
-                        </Col>
-                      </span>
-                    </Row>
-                    {movies.map(movie => (
-                      <Col lg = {3} md = {4} sm = {12} key = {movie._id}>
-                        <MovieCard movieData = {movie} simple2 = {true}/>
-                      </Col>
-                    ))}
-                  </>
-                );
+                return <Redirect to = '/movies'/>
               }}
             />
             <Route exact path = "/register" render = {() => { 
