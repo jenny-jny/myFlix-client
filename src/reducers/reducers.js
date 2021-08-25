@@ -1,10 +1,10 @@
-import {combineReducers} from 'redux';
 import {SET_MOVIES, SET_FILTER} from '../actions/actions';
+import {combineReducers} from 'redux';
 
 //reducer
-function visibilityFilter(state = '', action){
+function movies(state = [], action){
   switch(action.type){
-    case SET_FILTER:
+    case SET_MOVIES:
       return action.value;
     default:
       return state;
@@ -12,9 +12,9 @@ function visibilityFilter(state = '', action){
 }
 
 //reducer
-function movies(state = [], action){
+function visibilityFilter(state = '', action){
   switch(action.type){
-    case SET_MOVIES:
+    case SET_FILTER:
       return action.value;
     default:
       return state;
