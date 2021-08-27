@@ -40849,7 +40849,6 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _reactRedux = require("react-redux");
 var _reactBootstrap = require("react-bootstrap");
-var _reactBootstrapDefault = parcelHelpers.interopDefault(_reactBootstrap);
 var _movieCard = require("../movie-card/movie-card");
 var _visibilityFilterInput = require("../visibility-filter-input/visibility-filter-input");
 var _visibilityFilterInputDefault = parcelHelpers.interopDefault(_visibilityFilterInput);
@@ -40866,7 +40865,7 @@ function MoviesList(props) {
         },
         __self: this
     }));
-    return(/*#__PURE__*/ _reactDefault.default.createElement(_reactDefault.default.Fragment, null, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrapDefault.default, {
+    return(/*#__PURE__*/ _reactDefault.default.createElement(_reactDefault.default.Fragment, null, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
         md: 12,
         style: {
             margin: '1em'
@@ -40884,7 +40883,7 @@ function MoviesList(props) {
         },
         __self: this
     })), filteredMovies.map((m)=>{
-        /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrapDefault.default, {
+        /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
             md: 3,
             key: m._id,
             __source: {
@@ -40900,7 +40899,7 @@ function MoviesList(props) {
             },
             __self: this
         }));
-    }), ";"));
+    })));
 }
 _c = MoviesList;
 const mapStateToProps = (state)=>{
@@ -40918,7 +40917,7 @@ $RefreshReg$(_c, "MoviesList");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react":"3b2NM","react-redux":"7GDa4","@parcel/transformer-js/src/esmodule-helpers.js":"2Ogsb","../../../../../../.nvm/versions/node/v14.17.0/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"6XILU","react-bootstrap":"4n7hB","../movie-card/movie-card":"5olpj","../visibility-filter-input/visibility-filter-input":"4TWUF"}],"6XILU":[function(require,module,exports) {
+},{"react":"3b2NM","react-redux":"7GDa4","@parcel/transformer-js/src/esmodule-helpers.js":"2Ogsb","../../../../../../.nvm/versions/node/v14.17.0/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"6XILU","../movie-card/movie-card":"5olpj","react-bootstrap":"4n7hB","../visibility-filter-input/visibility-filter-input":"4TWUF"}],"6XILU":[function(require,module,exports) {
 "use strict";
 var Refresh = require('react-refresh/runtime');
 function debounce(func, delay) {

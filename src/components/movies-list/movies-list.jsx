@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import Col from 'react-bootstrap';
+import {Col} from 'react-bootstrap';
 
 import {MovieCard} from '../movie-card/movie-card';
 import VisibilityFilterInput from '../visibility-filter-input/visibility-filter-input';
@@ -23,8 +23,8 @@ function MoviesList(props){
       <Col md = {3} key = {m._id}>
         <MovieCard movieData = {m}/>
       </Col>
-    })};
-  </>
+    })}
+  </>;
 }
 
 const mapStateToProps = state => {
