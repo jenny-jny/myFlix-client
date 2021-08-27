@@ -40872,18 +40872,18 @@ function MoviesList(props) {
         },
         __source: {
             fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/movies-list/movies-list.jsx",
-            lineNumber: 19
+            lineNumber: 18
         },
         __self: this
     }, /*#__PURE__*/ _reactDefault.default.createElement(_visibilityFilterInputDefault.default, {
         visibilityFilter: visibilityFilter,
         __source: {
             fileName: "/Users/JianingYu/Documents/GitHub/myFlix-client/src/components/movies-list/movies-list.jsx",
-            lineNumber: 20
+            lineNumber: 19
         },
         __self: this
     })), filteredMovies.map((m)=>{
-        /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
+        return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
             md: 3,
             key: m._id,
             __source: {
@@ -40898,7 +40898,7 @@ function MoviesList(props) {
                 lineNumber: 24
             },
             __self: this
-        }));
+        })));
     })));
 }
 _c = MoviesList;
