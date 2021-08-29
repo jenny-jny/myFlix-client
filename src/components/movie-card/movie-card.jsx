@@ -54,5 +54,7 @@ MovieCard.propTypes = {
       Birth: PropTypes.string.isRequired,
       Death: PropTypes.string.isRequired
     }).isRequired
-  }).isRequired
+  }).isRequired,
+  simple: PropTypes.bool.isRequired,
+  simple2: PropTypes.bool.isRequired
 };

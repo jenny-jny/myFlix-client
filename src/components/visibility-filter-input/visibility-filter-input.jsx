@@ -9,3 +9,8 @@ function VisibilityFilterInput(props){
 }
 
 export default connect(null, {setFilter})(VisibilityFilterInput);
+
+Visibilityilter.propTypes = {
+  visibilityFilter: PropTypes.func.isRequired,
+  setFilter: PropTypes.func.isRequired
+};

@@ -35,3 +35,24 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps)(MoviesList);
+
+MoviesList.propTypes = {
+  movies: PropTypes.arrayOf(PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    ImagePath: PropTypes.string.isRequired, 
+    Title: PropTypes.string.isRequired, 
+    Description: PropTypes.string.isRequired,
+    Featured: PropTypes.bool.isRequired,
+    Genre: PropTypes.shape({
+      Name: PropTypes.string.isRequired,
+      Description: PropTypes.string.isRequire
+    }).isRequired,
+    Director: PropTypes.shape({
+      Name: PropTypes.string.isRequired,
+      Bio: PropTypes.string.isRequired,
+      Birth: PropTypes.string.isRequired,
+      Death: PropTypes.string.isRequired
+    }).isRequired
+  })).isRequired,
+  visibilityFilter: PropTypes.func.isRequired
+};
