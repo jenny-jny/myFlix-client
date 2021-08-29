@@ -272,7 +272,7 @@ class MainView extends React.Component{
       // this.setState({
       //   user: localStorage.getItem('user')
       // });
-      this.props.setUser(ocalStorage.getItem('user'));
+      this.props.setUser(localStorage.getItem('user'));
       this.getMovies(accessToken);
     }
   }
