@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import {connect} from 'react-redux';
 import {BrowserRouter as Router, Route, Redirect, Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
 import {Container, Row, Col, Button} from 'react-bootstrap';
 
 //#0
