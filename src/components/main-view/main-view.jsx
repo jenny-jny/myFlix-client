@@ -286,5 +286,10 @@ let mapStateToProps = state => {
   };
 }
 
+const mapDispatchToProps = {
+  setMovies,
+  setUser
+};
+
 //connect component within application to the store
-export default connect(mapStateToProps, {setMovies}, {setUser})(MainView);
+export default connect(mapStateToProps, mapDispatchToProps)(MainView);
