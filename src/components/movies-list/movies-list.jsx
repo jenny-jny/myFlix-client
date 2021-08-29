@@ -14,18 +14,19 @@ function MoviesList(props){
   }
 
   if(!movies) return <div className = "main-view"/>
-  return <>
-    <Col md = {12} style = {{ margin: '1em' }}>
-      <VisibilityFilterInput visibilityFilter = {visibilityFilter} />
-    </Col>
-    {filteredMovies.map(m => {
-      return (
-        <Col md = {3} key = {m._id}>
-          <MovieCard movieData = {m}/>
-        </Col>
-      );
-    })}
-  </>;
+    return <>
+      <Col md = {12} style = {{ margin: '1em' }}>
+        <VisibilityFilterInput visibilityFilter = {visibilityFilter} />
+      </Col>
+      {/* map() loops through an array and calls a defined callback function on each element of an array, and returns an array that contains the results; in arrow function, return single statement does not require semicolon */}
+      {filteredMovies.map(m => {
+        return (
+          <Col lg = {3} md = {4} sm = {12} key = {m._id}>
+            <MovieCard movieData = {m} simple2 = {true}/>
+          </Col>
+        );
+      })}
+    </>;
 }
 
 const mapStateToProps = state => {
