@@ -47,7 +47,7 @@ class MainView extends React.Component{
   onLoggedIn(authData){
     console.log(authData);
     //this.setState({user: authData.user.Username});
-    this.props.setUser({user: authData.user.Username});
+    this.props.setUser(authData.user.Username);
     localStorage.setItem('token', authData.token);
     localStorage.setItem('user', authData.user.Username);
     this.getMovies(authData.token);
@@ -56,7 +56,7 @@ class MainView extends React.Component{
   onRegistered(authData){
     console.log(authData);
     //this.setState({user: authData.user.Username});
-    this.props.setUser({user: authData.user.Username});
+    this.props.setUser(authData.user.Username);
     localStorage.setItem('token', authData.token);
     localStorage.setItem('user', authData.user.Username);
     this.getMovies(authData.token);
@@ -68,7 +68,7 @@ class MainView extends React.Component{
     // this.setState({
     //   user: null
     // });
-    this.props.setUser({user: null});
+    this.props.setUser(null);
   }
 
   render(){
@@ -272,7 +272,7 @@ class MainView extends React.Component{
       // this.setState({
       //   user: localStorage.getItem('user')
       // });
-      this.props.setUser({user: localStorage.getItem('user')});
+      this.props.setUser(ocalStorage.getItem('user'));
       this.getMovies(accessToken);
     }
   }
