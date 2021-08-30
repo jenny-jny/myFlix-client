@@ -91,6 +91,7 @@ class MainView extends React.Component{
                   </>
                 );
               } else {
+                console.log(user.Username);
                 return <Redirect to = '/movies'/>;
               }
               }}/>
