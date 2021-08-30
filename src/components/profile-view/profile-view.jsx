@@ -26,7 +26,7 @@ export function ProfileView(props){
     //send a request to the server for authentication
     setValidated(true);
     console.log(`Bearer ${localStorage.getItem('token')}`);
-    axios.put(`http://jny-myflix.herokuapp.com/users/${props.user}`, {
+    axios.put(`https://jny-myflix.herokuapp.com/users/${props.user}`, {
       Username: username,
       Password: password,
       Email: email,
@@ -45,7 +45,7 @@ export function ProfileView(props){
   const unregister = () => {
     const accessToken = localStorage.getItem('token');
     const username = localStorage.getItem('user');
-    axios.delete(`http://jny-myflix.herokuapp.com/users/${username}`, {
+    axios.delete(`https://jny-myflix.herokuapp.com/users/${username}`, {
       headers: {Authorization: `Bearer ${accessToken}`}
     }).then(response => {
       console.log(response);

@@ -21,7 +21,7 @@ export function RegistrationView(props){
     console.log(username, password, email, birthday);
     //send a request to the server for authentication
     setValidated(true);
-    axios.post('http://jny-myflix.herokuapp.com/register', {
+    axios.post('https://jny-myflix.herokuapp.com/register', {
       Username: username,
       Password: password,
       Email: email,

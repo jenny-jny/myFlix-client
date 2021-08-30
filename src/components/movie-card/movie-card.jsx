@@ -9,7 +9,7 @@ export class MovieCard extends React.Component{
   removeFavorite() {
     const accessToken = localStorage.getItem('token');
     const username = localStorage.getItem('user');
-    axios.delete(`http://jny-myflix.herokuapp.com/users/${username}/favorites/` + this.props.movieData._id, {
+    axios.delete(`https://jny-myflix.herokuapp.com/users/${username}/favorites/` + this.props.movieData._id, {
       headers: {Authorization: `Bearer ${accessToken}`}
     }).then((response) => {
       console.log(response);
