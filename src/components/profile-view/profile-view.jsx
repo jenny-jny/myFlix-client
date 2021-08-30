@@ -52,7 +52,7 @@ export function ProfileView(props){
       localStorage.removeItem('token');
       localStorage.removeItem('user');
       alert("Your account has been deleted.");
-      window.open('/register', '_self');
+      window.open('/', '_self');
     });
   };
 
