@@ -91,16 +91,8 @@ class MainView extends React.Component{
                   </>
                 );
               } else {
-                return ( 
-                  <>
-                    <Col>
-                      <LoginView onLoggedIn = {(user) => this.onLoggedIn(user)} />
-                    </Col>
-                    <Link to = {`/register`}>
-                      <Button>Register 2</Button>
-                    </Link> 
-                  </>
-                );              }
+                return <Redirect to = '/movies'/>;
+              }
               }}/>
             <Route exact path = "/register" render = {() => { 
               //If there is no user, the LoginView is rendered. If there is a user logged in, the user details are passed as a prop to the LoginView
