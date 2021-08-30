@@ -90,7 +90,7 @@ class MainView extends React.Component{
                     </Link> 
                   </>
               );} else {
-                return <Redirect to = '/movies1'/>;
+                return <Redirect to = '/movies'/>;
               }
               }}/>
             <Route exact path = "/register" render = {() => { 
