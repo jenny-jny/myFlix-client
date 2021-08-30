@@ -79,7 +79,7 @@ class MainView extends React.Component{
         <Container>
           <Row className = "main-view justify-content-md-center"> 
             <Route exact path = '/' render = {() => {
-              if (!user || user.length === 0) {
+              if (!user || user.length === 0) 
                 return ( 
                   <>
                     <Col>
@@ -90,14 +90,11 @@ class MainView extends React.Component{
                     </Link> 
                   </>
                 );
-              } else {
-                console.log(user);
                 return <Redirect to = '/movies'/>;
-              }
               }}/>
             <Route exact path = "/register" render = {() => { 
               //If there is no user, the LoginView is rendered. If there is a user logged in, the user details are passed as a prop to the LoginView
-              if(!user) return (
+              if(!user || user.length === 0) return (
                 <>
                   <Col>
                     <RegistrationView onRegistered = {user => this.onRegistered(user)}/>
@@ -111,7 +108,7 @@ class MainView extends React.Component{
                 }}/>
             <Route exact path = "/login" render = {() => {
               //If there is no user, the LoginView is rendered. If there is a user logged in, the user details are passed as a prop to the LoginView
-              if(!user) return (
+              if(!user || user.length === 0) return (
                 <>
                   <Col>
                     <LoginView onLoggedIn = {user => this.onLoggedIn(user)}/>
@@ -124,7 +121,7 @@ class MainView extends React.Component{
                 return <Redirect to = '/movies'/>;
                 }}/>
             <Route exact path = "/movies" render = {() => {
-              if(!user) return <Col>
+              if(!user || user.length === 0) return <Col>
                 <LoginView onLoggedIn = {user => this.onLoggedIn(user)}/>
               </Col>
               if(movies.length === 0) return <div className = "main-view"/> //curly braces required only for multiple statements, optional for single statement
@@ -156,7 +153,7 @@ class MainView extends React.Component{
                 </React.Fragment>
               }}/>
             <Route exact path = "/movies/:movieId" render = {({match, history}) => { //match is the url 
-              if(!user) return <Col>
+              if(!user || user.length === 0) return <Col>
                 <LoginView onLoggedIn = {user => this.onLoggedIn(user)}/>
               </Col>
               if(movies.length === 0) return <div className = "main-view"/>;
@@ -181,7 +178,7 @@ class MainView extends React.Component{
                 </React.Fragment>
             }}/>
             <Route exact path = "/movies/:Title/genre/:Name" render = {({match, history}) => { //match is the url
-              if(!user) return <Col>
+              if(!user || user.length === 0) return <Col>
                 <LoginView onLoggedIn = {user => this.onLoggedIn(user)}/>
               </Col>
               if(movies.length === 0) return <div className = "main-view"/>;
@@ -211,7 +208,7 @@ class MainView extends React.Component{
                 </React.Fragment>
             }}/>
             <Route exact path = "/movies/:Title/director/:Name" render = {({match, history}) => { //match is the url
-              if(!user) return <Col>
+              if(!user || user.length === 0) return <Col>
                 <LoginView onLoggedIn = {user => this.onLoggedIn(user)}/>
               </Col>
               if(movies.length === 0) return <div className = "main-view"/>;
@@ -241,7 +238,7 @@ class MainView extends React.Component{
                 </React.Fragment>
             }}/>
             <Route exact path= "/users/:Username" render = {({history}) => {
-              if(!user) return <Col>
+              if(!user || user.length === 0) return <Col>
                 <LoginView onLoggedIn = {user => this.onLoggedIn(user)}/>
               </Col>
               return <React.Fragment>
