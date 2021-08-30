@@ -79,17 +79,19 @@ class MainView extends React.Component{
         <Container>
           <Row className = "main-view justify-content-md-center"> 
             <Route exact path = '/' render = {() => {
-              if (!user) return ( 
-                <>
-                  <Col>
-                    <LoginView onLoggedIn = {(user) => this.onLoggedIn(user)} />
-                  </Col>
-                  <Link to = {`/register`}>
-                    <Button>Register</Button>
-                  </Link> 
-                </>
-              );
-              return <Redirect to = '/movies1'/>;
+              if (!user) {
+                return ( 
+                  <>
+                    <Col>
+                      <LoginView onLoggedIn = {(user) => this.onLoggedIn(user)} />
+                    </Col>
+                    <Link to = {`/register`}>
+                      <Button>Register</Button>
+                    </Link> 
+                  </>
+              );} else {
+                return <Redirect to = '/movies1'/>;
+              }
               }}/>
             <Route exact path = "/register" render = {() => { 
               //If there is no user, the LoginView is rendered. If there is a user logged in, the user details are passed as a prop to the LoginView
