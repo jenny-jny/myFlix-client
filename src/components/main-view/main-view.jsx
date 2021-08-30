@@ -99,7 +99,7 @@ class MainView extends React.Component{
                   <Col>
                     <RegistrationView onRegistered = {user => this.onRegistered(user)}/>
                   </Col>
-                  <Link to = {`/login`}>
+                  <Link to = {'/login'}>
                     <Button>Login</Button>
                   </Link>
                 </>
