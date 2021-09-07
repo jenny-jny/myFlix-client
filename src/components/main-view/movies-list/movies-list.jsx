@@ -23,7 +23,7 @@ function MoviesList(props){
       {filteredMovies.map(m => {
         return (
           <Col lg = {3} md = {4} sm = {12} key = {m._id}>
-            <MovieCard movieData = {m} simple2 = {true}/>
+            <MovieCard movieData = {m} simple = {false} simple2 = {true}/>
           </Col>
         );
       })}
@@ -55,5 +55,5 @@ MoviesList.propTypes = {
       Death: PropTypes.string.isRequired
     }).isRequired
   })).isRequired,
-  visibilityFilter: PropTypes.func.isRequired
+  visibilityFilter: PropTypes.string.isRequired
 };

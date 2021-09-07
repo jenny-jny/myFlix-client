@@ -125,7 +125,7 @@ export function ProfileView(props){
             {favoriteMoviesList.length > 0 && favoriteMoviesList.map(favoriteMovie => {
               return (
                 <Col lg = {4} md = {6} sm = {12} key = {favoriteMovie._id}>
-                  <MovieCard movieData = {favoriteMovie} simple = {true}/>
+                  <MovieCard movieData = {favoriteMovie} simple = {true} simple2 = {false}/>
                 </Col>
               );
             })}

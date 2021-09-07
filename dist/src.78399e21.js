@@ -54058,6 +54058,7 @@ function MoviesList(props) {
       key: m._id
     }, /*#__PURE__*/_react.default.createElement(_movieCard.MovieCard, {
       movieData: m,
+      simple: false,
       simple2: true
     }));
   }));
@@ -54091,7 +54092,7 @@ MoviesList.propTypes = {
       Death: _propTypes.default.string.isRequired
     }).isRequired
   })).isRequired,
-  visibilityFilter: _propTypes.default.func.isRequired
+  visibilityFilter: _propTypes.default.string.isRequired
 };
 },{"react":"../node_modules/react/index.js","react-redux":"../node_modules/react-redux/es/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","../../movie-card/movie-card":"components/movie-card/movie-card.jsx","../visibility-filter-input/visibility-filter-input":"components/main-view/visibility-filter-input/visibility-filter-input.jsx"}],"components/movie-view/movie-view.jsx":[function(require,module,exports) {
 "use strict";
@@ -54656,7 +54657,8 @@ function ProfileView(props) {
       key: favoriteMovie._id
     }, /*#__PURE__*/_react.default.createElement(_movieCard.MovieCard, {
       movieData: favoriteMovie,
-      simple: true
+      simple: true,
+      simple2: false
     }));
   })))));
 }
