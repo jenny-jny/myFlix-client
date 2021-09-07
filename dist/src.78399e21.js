@@ -33420,7 +33420,7 @@ function visibilityFilter() {
 
 
 function user() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
@@ -54788,7 +54788,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
     value: function onLoggedIn(authData) {
       console.log(authData); //this.setState({user: authData.user.Username});
 
-      this.props.setUser(authData.user);
+      this.props.setUser(authData.user.Username);
       localStorage.setItem('token', authData.token);
       localStorage.setItem('user', authData.user.Username);
       this.getMovies(authData.token);
@@ -54798,7 +54798,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
     value: function onRegistered(authData) {
       console.log(authData); //this.setState({user: authData.user.Username});
 
-      this.props.setUser(authData.user);
+      this.props.setUser(authData.user.Username);
       localStorage.setItem('token', authData.token);
       localStorage.setItem('user', authData.user.Username);
       this.getMovies(authData.token);
@@ -54811,7 +54811,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       //   user: null
       // });
 
-      this.props.setUser(null);
+      this.props.setUser('');
     }
   }, {
     key: "render",
@@ -55123,7 +55123,7 @@ MainView.propTypes = {
       Death: _propTypes.default.string.isRequired
     }).isRequired
   })).isRequired,
-  user: _propTypes.default.array.isRequired,
+  user: _propTypes.default.string.isRequired,
   setMovies: _propTypes.default.func.isRequired,
   setUser: _propTypes.default.func.isRequired
 };

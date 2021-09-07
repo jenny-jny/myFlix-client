@@ -47,7 +47,7 @@ class MainView extends React.Component{
   onLoggedIn(authData){
     console.log(authData);
     //this.setState({user: authData.user.Username});
-    this.props.setUser(authData.user);
+    this.props.setUser(authData.user.Username);
     localStorage.setItem('token', authData.token);
     localStorage.setItem('user', authData.user.Username);
     this.getMovies(authData.token);
@@ -56,7 +56,7 @@ class MainView extends React.Component{
   onRegistered(authData){
     console.log(authData);
     //this.setState({user: authData.user.Username});
-    this.props.setUser(authData.user);
+    this.props.setUser(authData.user.Username);
     localStorage.setItem('token', authData.token);
     localStorage.setItem('user', authData.user.Username);
     this.getMovies(authData.token);
@@ -68,7 +68,7 @@ class MainView extends React.Component{
     // this.setState({
     //   user: null
     // });
-    this.props.setUser(null);
+    this.props.setUser('');
   }
 
   render(){
@@ -313,7 +313,7 @@ MainView.propTypes = {
       Death: PropTypes.string.isRequired
     }).isRequired
   })).isRequired,
-  user: PropTypes.array.isRequired,
+  user: PropTypes.string.isRequired,
   setMovies: PropTypes.func.isRequired,
   setUser: PropTypes.func.isRequired
 };
