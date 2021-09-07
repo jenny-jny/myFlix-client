@@ -313,7 +313,7 @@ MainView.propTypes = {
       Death: PropTypes.string.isRequired
     }).isRequired
   })).isRequired,
-  user: PropTypes.array.isRequired,
+  user: PropTypes.string.isRequired,
   setMovies: PropTypes.func.isRequired,
   setUser: PropTypes.func.isRequired
 };
