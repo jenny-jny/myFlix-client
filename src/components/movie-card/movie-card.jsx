@@ -13,7 +13,7 @@ export class MovieCard extends React.Component{
       headers: {Authorization: `Bearer ${accessToken}`}
     }).then((response) => {
       console.log(response);
-      alert(this.props.movieData.Title + " has been removed from your favorites!");
+      alert(this.props.movieData.Title + " has been removed from your special favorites!");
       window.open(`/users/${username}`, '_self');
     })
   }
