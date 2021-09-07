@@ -53667,7 +53667,7 @@ function RegistrationView(props) {
     }).then(function (response) {
       var data = response.data;
       console.log(data);
-      window.open('/', '_self'); // the second argument '_self' is necessary so that the page will open in the current tab
+      window.open('/login', '_self'); // the second argument '_self' is necessary so that the page will open in the current tab
       //THEN call props.onLoggedIn(username)
 
       props.onRegistered(data);
@@ -53914,7 +53914,8 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
         }
       }).then(function (response) {
         console.log(response);
-        alert(_this.props.movieData.Title + " has been removed from your favorites!"); // window.open(`/users/${username}`, '_self');
+        alert(_this.props.movieData.Title + " has been removed from your favorites!");
+        window.open("/users/".concat(username), '_self');
       });
     }
   }, {
@@ -54551,7 +54552,7 @@ function ProfileView(props) {
       localStorage.removeItem('token');
       localStorage.removeItem('user');
       alert("Your account has been deleted.");
-      window.open('/', '_self');
+      window.open('/register', '_self');
     });
   };
 

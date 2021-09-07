@@ -14,7 +14,7 @@ export class MovieCard extends React.Component{
     }).then((response) => {
       console.log(response);
       alert(this.props.movieData.Title + " has been removed from your favorites!");
-      // window.open(`/users/${username}`, '_self');
+      window.open(`/users/${username}`, '_self');
     })
   }
 
