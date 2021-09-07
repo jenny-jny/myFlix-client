@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import {Container, Row, Col, Form, Button} from 'react-bootstrap';
 
-
 export function RegistrationView(props){
   //useState() returns a stateful value and a function to update it
   const [username, setUsername] = useState('');

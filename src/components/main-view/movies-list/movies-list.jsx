@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {Col} from 'react-bootstrap';
 
-import {MovieCard} from '../movie-card/movie-card';
+import {MovieCard} from '../../movie-card/movie-card';
 import VisibilityFilterInput from '../visibility-filter-input/visibility-filter-input';
 
 function MoviesList(props){

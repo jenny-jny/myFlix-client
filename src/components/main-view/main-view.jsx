@@ -11,7 +11,7 @@ import {setMovies, setUser} from '../../actions/actions';
 // #1 The rest of components import statements but without the MovieCard because it will be imported and used in the MoviesList component rather than in here. 
 import {RegistrationView} from '../registration-view/registration-view'
 import {LoginView} from '../login-view/login-view';
-import MoviesList from '../movies-list/movies-list';
+import MoviesList from './movies-list/movies-list';
 import {MovieView} from '../movie-view/movie-view';
 import {GenreView} from '../genre-view/genre-view';
 import {DirectorView} from '../director-view/director-view';
