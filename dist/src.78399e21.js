@@ -54004,7 +54004,7 @@ var _default = (0, _reactRedux.connect)(null, {
 
 exports.default = _default;
 VisibilityFilterInput.propTypes = {
-  visibilityFilter: _propTypes.default.func.isRequired,
+  visibilityFilter: _propTypes.default.string.isRequired,
   setFilter: _propTypes.default.func.isRequired
 };
 },{"react":"../node_modules/react/index.js","react-redux":"../node_modules/react-redux/es/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","../../../actions/actions":"actions/actions.js"}],"components/main-view/movies-list/movies-list.jsx":[function(require,module,exports) {
@@ -54788,7 +54788,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
     value: function onLoggedIn(authData) {
       console.log(authData); //this.setState({user: authData.user.Username});
 
-      this.props.setUser(authData.user.Username);
+      this.props.setUser(authData.user);
       localStorage.setItem('token', authData.token);
       localStorage.setItem('user', authData.user.Username);
       this.getMovies(authData.token);
@@ -54798,7 +54798,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
     value: function onRegistered(authData) {
       console.log(authData); //this.setState({user: authData.user.Username});
 
-      this.props.setUser(authData.user.Username);
+      this.props.setUser(authData.user);
       localStorage.setItem('token', authData.token);
       localStorage.setItem('user', authData.user.Username);
       this.getMovies(authData.token);
@@ -55123,7 +55123,7 @@ MainView.propTypes = {
       Death: _propTypes.default.string.isRequired
     }).isRequired
   })).isRequired,
-  user: _propTypes.default.string.isRequired,
+  user: _propTypes.default.array.isRequired,
   setMovies: _propTypes.default.func.isRequired,
   setUser: _propTypes.default.func.isRequired
 };
@@ -55302,7 +55302,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54143" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51705" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
