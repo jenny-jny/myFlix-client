@@ -13,8 +13,8 @@ import {RegistrationView} from '../registration-view/registration-view'
 import {LoginView} from '../login-view/login-view';
 import MoviesList from './movies-list/movies-list';
 import {MovieView} from '../movie-view/movie-view';
-import {GenreView} from '../genre-view/genre-view';
-import {DirectorView} from '../director-view/director-view';
+import {GenreView} from '../movie-view/genre-view/genre-view';
+import {DirectorView} from '../movie-view/director-view/director-view';
 import {ProfileView} from '../profile-view/profile-view';
 
 // #2 export keyword removed from here
