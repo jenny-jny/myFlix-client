@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import {Card, Button} from 'react-bootstrap';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 
 export class MovieCard extends React.Component{
 
@@ -14,7 +14,8 @@ export class MovieCard extends React.Component{
     }).then((response) => {
       console.log(response);
       alert(this.props.movieData.Title + " has been removed from your special favorites!");
-      window.open(`/users/${username}`, '_self');
+      // window.open(`/users/${username}`, '_self');
+      return <Redirect to = '/users/${username}'/>;
     })
   }
 
