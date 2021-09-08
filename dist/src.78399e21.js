@@ -53917,7 +53917,7 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
         alert(_this.props.movieData.Title + " has been removed from your special favorites!"); // window.open(`/users/${username}`, '_self');
         // return <Redirect to = '/users/${username}'/>;
 
-        window.reload();
+        location.reload();
       });
     }
   }, {

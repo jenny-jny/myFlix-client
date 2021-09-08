@@ -16,7 +16,7 @@ export class MovieCard extends React.Component{
       alert(this.props.movieData.Title + " has been removed from your special favorites!");
       // window.open(`/users/${username}`, '_self');
       // return <Redirect to = '/users/${username}'/>;
-      window.reload();
+      location.reload();
     })
   }
 
