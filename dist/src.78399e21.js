@@ -33345,15 +33345,18 @@ Object.defineProperty(exports, "__esModule", {
 exports.setMovies = setMovies;
 exports.setFilter = setFilter;
 exports.setUser = setUser;
-exports.SET_USER = exports.SET_FILTER = exports.SET_MOVIES = void 0;
+exports.setFavorites = setFavorites;
+exports.SET_FAVORITES = exports.SET_USER = exports.SET_FILTER = exports.SET_MOVIES = void 0;
 //action types
 var SET_MOVIES = 'SET_MOVIES';
 exports.SET_MOVIES = SET_MOVIES;
 var SET_FILTER = 'SET_FILTER';
 exports.SET_FILTER = SET_FILTER;
-var SET_USER = 'SET_USER'; //action creators: the value updates the state; naming convention: as close to name of action type as possible for readability
-
+var SET_USER = 'SET_USER';
 exports.SET_USER = SET_USER;
+var SET_FAVORITES = 'SET_FAVORITES'; //action creators: the value updates the state; naming convention: as close to name of action type as possible for readability
+
+exports.SET_FAVORITES = SET_FAVORITES;
 
 function setMovies(value) {
   console.log('SET_MOVIES action triggered'); //return an object
@@ -33374,6 +33377,13 @@ function setFilter(value) {
 function setUser(value) {
   return {
     type: SET_USER,
+    value: value
+  };
+}
+
+function setFavorites(value) {
+  return {
+    type: SET_FAVORITES,
     value: value
   };
 }
@@ -33430,6 +33440,20 @@ function user() {
     default:
       return state;
   }
+} //reducer
+
+
+function favorites() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _actions.SET_FAVORITES:
+      return action.value;
+
+    default:
+      return state;
+  }
 } //combined reducer
 // function moviesApp(state = {}, action){
 //   return {
@@ -33442,7 +33466,8 @@ function user() {
 var moviesApp = (0, _redux.combineReducers)({
   visibilityFilter: visibilityFilter,
   movies: movies,
-  user: user
+  user: user,
+  favorites: favorites
 });
 var _default = moviesApp;
 exports.default = _default;
@@ -53854,8 +53879,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.MovieCard = MovieCard;
+exports.default = void 0;
 
-var _react = _interopRequireDefault(require("react"));
+var _react = _interopRequireWildcard(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
@@ -53865,9 +53891,18 @@ var _reactBootstrap = require("react-bootstrap");
 
 var _reactRouterDom = require("react-router-dom");
 
+var _actions = require("../../actions/actions");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
 function MovieCard(props) {
+  (0, _react.useEffect)(function () {
+    props.setFavorites(favoriteMoviesList);
+  }, []);
   var favoriteMoviesList = props.favoriteMoviesList,
       movieData = props.movieData,
       simple = props.simple,
@@ -53902,8 +53937,14 @@ function MovieCard(props) {
       return removeFavorite();
     }
   }, "Remove")));
-}
+} //connect component within application to the store
 
+
+var _default = connect(null, {
+  setFavorites: _actions.setFavorites
+})(MovieCard);
+
+exports.default = _default;
 MovieCard.propTypes = {
   movieData: _propTypes.default.shape({
     _id: _propTypes.default.string.isRequired,
@@ -53925,7 +53966,7 @@ MovieCard.propTypes = {
   simple: _propTypes.default.bool.isRequired,
   simple2: _propTypes.default.bool.isRequired
 };
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","axios":"../node_modules/axios/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js"}],"components/main-view/visibility-filter-input/visibility-filter-input.jsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","axios":"../node_modules/axios/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../../actions/actions":"actions/actions.js"}],"components/main-view/visibility-filter-input/visibility-filter-input.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -55178,7 +55219,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51377" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63690" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

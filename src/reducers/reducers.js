@@ -1,4 +1,4 @@
-import {SET_MOVIES, SET_FILTER, SET_USER} from '../actions/actions';
+import {SET_MOVIES, SET_FILTER, SET_USER, SET_FAVORITES} from '../actions/actions';
 import {combineReducers} from 'redux';
 
 //reducer
@@ -32,6 +32,15 @@ function user(state = '', action){
   }
 }
 
+//reducer
+function favorites(state = [], action){
+  switch(action.type){
+    case SET_FAVORITES:
+      return action.value;
+    default: 
+      return state;
+  }
+}
 //combined reducer
 // function moviesApp(state = {}, action){
 //   return {
@@ -42,7 +51,8 @@ function user(state = '', action){
 const moviesApp = combineReducers({
   visibilityFilter,
   movies,
-  user
+  user,
+  favorites
 });
 
 export default moviesApp;
