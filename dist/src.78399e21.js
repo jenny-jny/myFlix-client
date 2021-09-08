@@ -53769,8 +53769,6 @@ exports.LoginView = LoginView;
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _reactDom = _interopRequireDefault(require("react-dom"));
-
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _axios = _interopRequireDefault(require("axios"));
@@ -53872,7 +53870,7 @@ function LoginView(props) {
 LoginView.propTypes = {
   onLoggedIn: _propTypes.default.func.isRequired
 };
-},{"react":"../node_modules/react/index.js","react-dom":"../node_modules/react-dom/index.js","prop-types":"../node_modules/prop-types/index.js","axios":"../node_modules/axios/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js"}],"components/movie-card/movie-card.jsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","axios":"../node_modules/axios/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js"}],"components/movie-card/movie-card.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -53882,8 +53880,6 @@ exports.MovieCard = MovieCard;
 
 var _react = _interopRequireDefault(require("react"));
 
-var _reactRedux = require("react-redux");
-
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _axios = _interopRequireDefault(require("axios"));
@@ -53892,10 +53888,10 @@ var _reactBootstrap = require("react-bootstrap");
 
 var _reactRouterDom = require("react-router-dom");
 
-var _actions = require("../../actions/actions");
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// import {connect} from 'react-redux';
+// import {setFavorites} from '../../actions/actions';
 function MovieCard(props) {
   var movieData = props.movieData,
       simple = props.simple,
@@ -53912,9 +53908,7 @@ function MovieCard(props) {
     }).then(function (response) {
       console.log(response);
       alert(props.movieData.Title + " has been removed from your favorites!");
-      window.open("/users/".concat(username), '_self'); // return <Redirect to = '/users/${username}'/>;
-      // location.reload();
-      // props.setFavorites(favoriteMoviesList);
+      window.open("/users/".concat(username), '_self'); // props.setFavorites(favoriteMoviesList);
     });
   };
 
@@ -53956,7 +53950,7 @@ MovieCard.propTypes = {
   simple: _propTypes.default.bool.isRequired,
   simple2: _propTypes.default.bool.isRequired
 };
-},{"react":"../node_modules/react/index.js","react-redux":"../node_modules/react-redux/es/index.js","prop-types":"../node_modules/prop-types/index.js","axios":"../node_modules/axios/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../../actions/actions":"actions/actions.js"}],"components/main-view/visibility-filter-input/visibility-filter-input.jsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","axios":"../node_modules/axios/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js"}],"components/main-view/visibility-filter-input/visibility-filter-input.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

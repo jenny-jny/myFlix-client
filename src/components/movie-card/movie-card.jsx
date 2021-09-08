@@ -1,10 +1,10 @@
 import React from 'react';
-import {connect} from 'react-redux';
+// import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import {Card, Button} from 'react-bootstrap';
-import {Link, Redirect} from 'react-router-dom';
-import {setFavorites} from '../../actions/actions';
+import {Link} from 'react-router-dom';
+// import {setFavorites} from '../../actions/actions';
 
 export function MovieCard(props){
   const {movieData, simple, simple2} = props;
@@ -18,8 +18,6 @@ export function MovieCard(props){
       console.log(response);
       alert(props.movieData.Title + " has been removed from your favorites!");
       window.open(`/users/${username}`, '_self');
-      // return <Redirect to = '/users/${username}'/>;
-      // location.reload();
       // props.setFavorites(favoriteMoviesList);
     })
   };
