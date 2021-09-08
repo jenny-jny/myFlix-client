@@ -13,7 +13,7 @@ export class MovieCard extends React.Component{
       headers: {Authorization: `Bearer ${accessToken}`}
     }).then((response) => {
       console.log(response);
-      alert(this.props.movieData.Title + " has been removed from your special favorites!");
+      alert(this.props.movieData.Title + " has been removed from your favorites!");
       // window.open(`/users/${username}`, '_self');
       // return <Redirect to = '/users/${username}'/>;
       location.reload();
@@ -21,7 +21,7 @@ export class MovieCard extends React.Component{
   }
 
   render(){
-    const {movieData, simple, simple2} = this.props;
+    const {favoriteMoviesList, movieData, simple, simple2} = this.props;
     return (
       <Card>
         <Card.Img variant = "top" src = {movieData.ImagePath}/>

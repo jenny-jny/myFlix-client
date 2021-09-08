@@ -5,6 +5,26 @@ import {Container, Row, Col, Form, Button} from 'react-bootstrap';
 import {MovieCard} from '../movie-card/movie-card';
 
 export function ProfileView(props){
+  useEffect(() => {
+    let accessToken = localStorage.getItem('token');
+    let username = localStorage.getItem('user');
+    if (!username) return;
+    axios.get(`https://jny-myflix.herokuapp.com/users/${username}`, {
+      headers: {Authorization: `Bearer ${accessToken}`}
+    }).then(response => {
+      // console.log(response.data);
+      // console.log(favoriteMovies);
+      //assign the result to the state 
+      setUsername(response.data.Username);
+      setPassword(response.data.Password);
+      setEmail(response.data.Email);
+      setBirthday(response.data.Birthday);
+      setFavoriteMovies(response.data.FavoriteMovies);
+    }).catch(function(error){
+      console.log(error);
+    });
+  }, []);
+
   //useState() returns a stateful value and a function to update it
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -56,26 +76,6 @@ export function ProfileView(props){
     });
   };
 
-  useEffect(() => {
-    let accessToken = localStorage.getItem('token');
-    let username = localStorage.getItem('user');
-    if (!username) return;
-    axios.get(`https://jny-myflix.herokuapp.com/users/${username}`, {
-      headers: {Authorization: `Bearer ${accessToken}`}
-    }).then(response => {
-      // console.log(response.data);
-      // console.log(favoriteMovies);
-      //assign the result to the state 
-      setUsername(response.data.Username);
-      setPassword(response.data.Password);
-      setEmail(response.data.Email);
-      setBirthday(response.data.Birthday);
-      setFavoriteMovies(response.data.FavoriteMovies);
-    }).catch(function(error){
-      console.log(error);
-    });
-  }, []);
-
   return (
     <Container>
       <Row>
@@ -125,7 +125,7 @@ export function ProfileView(props){
             {favoriteMoviesList.length > 0 && favoriteMoviesList.map(favoriteMovie => {
               return (
                 <Col lg = {4} md = {6} sm = {12} key = {favoriteMovie._id}>
-                  <MovieCard movieData = {favoriteMovie} simple = {true} simple2 = {false}/>
+                  <MovieCard favoriteMoviesList = {favoriteMoviesList} movieData = {favoriteMovie} simple = {true} simple2 = {false}/>
                 </Col>
               );
             })}

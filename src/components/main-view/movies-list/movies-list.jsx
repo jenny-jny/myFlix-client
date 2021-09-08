@@ -16,7 +16,7 @@ function MoviesList(props){
 
   if(!movies) return <div className = "main-view"/>
     return <>
-      <Col md = {12} style = {{ margin: '1em' }}>
+      <Col md = {12} style = {{margin: '1em'}}>
         <VisibilityFilterInput visibilityFilter = {visibilityFilter} />
       </Col>
       {/* map() loops through an array and calls a defined callback function on each element of an array, and returns an array that contains the results; in arrow function, return single statement does not require semicolon */}
