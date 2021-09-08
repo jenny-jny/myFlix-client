@@ -1,4 +1,5 @@
-import React, {useEffect} from 'react';
+import React from 'react';
+import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import {Card, Button} from 'react-bootstrap';
@@ -6,11 +7,7 @@ import {Link, Redirect} from 'react-router-dom';
 import {setFavorites} from '../../actions/actions';
 
 export function MovieCard(props){
-  // useEffect(() => {
-  //     props.setFavorites(favoriteMoviesList);
-  // }, [])  
-  
-  const {favoriteMoviesList, movieData, simple, simple2} = props;
+  const {movieData, simple, simple2} = props;
 
   const removeFavorite = () => {
     const accessToken = localStorage.getItem('token');
@@ -20,10 +17,10 @@ export function MovieCard(props){
     }).then((response) => {
       console.log(response);
       alert(props.movieData.Title + " has been removed from your favorites!");
-      // window.open(`/users/${username}`, '_self');
+      window.open(`/users/${username}`, '_self');
       // return <Redirect to = '/users/${username}'/>;
       // location.reload();
-      props.setFavorites(favoriteMoviesList);
+      // props.setFavorites(favoriteMoviesList);
     })
   };
 
@@ -44,7 +41,7 @@ export function MovieCard(props){
 }
 
 //connect component within application to the store
-export default connect(null, {setFavorites})(MovieCard);
+// export default connect(null, {setFavorites})(MovieCard);
 
 MovieCard.propTypes = {
   movieData: PropTypes.shape({

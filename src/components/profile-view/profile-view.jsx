@@ -1,8 +1,10 @@
 import React, {useState, useEffect} from 'react';
+import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import {Container, Row, Col, Form, Button} from 'react-bootstrap';
 import {MovieCard} from '../movie-card/movie-card';
+import {setFavorites} from '../../actions/actions';
 
 export function ProfileView(props){
   useEffect(() => {
@@ -135,6 +137,9 @@ export function ProfileView(props){
     </Container>
   );
 }
+
+//connect component within application to the store
+export default connect(null, {setFavorites})(ProfileView);
 
 ProfileView.propTypes = {
   moviesData: PropTypes.arrayOf(PropTypes.shape({

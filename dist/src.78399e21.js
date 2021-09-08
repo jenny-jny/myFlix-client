@@ -53879,9 +53879,10 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.MovieCard = MovieCard;
-exports.default = void 0;
 
-var _react = _interopRequireWildcard(require("react"));
+var _react = _interopRequireDefault(require("react"));
+
+var _reactRedux = require("react-redux");
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
@@ -53895,16 +53896,8 @@ var _actions = require("../../actions/actions");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function (nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-
-function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
 function MovieCard(props) {
-  // useEffect(() => {
-  //     props.setFavorites(favoriteMoviesList);
-  // }, [])  
-  var favoriteMoviesList = props.favoriteMoviesList,
-      movieData = props.movieData,
+  var movieData = props.movieData,
       simple = props.simple,
       simple2 = props.simple2;
 
@@ -53918,11 +53911,10 @@ function MovieCard(props) {
       }
     }).then(function (response) {
       console.log(response);
-      alert(props.movieData.Title + " has been removed from your favorites!"); // window.open(`/users/${username}`, '_self');
-      // return <Redirect to = '/users/${username}'/>;
+      alert(props.movieData.Title + " has been removed from your favorites!");
+      window.open("/users/".concat(username), '_self'); // return <Redirect to = '/users/${username}'/>;
       // location.reload();
-
-      props.setFavorites(favoriteMoviesList);
+      // props.setFavorites(favoriteMoviesList);
     });
   };
 
@@ -53940,13 +53932,9 @@ function MovieCard(props) {
     }
   }, "Remove")));
 } //connect component within application to the store
+// export default connect(null, {setFavorites})(MovieCard);
 
 
-var _default = connect(null, {
-  setFavorites: _actions.setFavorites
-})(MovieCard);
-
-exports.default = _default;
 MovieCard.propTypes = {
   movieData: _propTypes.default.shape({
     _id: _propTypes.default.string.isRequired,
@@ -53968,7 +53956,7 @@ MovieCard.propTypes = {
   simple: _propTypes.default.bool.isRequired,
   simple2: _propTypes.default.bool.isRequired
 };
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","axios":"../node_modules/axios/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../../actions/actions":"actions/actions.js"}],"components/main-view/visibility-filter-input/visibility-filter-input.jsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-redux":"../node_modules/react-redux/es/index.js","prop-types":"../node_modules/prop-types/index.js","axios":"../node_modules/axios/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","../../actions/actions":"actions/actions.js"}],"components/main-view/visibility-filter-input/visibility-filter-input.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -54404,8 +54392,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.ProfileView = ProfileView;
+exports.default = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
+
+var _reactRedux = require("react-redux");
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
@@ -54414,6 +54405,8 @@ var _axios = _interopRequireDefault(require("axios"));
 var _reactBootstrap = require("react-bootstrap");
 
 var _movieCard = require("../movie-card/movie-card");
+
+var _actions = require("../../actions/actions");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -54622,8 +54615,14 @@ function ProfileView(props) {
       simple2: false
     }));
   })))));
-}
+} //connect component within application to the store
 
+
+var _default = (0, _reactRedux.connect)(null, {
+  setFavorites: _actions.setFavorites
+})(ProfileView);
+
+exports.default = _default;
 ProfileView.propTypes = {
   moviesData: _propTypes.default.arrayOf(_propTypes.default.shape({
     _id: _propTypes.default.string.isRequired,
@@ -54645,7 +54644,7 @@ ProfileView.propTypes = {
   user: _propTypes.default.string.isRequired,
   onBackClick: _propTypes.default.func.isRequired
 };
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","axios":"../node_modules/axios/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","../movie-card/movie-card":"components/movie-card/movie-card.jsx"}],"components/main-view/main-view.jsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-redux":"../node_modules/react-redux/es/index.js","prop-types":"../node_modules/prop-types/index.js","axios":"../node_modules/axios/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","../movie-card/movie-card":"components/movie-card/movie-card.jsx","../../actions/actions":"actions/actions.js"}],"components/main-view/main-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
