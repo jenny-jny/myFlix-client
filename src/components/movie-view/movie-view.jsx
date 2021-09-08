@@ -50,8 +50,8 @@ export class MovieView extends React.Component{
         </Row>
         <Row className = "movie-view justify-content-md-center">
           <Col md = {8}>
-            <div className = "movie-poster">
-              <img src = {movie.ImagePath}/>
+            <div className = "movie-poster" style={{width: '100%'}}>
+              <img src = {movie.ImagePath} width = '100%' height = 'auto'/>
             </div>
           </Col>
         </Row>
