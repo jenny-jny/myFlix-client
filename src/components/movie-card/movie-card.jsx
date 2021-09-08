@@ -6,9 +6,9 @@ import {Link, Redirect} from 'react-router-dom';
 import {setFavorites} from '../../actions/actions';
 
 export function MovieCard(props){
-  useEffect(() => {
-      props.setFavorites(favoriteMoviesList);
-  }, [])  
+  // useEffect(() => {
+  //     props.setFavorites(favoriteMoviesList);
+  // }, [])  
   
   const {favoriteMoviesList, movieData, simple, simple2} = props;
 
@@ -23,6 +23,7 @@ export function MovieCard(props){
       // window.open(`/users/${username}`, '_self');
       // return <Redirect to = '/users/${username}'/>;
       // location.reload();
+      props.setFavorites(favoriteMoviesList);
     })
   };
 
