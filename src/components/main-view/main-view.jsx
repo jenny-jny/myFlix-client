@@ -129,7 +129,7 @@ class MainView extends React.Component{
                   <Row className = "justify-content-md-left">
                     <Col md = {8}>
                       <div className = "greeting">
-                        <span className = "label">Hello, </span>
+                        <span className = "label">Hello and welcome, </span>
                         <span className = "value">{user}</span>
                       </div>
                     </Col>
