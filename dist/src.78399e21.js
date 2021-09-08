@@ -54893,7 +54893,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
             className: "greeting"
           }, /*#__PURE__*/_react.default.createElement("span", {
             className: "label"
-          }, "Hello, "), /*#__PURE__*/_react.default.createElement("span", {
+          }, "Hello and welcome, "), /*#__PURE__*/_react.default.createElement("span", {
             className: "value"
           }, user)))), /*#__PURE__*/_react.default.createElement(_reactBootstrap.Row, {
             className: "justify-content-md-right"
