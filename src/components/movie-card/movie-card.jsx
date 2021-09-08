@@ -1,10 +1,15 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import {Card, Button} from 'react-bootstrap';
 import {Link, Redirect} from 'react-router-dom';
+import {setFavorites} from '../../actions/actions';
 
 export function MovieCard(props){
+  useEffect(() => {
+      props.setFavorites(favoriteMoviesList);
+  }, [])  
+  
   const {favoriteMoviesList, movieData, simple, simple2} = props;
 
   const removeFavorite = () => {
@@ -36,6 +41,9 @@ export function MovieCard(props){
     </Card>
   );
 }
+
+//connect component within application to the store
+export default connect(null, {setFavorites})(MovieCard);
 
 MovieCard.propTypes = {
   movieData: PropTypes.shape({
