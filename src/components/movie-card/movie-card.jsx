@@ -4,39 +4,37 @@ import axios from 'axios';
 import {Card, Button} from 'react-bootstrap';
 import {Link, Redirect} from 'react-router-dom';
 
-export class MovieCard extends React.Component{
+export function MovieCard(props){
+  const {favoriteMoviesList, movieData, simple, simple2} = props;
 
-  removeFavorite() {
+  const removeFavorite = () => {
     const accessToken = localStorage.getItem('token');
     const username = localStorage.getItem('user');
-    axios.delete(`https://jny-myflix.herokuapp.com/users/${username}/favorites/` + this.props.movieData._id, {
+    axios.delete(`https://jny-myflix.herokuapp.com/users/${username}/favorites/` + props.movieData._id, {
       headers: {Authorization: `Bearer ${accessToken}`}
     }).then((response) => {
       console.log(response);
-      alert(this.props.movieData.Title + " has been removed from your favorites!");
+      alert(props.movieData.Title + " has been removed from your favorites!");
       // window.open(`/users/${username}`, '_self');
       // return <Redirect to = '/users/${username}'/>;
-      location.reload();
+      // location.reload();
     })
-  }
+  };
 
-  render(){
-    const {favoriteMoviesList, movieData, simple, simple2} = this.props;
-    return (
-      <Card>
-        <Card.Img variant = "top" src = {movieData.ImagePath}/>
-        <Card.Body>
-          <Card.Title>{movieData.Title}</Card.Title>
-          {console.log(movieData)}
-          {!simple && <Card.Text>{movieData.Description}</Card.Text>}
-          <Link to = {`/movies/${movieData._id}`}>
-            <Button variant = "link">Open</Button>
-          </Link>
-          {!simple2 && <Button variant = "link" onClick = {() => this.removeFavorite()}>Remove</Button>}
-        </Card.Body>
-      </Card>
-    );
-  }
+  return (
+    <Card>
+      <Card.Img variant = "top" src = {movieData.ImagePath}/>
+      <Card.Body>
+        <Card.Title>{movieData.Title}</Card.Title>
+        {console.log(movieData)}
+        {!simple && <Card.Text>{movieData.Description}</Card.Text>}
+        <Link to = {`/movies/${movieData._id}`}>
+          <Button variant = "link">Open</Button>
+        </Link>
+        {!simple2 && <Button variant = "link" onClick = {() => removeFavorite()}>Remove</Button>}
+      </Card.Body>
+    </Card>
+  );
 }
 
 MovieCard.propTypes = {

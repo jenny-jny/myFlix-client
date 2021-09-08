@@ -39,6 +39,9 @@ function MainView(props){
     }
   }, [])
 
+  // #5 movies and user are extracted from props rather than from the this.state
+  let {movies, user} = props; //object destruction; equivalent to const movies = this.state.movies;
+
   const getMovies = token => {
     axios.get('https://jny-myflix.herokuapp.com/movies', {
       headers: {Authorization: `Bearer ${token}`}
@@ -81,9 +84,6 @@ function MainView(props){
     // });
     props.setUser('');
   };
-
-  // #5 movies and user are extracted from props rather than from the this.state
-  let {movies, user} = props; //object destruction; equivalent to const movies = this.state.movies;
 
   return (
     <Router>
