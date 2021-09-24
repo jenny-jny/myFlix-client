@@ -7,9 +7,9 @@ import {Link} from 'react-router-dom';
 // import {setFavorites} from '../../actions/actions';
 
 export function MovieCard(props){
-  const {movieData, simple, simple2} = props;
+  const {movieData, removeFavoriteFrontEnd, simple, simple2} = props;
 
-  const removeFavorite = () => {
+  const removeFavoriteBackEnd = () => {
     const accessToken = localStorage.getItem('token');
     const username = localStorage.getItem('user');
     axios.delete(`https://jny-myflix.herokuapp.com/users/${username}/favorites/` + props.movieData._id, {
@@ -17,8 +17,8 @@ export function MovieCard(props){
     }).then((response) => {
       console.log(response);
       alert(props.movieData.Title + " has been removed from your favorites!");
-      window.open(`/users/${username}`, '_self');
-      // props.setFavorites(favoriteMoviesList);
+      // window.open(`/users/${username}`, '_self');
+      removeFavoriteFrontEnd(props.movieData._id);
     })
   };
 
@@ -32,7 +32,7 @@ export function MovieCard(props){
         <Link to = {`/movies/${movieData._id}`}>
           <Button variant = "link">Open</Button>
         </Link>
-        {!simple2 && <Button variant = "link" onClick = {() => removeFavorite()}>Remove</Button>}
+        {!simple2 && <Button variant = "link" onClick = {() => removeFavoriteBackEnd()}>Remove</Button>}
       </Card.Body>
     </Card>
   );
