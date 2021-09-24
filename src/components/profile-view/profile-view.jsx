@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import {Container, Row, Col, Form, Button} from 'react-bootstrap';
 import {MovieCard} from '../movie-card/movie-card';
-import {setFavorites} from '../../actions/actions';
+// import {setFavorites} from '../../actions/actions';
 
 export function ProfileView(props){
   useEffect(() => {
@@ -78,6 +78,15 @@ export function ProfileView(props){
     });
   };
 
+  const removeFavoriteFrontEnd = (id) => {
+    const updatedFavoriteMovies = favoriteMovies.filter(favoriteMovie => {
+      return (
+        !favoriteMovie.includes(id)
+      );
+    });
+    setFavoriteMovies(updatedFavoriteMovies);
+  };
+
   return (
     <Container>
       <Row>
@@ -127,7 +136,7 @@ export function ProfileView(props){
             {favoriteMoviesList.length > 0 && favoriteMoviesList.map(favoriteMovie => {
               return (
                 <Col lg = {4} md = {6} sm = {12} key = {favoriteMovie._id}>
-                  <MovieCard favoriteMoviesList = {favoriteMoviesList} movieData = {favoriteMovie} simple = {true} simple2 = {false}/>
+                  <MovieCard favoriteMoviesList = {favoriteMoviesList} movieData = {favoriteMovie} removeFavoriteFrontEnd = {removeFavoriteFrontEnd} simple = {true} simple2 = {false}/>
                 </Col>
               );
             })}
@@ -139,7 +148,7 @@ export function ProfileView(props){
 }
 
 //connect component within application to the store
-export default connect(null, {setFavorites})(ProfileView);
+// export default connect(null, {setFavorites})(ProfileView);
 
 ProfileView.propTypes = {
   moviesData: PropTypes.arrayOf(PropTypes.shape({
