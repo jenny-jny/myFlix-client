@@ -5,17 +5,51 @@ import {Container, Row, Col, Form, Button} from 'react-bootstrap';
 import {MovieCard} from '../movie-card/movie-card';
 
 export function ProfileView(props){
+<<<<<<< Updated upstream
+=======
+  useEffect(() => {
+    console.log('running');
+    let accessToken = localStorage.getItem('token');
+    let username = localStorage.getItem('user');
+    if (!username) return;
+    axios.get(`https://jny-myflix.herokuapp.com/users/${username}`, {
+      headers: {Authorization: `Bearer ${accessToken}`}
+    }).then(response => {
+      // console.log(response.data);
+      // console.log(favoriteMovies);
+      //assign the result to the state 
+      setUsername(response.data.Username);
+      setPassword(response.data.Password);
+      setEmail(response.data.Email);
+      setBirthday(response.data.Birthday);
+      setFavoriteMoviesId(response.data.FavoriteMovies);
+      console.log(response.data.FavoriteMovies + 'IMPORTANT');
+    }).catch(function(error){
+      console.log(error + 'ERROR');
+    });
+  }, []);
+
+>>>>>>> Stashed changes
   //useState() returns a stateful value and a function to update it
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
   const [birthday, setBirthday] = useState('');
-  const [favoriteMovies, setFavoriteMovies] = useState([]);
+  const [favoriteMoviesId, setFavoriteMoviesId] = useState(); //id only
+  const [favoriteMoviesDataList, setFavoriteMoviesDataList] = useState(userFavoriteMoviesDataList);
   const [validated, setValidated] = useState(false);
-  const favoriteMoviesList = props.moviesData.filter(movie => {
-    return favoriteMovies.includes(movie._id);
-  });
+
+  // const favoriteMoviesDataList = props.moviesData.filter(movie => {
+  //   return favoriteMovies.includes(movie._id);
+  // });
+
+  console.log(favoriteMoviesId);
+  console.log(favoriteMoviesDataList);
   
+  const userFavoriteMoviesDataList = () => {props.moviesData.filter(movieData => {
+    return favoriteMoviesId.includes(movieData._id);
+  })};
+
   const handleUpdate = e => {
     e.preventDefault();
     const form = e.currentTarget;
@@ -56,6 +90,7 @@ export function ProfileView(props){
     });
   };
 
+<<<<<<< Updated upstream
   useEffect(() => {
     let accessToken = localStorage.getItem('token');
     let username = localStorage.getItem('user');
@@ -75,6 +110,24 @@ export function ProfileView(props){
       console.log(error);
     });
   }, []);
+=======
+  const removeFavorite = (id) => {
+    const accessToken = localStorage.getItem('token');
+    const username = localStorage.getItem('user');
+    axios.delete(`https://jny-myflix.herokuapp.com/users/${username}/favorites/` + id, {
+      headers: {Authorization: `Bearer ${accessToken}`}
+    }).then((response) => {
+      console.log(response);
+      alert(props.movieData.Title + " has been removed from your favorites!");
+      updatedFavoriteMoviesDataList = favoriteMoviesDataList.filter(favoriteMovieData => {
+        return (favoriteMovieData._id !== id);
+      })
+      setFavoriteMoviesDataList(updatedFavoriteMoviesDataList);
+      // window.open(`/users/${username}`, '_self');
+      // props.setFavorites(favoriteMoviesList);
+    })
+  };
+>>>>>>> Stashed changes
 
   return (
     <Container>
@@ -122,10 +175,15 @@ export function ProfileView(props){
             <Col md = {8} className = "label">My favorite movies</Col>
           </Row>
           <Row className = "justify-content-md-left">
-            {favoriteMoviesList.length > 0 && favoriteMoviesList.map(favoriteMovie => {
+            {favoriteMoviesDataList.length > 0 && favoriteMoviesDataList.map(favoriteMovieData => {
               return (
+<<<<<<< Updated upstream
                 <Col lg = {4} md = {6} sm = {12} key = {favoriteMovie._id}>
                   <MovieCard movieData = {favoriteMovie} simple = {true}/>
+=======
+                <Col lg = {4} md = {6} sm = {12} key = {favoriteMovieData._id}>
+                  <MovieCard movieData = {favoriteMovieData} handleRemoveFavorite = {() => removeFavorite(favoriteMovieData._id)} simple = {true} simple2 = {false}/>
+>>>>>>> Stashed changes
                 </Col>
               );
             })}

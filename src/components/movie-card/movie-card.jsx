@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom';
 
 export class MovieCard extends React.Component{
 
+<<<<<<< Updated upstream
   removeFavorite() {
     const accessToken = localStorage.getItem('token');
     const username = localStorage.getItem('user');
@@ -35,6 +36,34 @@ export class MovieCard extends React.Component{
       </Card>
     );
   }
+=======
+  // const removeFavorite = () => {
+  //   const accessToken = localStorage.getItem('token');
+  //   const username = localStorage.getItem('user');
+  //   axios.delete(`https://jny-myflix.herokuapp.com/users/${username}/favorites/` + props.movieData._id, {
+  //     headers: {Authorization: `Bearer ${accessToken}`}
+  //   }).then((response) => {
+  //     console.log(response);
+  //     alert(props.movieData.Title + " has been removed from your favorites!");
+  //     // window.open(`/users/${username}`, '_self');
+  //     // props.setFavorites(favoriteMoviesList);
+  //   })
+  // };
+
+  return (
+    <Card>
+      <Card.Img variant = "top" src = {movieData.ImagePath}/>
+      <Card.Body>
+        <Card.Title>{movieData.Title}</Card.Title>
+        {!simple && <Card.Text>{movieData.Description}</Card.Text>}
+        <Link to = {`/movies/${movieData._id}`}>
+          <Button variant = "link">Open</Button>
+        </Link>
+        {!simple2 && <Button variant = "link" onClick = {() => removeFavorite()}>Remove</Button>}
+      </Card.Body>
+    </Card>
+  );
+>>>>>>> Stashed changes
 }
 
 MovieCard.propTypes = {
