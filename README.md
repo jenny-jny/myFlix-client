@@ -18,7 +18,7 @@ Using React, build the client-side for an application called myFlix based on its
 * Prettier
 
 ## Technical Requirements
-External REST API: https://github.com/jenny-jny/movie_api
+External REST API: https://jny-myflix.herokuapp.com/
 
 ## Project Showcase
 https://jenny-jny-myflix.netlify.app/
